@@ -14,12 +14,14 @@ import net.minecraft.common.item.Items;
 import net.minecraft.common.util.physics.MovingObjectPosition;
 import net.minecraft.common.world.EnumMovingObjectType;
 import net.minecraft.common.world.World;
+import net.tracystacktrace.icy.ICYConfig;
 import net.tracystacktrace.icy.ICYInit;
 import org.lwjgl.opengl.GL11;
 
 public class ICYRenderer extends Gui {
 
     protected final RenderItem renderItem = new RenderItem();
+    protected final ItemStack harvestIconItem = new ItemStack(Items.IRON_PICKAXE);
 
     //cache
     protected String[] cacheString;
@@ -87,14 +89,14 @@ public class ICYRenderer extends Gui {
     }
 
     protected void renderItemPlaque(FontRenderer fontRenderer) {
-        final int realY = this.cacheY + ((Minecraft.getInstance().hotbarTickCounter != 0 && this.cacheLocation == 4) ? -25 : 0);
+        final int realY = this.cacheY + (this.shouldMoveUp() ? -25 : 0);
 
         this.drawGradientRect(
                 this.cacheX, realY,
                 this.cacheX + this.getPlaqueWidth(),
                 realY + this.getPlaqueHeight(),
-                ICYInit.CONFIG.startPlaqueGradient,
-                ICYInit.CONFIG.endPlaqueGradient
+                ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.startPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor,
+                ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
         );
 
         for(int i = 0; i < this.cacheString.length; i++) {
@@ -117,14 +119,12 @@ public class ICYRenderer extends Gui {
         RenderSystem.disableDepthTest();
 
         if(ICYInit.CONFIG.showBlockHarvestability && this.cacheHarvestable) {
-            ItemStack debug =
-                    new ItemStack(Items.IRON_PICKAXE);
             GL11.glScaled(0.5f, 0.5f, 0.0f);
             GL11.glTranslatef(0.0F, 0.0F, 15.0F);
             renderItem.drawItemIntoGui(
                     fontRenderer,
                     Minecraft.getInstance().renderEngine,
-                    debug, debug.getIconIndex(),
+                    this.harvestIconItem, this.harvestIconItem.getIconIndex(),
                     (this.cacheX + 5) * 2, (realY + 5) * 2
             );
         }
@@ -180,5 +180,9 @@ public class ICYRenderer extends Gui {
             result = Math.max(result, fontRenderer.getStringWidth(s));
         }
         return result;
+    }
+
+    private boolean shouldMoveUp() {
+        return this.cacheLocation == 4 && Minecraft.getInstance().thePlayer.getHeldItem() != null && Minecraft.getInstance().hotbarTickCounter != 0;
     }
 }

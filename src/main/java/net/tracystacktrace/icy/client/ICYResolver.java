@@ -2,6 +2,7 @@ package net.tracystacktrace.icy.client;
 
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
+import net.minecraft.common.block.children.BlockCarvedPumpkin;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.ChatColors;
@@ -110,6 +111,17 @@ public class ICYResolver {
         if(id == Blocks.THISTLEWOOD_TABLE.blockID) return new ItemStack(Items.THISTLEWOOD_TABLE);
         if(id == Blocks.STONE_TABLE.blockID) return new ItemStack(Items.STONE_TABLE);
         if(id == Blocks.GLASS_TABLE.blockID) return new ItemStack(Items.GLASS_TABLE);
+
+        if(Blocks.BLOCKS_LIST[id] instanceof BlockCarvedPumpkin) meta = 0;
+
+        if(id == Blocks.FOX_PLUSHIE.blockID) return new ItemStack(Items.FOX_PLUSHIE);
+        if(id == Blocks.SNOW_FOX_PLUSHIE.blockID) return new ItemStack(Items.SNOW_FOX_PLUSHIE);
+        if(id == Blocks.RED_WYVERN_PLUSHIE.blockID) return new ItemStack(Items.RED_WYVERN_PLUSHIE);
+        if(id == Blocks.GREEN_WYVERN_PLUSHIE.blockID) return new ItemStack(Items.GREEN_WYVERN_PLUSHIE);
+        if(id == Blocks.BLUE_WYVERN_PLUSHIE.blockID) return new ItemStack(Items.BLUE_WYVERN_PLUSHIE);
+        if(id == Blocks.BLOOD_WYVERN_PLUSHIE.blockID) return new ItemStack(Items.BLOOD_WYVERN_PLUSHIE);
+        if(id == Blocks.DEMON_PLUSHIE.blockID) return new ItemStack(Items.DEMON_PLUSHIE);
+        if(id == Blocks.SHARK_PLUSHIE.blockID) return new ItemStack(Items.SHARK_PLUSHIE);
 
         return new ItemStack(block, 1, meta);
     }

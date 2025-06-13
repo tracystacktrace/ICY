@@ -16,7 +16,7 @@ public class MixinGuiModMenu {
     @ModifyArg(method = "openModConfigScreen", at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/client/Minecraft;displayGuiScreen(Lnet/minecraft/client/gui/GuiScreen;)V"), index = 0)
-    private GuiScreen icy$shit(GuiScreen gui) {
+    private GuiScreen icy$openCustomConfigScreen(GuiScreen gui) {
         if(this.modListContainer.getSelectedModContainer().getModId().equals("icy")) {
             return new GuiConfigHome();
         }

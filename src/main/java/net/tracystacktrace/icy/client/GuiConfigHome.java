@@ -7,6 +7,7 @@ import net.tracystacktrace.icy.client.gui.ButtonToggle;
 
 public class GuiConfigHome extends GuiScreen {
 
+    //todo complete all config values
     @Override
     public void initGui() {
         this.controlList.clear();

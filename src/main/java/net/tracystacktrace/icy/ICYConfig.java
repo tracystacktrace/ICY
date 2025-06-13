@@ -17,9 +17,14 @@ public class ICYConfig {
     public byte location = 0;
 
     @ConfigEntry
+    public boolean gradientColor = false;
+
+    @ConfigEntry
     public int startPlaqueGradient = -1073741824;
 
     @ConfigEntry
     public int endPlaqueGradient = -1073741824;
 
+    @ConfigEntry
+    public int staticPlaqueColor = -1073741824;
 }
