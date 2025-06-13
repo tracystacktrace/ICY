@@ -1,4 +1,4 @@
-package net.tracystacktrace.icy.client.gui;
+package net.tracystacktrace.icy.client.gui.config;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.common.util.i18n.StringTranslate;

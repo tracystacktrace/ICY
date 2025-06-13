@@ -34,7 +34,7 @@ public class ICYRenderer extends Gui {
     protected boolean cacheHarvestable;
     protected byte cacheLocation = -1;
 
-    protected void clearCache() {
+    public void clearCache() {
         this.cacheBlock = 0;
         this.cacheMeta = 0;
         this.cacheString = null;
@@ -46,7 +46,7 @@ public class ICYRenderer extends Gui {
         this.cacheHarvestable = false;
     }
 
-    protected void buildCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
+    public void buildCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
         this.cacheBlock = block.blockID;
         this.cacheMeta = meta;
         this.cacheLocation = ICYInit.CONFIG.location;
@@ -54,7 +54,7 @@ public class ICYRenderer extends Gui {
         this.cacheItemStack = ICYResolver.getDisplayItemStack(block, meta);
         this.cacheString = ICYResolver.bakeLines(this.cacheItemStack, meta, x, y, z);
         this.cacheLargestString = this.getLargestString(fontRenderer, this.cacheString);
-        this.cacheHarvestable = Minecraft.getInstance().thePlayer.canHarvestBlock(block);
+        this.cacheHarvestable = Minecraft.getInstance().currentScreen != null || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
 
         final ScaledResolution scaledResolution = ScaledResolution.instance;
         this.cacheX = this.getXLocation(scaledResolution.getScaledWidth(), this.getPlaqueWidth());
@@ -88,7 +88,7 @@ public class ICYRenderer extends Gui {
 
     }
 
-    protected void renderItemPlaque(FontRenderer fontRenderer) {
+    public void renderItemPlaque(FontRenderer fontRenderer) {
         final int realY = this.cacheY + (this.shouldMoveUp() ? -25 : 0);
 
         this.drawGradientRect(
@@ -183,6 +183,8 @@ public class ICYRenderer extends Gui {
     }
 
     private boolean shouldMoveUp() {
+        if(Minecraft.getInstance().currentScreen != null)
+            return false;
         return this.cacheLocation == 4 && Minecraft.getInstance().thePlayer.getHeldItem() != null && Minecraft.getInstance().hotbarTickCounter != 0;
     }
 }

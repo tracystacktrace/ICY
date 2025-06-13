@@ -11,8 +11,8 @@ public class ICYConfig {
     public boolean showBlockHarvestability = true;
 
     @ConfigEntry(
-            lowerBounds = 0, upperBounds = 6,
-            configComment = "0 - top left, 1 - top, 2 - top right, 3 - bottom left, 4 - bottom, 5 - bottom right, 6 - center (special)"
+            lowerBounds = 0, upperBounds = 5,
+            configComment = "0 - top left, 1 - top, 2 - top right, 3 - bottom left, 4 - bottom, 5 - bottom right"
     )
     public byte location = 0;
 

@@ -3,5 +3,26 @@ icy.growth=Growth: %s%
 icy.config.yes=§aYes
 icy.config.no=§cNo
 
+icy.config.title=Configure ICY
 icy.config.enable=Enable ICY: %s
 icy.config.harvest=Show Harvestability: %s
+icy.config.gradient=Gradient Mode: %s
+icy.config.location=Change Tooltip Location
+icy.config.exit=§eExit Configuration Screen
+
+icy.config.title.gradient.start=Change start tooltip gradient color
+icy.config.title.gradient.end=Change end tooltip gradient color
+icy.config.title.static=Change static tooltip color
+
+icy.location.topleft=§cTop Left
+icy.location.top=§cTop
+icy.location.topright=§cTop Right
+icy.location.bottomleft=§cBottom Left
+icy.location.bottom=§cBottom
+icy.location.bottomright=§cBottom Right
+icy.location.center=§cCenter (Special)
+
+epsilon.red=Red: %s
+epsilon.green=Green: %s
+epsilon.blue=Blue: %s
+epsilon.alpha=Alpha: %s
