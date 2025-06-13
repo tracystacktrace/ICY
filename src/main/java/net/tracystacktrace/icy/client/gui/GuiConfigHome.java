@@ -2,7 +2,6 @@ package net.tracystacktrace.icy.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.common.block.Blocks;
 import net.minecraft.common.util.i18n.StringTranslate;
 import net.tracystacktrace.icy.ICYInit;
 import net.tracystacktrace.icy.client.gui.config.ButtonToggle;
@@ -31,30 +30,30 @@ public class GuiConfigHome extends GuiScreen {
         this.controlList.add(new GuiButton(5, offsetX, offsetY + 22 + 75, 200, 20, translate.translateKey("icy.config.location")));
         this.controlList.add(new GuiButton(6, offsetX, offsetY + 22 + 100, 200, 20, translate.translateKey("icy.config.exit")));
 
-        ((ButtonToggle)this.controlList.get(0)).setValue(ICYInit.CONFIG.enable);
-        ((ButtonToggle)this.controlList.get(1)).setValue(ICYInit.CONFIG.showBlockHarvestability);
-        ((ButtonToggle)this.controlList.get(2)).setValue(ICYInit.CONFIG.gradientColor);
+        ((ButtonToggle) this.controlList.get(0)).setValue(ICYInit.CONFIG.enable);
+        ((ButtonToggle) this.controlList.get(1)).setValue(ICYInit.CONFIG.showBlockHarvestability);
+        ((ButtonToggle) this.controlList.get(2)).setValue(ICYInit.CONFIG.gradientColor);
 
         this.updateColorState();
     }
 
     @Override
     protected void actionPerformed(GuiButton guiButton) {
-        if(guiButton.enabled) {
-            if(guiButton.id == 0) {
-                ((ButtonToggle)guiButton).toggleValue();
-                ICYInit.CONFIG.enable = ((ButtonToggle)guiButton).getValue();
+        if (guiButton.enabled) {
+            if (guiButton.id == 0) {
+                ((ButtonToggle) guiButton).toggleValue();
+                ICYInit.CONFIG.enable = ((ButtonToggle) guiButton).getValue();
                 ICYInit.forceSaveConfig();
                 return;
             }
 
-            if(guiButton.id == 5) {
+            if (guiButton.id == 5) {
                 this.mc.displayGuiScreen(new GuiSelectLocation(this));
                 return;
             }
 
-            if(guiButton.id == 3) {
-                if(ICYInit.CONFIG.gradientColor) {
+            if (guiButton.id == 3) {
+                if (ICYInit.CONFIG.gradientColor) {
                     this.mc.displayGuiScreen(new GuiChangeARGB(
                             this,
                             StringTranslate.getInstance().translateKey("icy.config.title.gradient.start"),
@@ -74,7 +73,7 @@ public class GuiConfigHome extends GuiScreen {
                 return;
             }
 
-            if(guiButton.id == 4) {
+            if (guiButton.id == 4) {
                 this.mc.displayGuiScreen(new GuiChangeARGB(
                         this,
                         StringTranslate.getInstance().translateKey("icy.config.title.gradient.end"),
@@ -85,22 +84,22 @@ public class GuiConfigHome extends GuiScreen {
                 return;
             }
 
-            if(guiButton.id == 1) {
-                ((ButtonToggle)guiButton).toggleValue();
-                ICYInit.CONFIG.showBlockHarvestability = ((ButtonToggle)guiButton).getValue();
+            if (guiButton.id == 1) {
+                ((ButtonToggle) guiButton).toggleValue();
+                ICYInit.CONFIG.showBlockHarvestability = ((ButtonToggle) guiButton).getValue();
                 ICYInit.forceSaveConfig();
                 return;
             }
 
-            if(guiButton.id == 2) {
-                ((ButtonToggle)guiButton).toggleValue();
-                ICYInit.CONFIG.gradientColor = ((ButtonToggle)guiButton).getValue();
+            if (guiButton.id == 2) {
+                ((ButtonToggle) guiButton).toggleValue();
+                ICYInit.CONFIG.gradientColor = ((ButtonToggle) guiButton).getValue();
                 this.updateColorState();
                 ICYInit.forceSaveConfig();
                 return;
             }
 
-            if(guiButton.id == 6) {
+            if (guiButton.id == 6) {
                 this.mc.displayGuiScreen(null);
                 return;
             }
@@ -118,8 +117,8 @@ public class GuiConfigHome extends GuiScreen {
     }
 
     private void updateColorState() {
-        ((GuiButton)this.controlList.get(3)).width = ICYInit.CONFIG.gradientColor ? 40 : 85;
-        ((GuiButton)this.controlList.get(4)).enabled = ICYInit.CONFIG.gradientColor;
-        ((GuiButton)this.controlList.get(4)).visible = ICYInit.CONFIG.gradientColor;
+        ((GuiButton) this.controlList.get(3)).width = ICYInit.CONFIG.gradientColor ? 40 : 85;
+        ((GuiButton) this.controlList.get(4)).enabled = ICYInit.CONFIG.gradientColor;
+        ((GuiButton) this.controlList.get(4)).visible = ICYInit.CONFIG.gradientColor;
     }
 }

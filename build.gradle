@@ -34,6 +34,7 @@ foxloader {
     modVersion = project.version
     modAuthors = "tracystacktrace"
     modMain = "net.tracystacktrace.icy.ICYInit"
+    modWebsite = "https://github.com/tracystacktrace/ICY"
     modDesc("\u00A73Provides useful in-game tooltip about aimed blocks")
     modDesc()
     modDesc("\u00A76The mod behavior can be tweaked within the \"\u00A7aConfigure\u00A76\" menu!")

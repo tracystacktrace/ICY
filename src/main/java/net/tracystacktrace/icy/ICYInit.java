@@ -49,12 +49,7 @@ public class ICYInit extends Mod {
             return damaged.substring(0, 8);
         }
 
-        StringBuilder builder = new StringBuilder();
-        builder.append(damaged);
-        for (int i = 0; i < 8 - damaged.length(); i++) {
-            builder.append('0');
-        }
-        return builder.toString();
+        return damaged + "0".repeat(8 - damaged.length());
     }
 
     public static short safeStringToShort(final String s) {

@@ -1,4 +1,5 @@
 package net.tracystacktrace.icy.client.gui.config;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiSlider;
@@ -297,6 +298,6 @@ public class GuiChangeARGB extends GuiScreen implements IUpdateSliders {
     private void updateHexTextFieldDisplayString() {
         final String formatted = String.format("%02X%02X%02X%02X", this.alpha, this.red, this.green, this.blue);
         this.hexTextField.setText(formatted);
-        this.hexTextField.moveCursorBy(6);
+        this.hexTextField.moveCursorBy(8);
     }
 }

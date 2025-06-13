@@ -12,7 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiIngame.class)
 public class MixinGuiIngame {
-    @Shadow @Final private Minecraft mc;
+    @Shadow
+    @Final
+    private Minecraft mc;
 
     @Inject(method = "renderGameOverlay", at = @At(
             value = "INVOKE",
@@ -20,7 +22,7 @@ public class MixinGuiIngame {
             shift = At.Shift.AFTER
     ))
     private void icy$injectRenderer(float deltaTicks, CallbackInfo ci) {
-        if(!this.mc.gameSettings.showDebugInfo && mc.currentScreen == null && ICYInit.CONFIG.enable) {
+        if (!this.mc.gameSettings.showDebugInfo && mc.currentScreen == null && ICYInit.CONFIG.enable) {
             ICYInit.RENDERER.renderICY(this.mc.fontRenderer);
         }
     }

@@ -14,7 +14,6 @@ import net.minecraft.common.item.Items;
 import net.minecraft.common.util.physics.MovingObjectPosition;
 import net.minecraft.common.world.EnumMovingObjectType;
 import net.minecraft.common.world.World;
-import net.tracystacktrace.icy.ICYConfig;
 import net.tracystacktrace.icy.ICYInit;
 import org.lwjgl.opengl.GL11;
 
@@ -99,7 +98,7 @@ public class ICYRenderer extends Gui {
                 ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
         );
 
-        for(int i = 0; i < this.cacheString.length; i++) {
+        for (int i = 0; i < this.cacheString.length; i++) {
             fontRenderer.drawStringWithShadow(cacheString[i], this.cacheX + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
         }
 
@@ -118,7 +117,7 @@ public class ICYRenderer extends Gui {
 
         RenderSystem.disableDepthTest();
 
-        if(ICYInit.CONFIG.showBlockHarvestability && this.cacheHarvestable) {
+        if (ICYInit.CONFIG.showBlockHarvestability && this.cacheHarvestable) {
             GL11.glScaled(0.5f, 0.5f, 0.0f);
             GL11.glTranslatef(0.0F, 0.0F, 15.0F);
             renderItem.drawItemIntoGui(
@@ -176,14 +175,14 @@ public class ICYRenderer extends Gui {
 
     private int getLargestString(FontRenderer fontRenderer, String[] strings) {
         int result = 0;
-        for(String s : strings) {
+        for (String s : strings) {
             result = Math.max(result, fontRenderer.getStringWidth(s));
         }
         return result;
     }
 
     private boolean shouldMoveUp() {
-        if(Minecraft.getInstance().currentScreen != null)
+        if (Minecraft.getInstance().currentScreen != null)
             return false;
         return this.cacheLocation == 4 && Minecraft.getInstance().thePlayer.getHeldItem() != null && Minecraft.getInstance().hotbarTickCounter != 0;
     }

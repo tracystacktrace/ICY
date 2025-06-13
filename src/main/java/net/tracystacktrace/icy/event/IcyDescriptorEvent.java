@@ -10,6 +10,7 @@ import java.util.List;
  * The event used to add additional description from other mods or callers.
  * <br>
  * Please use this event to manage descriptions, so unnecessary mixins could be avoided.
+ *
  * @since 1.0
  */
 public class IcyDescriptorEvent extends Event {
@@ -31,6 +32,7 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * Return the X coordinate of the block
+     *
      * @return the X coordinate of the block
      */
     public int getBlockX() {
@@ -39,6 +41,7 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * Return the Y coordinate of the block
+     *
      * @return the Y coordinate of the block
      */
     public int getBlockY() {
@@ -47,6 +50,7 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * Return the Z coordinate of the block
+     *
      * @return the Z coordinate of the block
      */
     public int getBlockZ() {
@@ -55,6 +59,7 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * Return the metadata of the block
+     *
      * @return the metadata of the block
      */
     public int getBlockMeta() {
@@ -63,6 +68,7 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * Return the ID of the block
+     *
      * @return the ID of the block
      */
     public int getBlockID() {
@@ -71,6 +77,7 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * As ICY relies on client world, this method will return instance of {@link Minecraft#theWorld}
+     *
      * @return the world instance
      */
     public World getWorld() {
@@ -79,10 +86,11 @@ public class IcyDescriptorEvent extends Event {
 
     /**
      * Add description line to the ICY interface
+     *
      * @param line string to add
      */
     public void addDescription(String line) {
-        if(line != null && !line.isEmpty()) {
+        if (line != null && !line.isEmpty()) {
             this.list.add(line);
         }
     }

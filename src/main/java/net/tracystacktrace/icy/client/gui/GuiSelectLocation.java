@@ -22,7 +22,7 @@ public class GuiSelectLocation extends GuiScreen {
 
     @Override
     protected void actionPerformed(GuiButton guiButton) {
-        if(guiButton.enabled) {
+        if (guiButton.enabled) {
             ICYInit.CONFIG.location = (byte) guiButton.id;
             ICYInit.forceSaveConfig();
             ICYInit.RENDERER.buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
@@ -46,8 +46,8 @@ public class GuiSelectLocation extends GuiScreen {
 
         //this.controlList.add(new GuiButton(6, s_width, this.height / 3, s_width, this.height / 3, translate.translateKey("icy.location.center")));
 
-        for(GuiElement element : this.controlList) {
-            if(element instanceof GuiButton button) {
+        for (GuiElement element : this.controlList) {
+            if (element instanceof GuiButton button) {
                 button.renderButtonBg = false;
             }
         }
