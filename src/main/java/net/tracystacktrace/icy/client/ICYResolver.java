@@ -6,6 +6,7 @@ import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.ChatColors;
 import net.minecraft.common.util.i18n.StringTranslate;
+import net.tracystacktrace.icy.event.IcyDescriptorEvent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class ICYResolver {
     public static String[] bakeLines(ItemStack stack, int blockMeta, int x, int y, int z) {
         List<String> result = new ArrayList<>();
 
+        //add name
         result.add(StringTranslate.getInstance().translateNamedKey(stack.getItemName()));
 
         //crops data
@@ -23,6 +25,10 @@ public class ICYResolver {
             result.add(StringTranslate.getInstance().translateKeyFormat("icy.growth", growth));
         }
 
+        //process other mods' stuff
+        new IcyDescriptorEvent(result, stack.getItemID(), blockMeta, x, y, z).callEvent();
+
+        //add mod source
         result.add(getBlockSource(stack));
 
         return result.toArray(new String[0]);
