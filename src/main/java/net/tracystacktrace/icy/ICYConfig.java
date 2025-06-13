@@ -1,0 +1,25 @@
+package net.tracystacktrace.icy;
+
+import com.fox2code.foxloader.config.ConfigEntry;
+
+public class ICYConfig {
+
+    @ConfigEntry
+    public boolean enable = true;
+
+    @ConfigEntry
+    public boolean showBlockHarvestability = true;
+
+    @ConfigEntry(
+            lowerBounds = 0, upperBounds = 6,
+            configComment = "0 - top left, 1 - top, 2 - top right, 3 - bottom left, 4 - bottom, 5 - bottom right, 6 - center (special)"
+    )
+    public byte location = 0;
+
+    @ConfigEntry
+    public int startPlaqueGradient = -1073741824;
+
+    @ConfigEntry
+    public int endPlaqueGradient = -1073741824;
+
+}
