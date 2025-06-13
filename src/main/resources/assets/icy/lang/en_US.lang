@@ -1,1 +1,7 @@
 icy.growth=Growth: %s%
+
+icy.config.yes=§aYes
+icy.config.no=§cNo
+
+icy.config.enable=Enable ICY: %s
+icy.config.harvest=Show Harvestability: %s
