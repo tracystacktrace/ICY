@@ -46,6 +46,12 @@ public class ICYRenderer extends Gui {
                 cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
             }
 
+            if(ICYInit.enableActiveCache()) {
+                cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+            } else {
+                cache.dumpActiveCache();
+            }
+
             this.renderItemPlaque(fontRenderer);
         }
 
@@ -62,8 +68,27 @@ public class ICYRenderer extends Gui {
                 ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
         );
 
-        for (int i = 0; i < cache.strings.length; i++) {
-            fontRenderer.drawStringWithShadow(cache.strings[i], cache.x + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
+        if(ICYInit.enableActiveCache()) {
+            fontRenderer.drawStringWithShadow(cache.strings[0], cache.x + 28, realY + 4, 0xFFFFFFFF);
+
+            int accumulated = 0;
+            if(cache.activeCacheStrings != null) {
+                for(int i = 0; i < cache.activeCacheStrings.length; i++) {
+                    fontRenderer.drawStringWithShadow(cache.activeCacheStrings[i], cache.x + 28, realY + 16 + 12 * i, 0xFFFFFFFF);
+                    accumulated++;
+                }
+            }
+
+            accumulated = accumulated * 12;
+            for (int i = 1; i < cache.strings.length; i++) {
+                fontRenderer.drawStringWithShadow(cache.strings[i], cache.x + 28, realY + 4 + (accumulated) + 12 * i, 0xFFFFFFFF);
+            }
+
+        } else {
+            //standard renderer
+            for (int i = 0; i < cache.strings.length; i++) {
+                fontRenderer.drawStringWithShadow(cache.strings[i], cache.x + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
+            }
         }
 
         GL11.glPushMatrix();

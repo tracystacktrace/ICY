@@ -7,12 +7,13 @@ import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.ChatColors;
 import net.minecraft.common.util.i18n.StringTranslate;
+import net.tracystacktrace.icy.client.helper.BonsaiPlanterResolver;
 import net.tracystacktrace.icy.event.IcyDescriptorEvent;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ICYResolver {
+public final class ICYResolver {
 
     public static String[] bakeLines(ItemStack stack, int blockMeta, int x, int y, int z) {
         List<String> result = new ArrayList<>();
@@ -33,6 +34,16 @@ public class ICYResolver {
         result.add(getBlockSource(stack));
 
         return result.toArray(new String[0]);
+    }
+
+    public static String[] bakeQuichLines(ItemStack itemStack, Block block, int meta, int x, int y, int z) {
+        List<String> strings = new ArrayList<>();
+
+        if(block.blockID == Blocks.BONSAI_PLANTER.blockID) {
+            strings.addAll(BonsaiPlanterResolver.resolve(block, meta, x, y, z));
+        }
+
+        return strings.isEmpty() ? null : strings.toArray(new String[0]);
     }
 
     private static String getBlockSource(ItemStack stack) {
@@ -156,5 +167,4 @@ public class ICYResolver {
 
         return new ItemStack(block, 1, meta);
     }
-
 }

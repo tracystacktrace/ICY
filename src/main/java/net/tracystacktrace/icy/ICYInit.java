@@ -3,8 +3,10 @@ package net.tracystacktrace.icy;
 import com.fox2code.foxloader.config.ConfigIO;
 import com.fox2code.foxloader.loader.Mod;
 import com.fox2code.foxloader.loader.ModContainer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.tracystacktrace.icy.client.ICYRenderer;
+import org.lwjgl.input.Keyboard;
 
 public class ICYInit extends Mod {
 
@@ -64,5 +66,9 @@ public class ICYInit extends Mod {
     public static short safeStringToShort(final String s) {
         if (s == null || s.isEmpty()) return 0;
         return (short) Math.max(0, Math.min(255, Integer.parseInt(s)));
+    }
+
+    public static boolean enableActiveCache() {
+        return Minecraft.getInstance().currentScreen == null && (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT));
     }
 }

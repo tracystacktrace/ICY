@@ -19,6 +19,9 @@ public class TinyCache {
     protected boolean harvestable;
     protected byte renderLocation = -1;
 
+    protected String[] activeCacheStrings;
+    protected int largestACS;
+
     /**
      * Clears the cache
      */
@@ -32,6 +35,8 @@ public class TinyCache {
         this.y = 0;
         this.renderLocation = -1;
         this.harvestable = false;
+        this.activeCacheStrings = null;
+        this.largestACS = 0;
     }
 
     public void buildCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
@@ -47,6 +52,16 @@ public class TinyCache {
         final ScaledResolution scaledResolution = ScaledResolution.instance;
         this.x = this.getXLocation(scaledResolution.getScaledWidth(), this.getPlaqueWidth());
         this.y = this.getYLocation(scaledResolution.getScaledHeight(), this.getPlaqueHeight());
+    }
+
+    public void bakeActiveCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
+        this.activeCacheStrings = ICYResolver.bakeQuichLines(this.itemStack, block, meta, x, y, z);
+        this.largestACS = (this.activeCacheStrings != null) ? ICYInit.getLargestString(fontRenderer, activeCacheStrings) : 0;
+    }
+
+    public void dumpActiveCache() {
+        this.activeCacheStrings = null;
+        this.largestACS = 0;
     }
 
     private int getXLocation(int screenWidth, int plaqueWidth) {
@@ -68,10 +83,18 @@ public class TinyCache {
     }
 
     public int getPlaqueWidth() {
-        return 28 + 5 + this.largestStrWidth;
+        return 28 + 5 + (Math.max(this.largestStrWidth, this.largestACS));
     }
 
     public int getPlaqueHeight() {
-        return 4 + this.strings.length * 12;
+        return 4 + this.stringAmount() * 12;
+    }
+
+    private int stringAmount() {
+        int a = this.strings.length;
+        if(this.activeCacheStrings != null) {
+            a += this.activeCacheStrings.length;
+        }
+        return a;
     }
 }
