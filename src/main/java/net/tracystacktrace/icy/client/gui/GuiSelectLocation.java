@@ -12,12 +12,12 @@ public class GuiSelectLocation extends GuiScreen {
 
     public GuiSelectLocation(GuiScreen parentScreen) {
         this.parentScreen = parentScreen;
-        ICYInit.RENDERER.buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
+        ICYInit.RENDERER.getCache().buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
     }
 
     @Override
     public void onGuiClosed() {
-        ICYInit.RENDERER.clearCache();
+        ICYInit.RENDERER.getCache().clear();
     }
 
     @Override
@@ -25,7 +25,7 @@ public class GuiSelectLocation extends GuiScreen {
         if (guiButton.enabled) {
             ICYInit.CONFIG.location = (byte) guiButton.id;
             ICYInit.forceSaveConfig();
-            ICYInit.RENDERER.buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
+            ICYInit.RENDERER.getCache().buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
         }
     }
 

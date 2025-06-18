@@ -3,6 +3,7 @@ package net.tracystacktrace.icy;
 import com.fox2code.foxloader.config.ConfigIO;
 import com.fox2code.foxloader.loader.Mod;
 import com.fox2code.foxloader.loader.ModContainer;
+import net.minecraft.client.gui.FontRenderer;
 import net.tracystacktrace.icy.client.ICYRenderer;
 
 public class ICYInit extends Mod {
@@ -16,6 +17,14 @@ public class ICYInit extends Mod {
         INTERNAL_CONTAINER = this.getModContainer();
         this.setConfigObject(CONFIG);
         RENDERER = new ICYRenderer();
+    }
+
+    public static int getLargestString(FontRenderer fontRenderer, String[] strings) {
+        int result = 0;
+        for (String s : strings) {
+            result = Math.max(result, fontRenderer.getStringWidth(s));
+        }
+        return result;
     }
 
     public static void forceSaveConfig() {
