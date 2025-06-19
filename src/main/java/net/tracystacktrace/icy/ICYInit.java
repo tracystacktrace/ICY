@@ -21,16 +21,16 @@ public class ICYInit extends Mod {
         RENDERER = new ICYRenderer();
     }
 
+    public static void forceSaveConfig() {
+        ConfigIO.writeConfiguration(INTERNAL_CONTAINER, CONFIG);
+    }
+
     public static int getLargestString(FontRenderer fontRenderer, String[] strings) {
         int result = 0;
         for (String s : strings) {
             result = Math.max(result, fontRenderer.getStringWidth(s));
         }
         return result;
-    }
-
-    public static void forceSaveConfig() {
-        ConfigIO.writeConfiguration(INTERNAL_CONTAINER, CONFIG);
     }
 
     public static boolean enableActiveCache() {

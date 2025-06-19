@@ -1,8 +1,5 @@
 icy.growth=Growth: %s%
 
-icy.config.yes=§aYes
-icy.config.no=§cNo
-
 icy.config.title=Configure ICY
 icy.config.enable=Enable ICY: %s
 icy.config.harvest=Show Harvestability: %s
@@ -21,8 +18,3 @@ icy.location.bottomleft=§cBottom Left
 icy.location.bottom=§cBottom
 icy.location.bottomright=§cBottom Right
 icy.location.center=§cCenter (Special)
-
-epsilon.red=Red: %s
-epsilon.green=Green: %s
-epsilon.blue=Blue: %s
-epsilon.alpha=Alpha: %s

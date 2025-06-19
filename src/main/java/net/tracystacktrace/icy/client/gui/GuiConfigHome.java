@@ -57,18 +57,22 @@ public class GuiConfigHome extends GuiScreen {
                     this.mc.displayGuiScreen(new GuiChangeARGB(
                             this,
                             StringTranslate.getInstance().translateKey("icy.config.title.gradient.start"),
-                            ICYInit.CONFIG.startPlaqueGradient, color -> {
-                        ICYInit.CONFIG.startPlaqueGradient = color;
-                        ICYInit.forceSaveConfig();
-                    }));
+                            ICYInit.CONFIG.startPlaqueGradient,
+                            color -> {
+                                ICYInit.CONFIG.startPlaqueGradient = color;
+                                ICYInit.forceSaveConfig();
+                            }
+                    ));
                 } else {
                     this.mc.displayGuiScreen(new GuiChangeARGB(
                             this,
                             StringTranslate.getInstance().translateKey("icy.config.title.static"),
-                            ICYInit.CONFIG.staticPlaqueColor, color -> {
-                        ICYInit.CONFIG.staticPlaqueColor = color;
-                        ICYInit.forceSaveConfig();
-                    }));
+                            ICYInit.CONFIG.staticPlaqueColor,
+                            color -> {
+                                ICYInit.CONFIG.staticPlaqueColor = color;
+                                ICYInit.forceSaveConfig();
+                            }
+                    ));
                 }
                 return;
             }
@@ -77,10 +81,12 @@ public class GuiConfigHome extends GuiScreen {
                 this.mc.displayGuiScreen(new GuiChangeARGB(
                         this,
                         StringTranslate.getInstance().translateKey("icy.config.title.gradient.end"),
-                        ICYInit.CONFIG.endPlaqueGradient, color -> {
-                    ICYInit.CONFIG.endPlaqueGradient = color;
-                    ICYInit.forceSaveConfig();
-                }));
+                        ICYInit.CONFIG.endPlaqueGradient,
+                        color -> {
+                            ICYInit.CONFIG.endPlaqueGradient = color;
+                            ICYInit.forceSaveConfig();
+                        }
+                ));
                 return;
             }
 
