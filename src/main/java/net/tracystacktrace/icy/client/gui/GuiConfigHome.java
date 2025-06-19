@@ -3,9 +3,9 @@ package net.tracystacktrace.icy.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.common.util.i18n.StringTranslate;
+import net.tracystacktrace.hellogui.element.ButtonToggle;
+import net.tracystacktrace.hellogui.menu.GuiChangeARGB;
 import net.tracystacktrace.icy.ICYInit;
-import net.tracystacktrace.icy.client.gui.config.ButtonToggle;
-import net.tracystacktrace.icy.client.gui.config.GuiChangeARGB;
 
 public class GuiConfigHome extends GuiScreen {
 
@@ -30,9 +30,9 @@ public class GuiConfigHome extends GuiScreen {
         this.controlList.add(new GuiButton(5, offsetX, offsetY + 22 + 75, 200, 20, translate.translateKey("icy.config.location")));
         this.controlList.add(new GuiButton(6, offsetX, offsetY + 22 + 100, 200, 20, translate.translateKey("icy.config.exit")));
 
-        ((ButtonToggle) this.controlList.get(0)).setValue(ICYInit.CONFIG.enable);
-        ((ButtonToggle) this.controlList.get(1)).setValue(ICYInit.CONFIG.showBlockHarvestability);
-        ((ButtonToggle) this.controlList.get(2)).setValue(ICYInit.CONFIG.gradientColor);
+        ((ButtonToggle) this.controlList.get(0)).toggleValue(ICYInit.CONFIG.enable);
+        ((ButtonToggle) this.controlList.get(1)).toggleValue(ICYInit.CONFIG.showBlockHarvestability);
+        ((ButtonToggle) this.controlList.get(2)).toggleValue(ICYInit.CONFIG.gradientColor);
 
         this.updateColorState();
     }

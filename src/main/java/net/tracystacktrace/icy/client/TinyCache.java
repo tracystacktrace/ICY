@@ -83,18 +83,11 @@ public class TinyCache {
     }
 
     public int getPlaqueWidth() {
-        return 28 + 5 + (Math.max(this.largestStrWidth, this.largestACS));
+        return 28 + 5 + Math.max(this.largestStrWidth, this.largestACS);
     }
 
     public int getPlaqueHeight() {
-        return 4 + this.stringAmount() * 12;
+        return 4 + (this.strings.length + ((this.activeCacheStrings != null) ? this.activeCacheStrings.length : 0)) * 12;
     }
 
-    private int stringAmount() {
-        int a = this.strings.length;
-        if(this.activeCacheStrings != null) {
-            a += this.activeCacheStrings.length;
-        }
-        return a;
-    }
 }

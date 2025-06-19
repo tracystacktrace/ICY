@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.tileentity.TileEntity;
-import net.minecraft.common.block.tileentity.TileEntityBonsaiPlanter;
 import net.minecraft.common.util.physics.MovingObjectPosition;
 import net.minecraft.common.world.World;
 
