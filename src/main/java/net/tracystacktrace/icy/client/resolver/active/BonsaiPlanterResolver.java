@@ -14,12 +14,20 @@ import java.util.List;
 public class BonsaiPlanterResolver implements IActiveResolver {
 
     @Override
-    public boolean passes(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
+    public boolean passes(
+            @NotNull ItemStack displayStack,
+            @NotNull Block block,
+            int meta, int x, int y, int z
+    ) {
         return block.blockID == Blocks.BONSAI_PLANTER.blockID;
     }
 
     @Override
-    public @NotNull String[] bake(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
+    public @NotNull String[] bake(
+            @NotNull ItemStack displayStack,
+            @NotNull Block block,
+            int meta, int x, int y, int z
+    ) {
         final List<String> data = new ArrayList<>();
         final TileEntityBonsaiPlanter planter = WorldHelper.getTileEntity(x, y, z);
 
