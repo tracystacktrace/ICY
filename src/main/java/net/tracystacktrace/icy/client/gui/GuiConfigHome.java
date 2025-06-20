@@ -2,14 +2,14 @@ package net.tracystacktrace.icy.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.common.util.i18n.StringTranslate;
+import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.hellogui.element.ButtonToggle;
 import net.tracystacktrace.hellogui.menu.GuiChangeARGB;
 import net.tracystacktrace.icy.ICYInit;
 
 public class GuiConfigHome extends GuiScreen {
 
-    private final String title = StringTranslate.getInstance().translateKey("icy.config.title");
+    private final String title = Translation.quickTranslate("icy.config.title");
 
     //todo complete all config values
     @Override
@@ -19,16 +19,14 @@ public class GuiConfigHome extends GuiScreen {
         final int offsetX = this.width / 2 - 100;
         final int offsetY = this.height / 2 - 71;
 
-        final StringTranslate translate = StringTranslate.getInstance();
-
         this.controlList.add(new ButtonToggle(0, offsetX, offsetY + 22, 200, 20, "icy.config.enable"));
         this.controlList.add(new ButtonToggle(1, offsetX, offsetY + 22 + 25, 200, 20, "icy.config.harvest"));
         this.controlList.add(new ButtonToggle(2, offsetX, offsetY + 22 + 50, 110, 20, "icy.config.gradient"));
         this.controlList.add(new GuiButton(3, offsetX + 115, offsetY + 22 + 50, 40, 20, "§fA§cR§aG§9B"));
         this.controlList.add(new GuiButton(4, offsetX + 160, offsetY + 22 + 50, 40, 20, "§fA§cR§aG§9B"));
 
-        this.controlList.add(new GuiButton(5, offsetX, offsetY + 22 + 75, 200, 20, translate.translateKey("icy.config.location")));
-        this.controlList.add(new GuiButton(6, offsetX, offsetY + 22 + 100, 200, 20, translate.translateKey("icy.config.exit")));
+        this.controlList.add(new GuiButton(5, offsetX, offsetY + 22 + 75, 200, 20, Translation.quickTranslate("icy.config.location")));
+        this.controlList.add(new GuiButton(6, offsetX, offsetY + 22 + 100, 200, 20, Translation.quickTranslate("icy.config.exit")));
 
         ((ButtonToggle) this.controlList.get(0)).toggleValue(ICYInit.CONFIG.enable);
         ((ButtonToggle) this.controlList.get(1)).toggleValue(ICYInit.CONFIG.showBlockHarvestability);
@@ -56,7 +54,7 @@ public class GuiConfigHome extends GuiScreen {
                 if (ICYInit.CONFIG.gradientColor) {
                     this.mc.displayGuiScreen(new GuiChangeARGB(
                             this,
-                            StringTranslate.getInstance().translateKey("icy.config.title.gradient.start"),
+                            Translation.quickTranslate("icy.config.title.gradient.start"),
                             ICYInit.CONFIG.startPlaqueGradient,
                             color -> {
                                 ICYInit.CONFIG.startPlaqueGradient = color;
@@ -66,7 +64,7 @@ public class GuiConfigHome extends GuiScreen {
                 } else {
                     this.mc.displayGuiScreen(new GuiChangeARGB(
                             this,
-                            StringTranslate.getInstance().translateKey("icy.config.title.static"),
+                            Translation.quickTranslate("icy.config.title.static"),
                             ICYInit.CONFIG.staticPlaqueColor,
                             color -> {
                                 ICYInit.CONFIG.staticPlaqueColor = color;
@@ -80,7 +78,7 @@ public class GuiConfigHome extends GuiScreen {
             if (guiButton.id == 4) {
                 this.mc.displayGuiScreen(new GuiChangeARGB(
                         this,
-                        StringTranslate.getInstance().translateKey("icy.config.title.gradient.end"),
+                        Translation.quickTranslate("icy.config.title.gradient.end"),
                         ICYInit.CONFIG.endPlaqueGradient,
                         color -> {
                             ICYInit.CONFIG.endPlaqueGradient = color;

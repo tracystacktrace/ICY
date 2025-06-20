@@ -5,7 +5,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiElement;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.common.block.Blocks;
-import net.minecraft.common.util.i18n.StringTranslate;
+import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.icy.ICYInit;
 
 public class GuiSelectLocation extends GuiScreen {
@@ -34,17 +34,16 @@ public class GuiSelectLocation extends GuiScreen {
 
         final int s_width = this.width / 3;
         final int s_hegiht = this.height / 2;
+        
+        this.controlList.add(new GuiButton(0, 0, 0, s_width, s_hegiht, Translation.quickTranslate("icy.location.topleft")));
+        this.controlList.add(new GuiButton(1, s_width, 0, s_width, this.height / 3, Translation.quickTranslate("icy.location.top")));
+        this.controlList.add(new GuiButton(2, s_width * 2, 0, s_width, s_hegiht, Translation.quickTranslate("icy.location.topright")));
 
-        final StringTranslate translate = StringTranslate.getInstance();
-        this.controlList.add(new GuiButton(0, 0, 0, s_width, s_hegiht, translate.translateKey("icy.location.topleft")));
-        this.controlList.add(new GuiButton(1, s_width, 0, s_width, this.height / 3, translate.translateKey("icy.location.top")));
-        this.controlList.add(new GuiButton(2, s_width * 2, 0, s_width, s_hegiht, translate.translateKey("icy.location.topright")));
+        this.controlList.add(new GuiButton(3, 0, s_hegiht, s_width, s_hegiht, Translation.quickTranslate("icy.location.bottomleft")));
+        this.controlList.add(new GuiButton(4, s_width, this.height * 2 / 3, s_width, this.height / 3, Translation.quickTranslate("icy.location.bottom")));
+        this.controlList.add(new GuiButton(5, s_width * 2, s_hegiht, s_width, s_hegiht, Translation.quickTranslate("icy.location.bottomright")));
 
-        this.controlList.add(new GuiButton(3, 0, s_hegiht, s_width, s_hegiht, translate.translateKey("icy.location.bottomleft")));
-        this.controlList.add(new GuiButton(4, s_width, this.height * 2 / 3, s_width, this.height / 3, translate.translateKey("icy.location.bottom")));
-        this.controlList.add(new GuiButton(5, s_width * 2, s_hegiht, s_width, s_hegiht, translate.translateKey("icy.location.bottomright")));
-
-        //this.controlList.add(new GuiButton(6, s_width, this.height / 3, s_width, this.height / 3, translate.translateKey("icy.location.center")));
+        //this.controlList.add(new GuiButton(6, s_width, this.height / 3, s_width, this.height / 3, Translation.quickTranslate("icy.location.center")));
 
         for (GuiElement element : this.controlList) {
             if (element instanceof GuiButton button) {

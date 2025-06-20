@@ -6,25 +6,39 @@ import net.minecraft.common.block.children.BlockCarvedPumpkin;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.ChatColors;
-import net.minecraft.common.util.i18n.StringTranslate;
-import net.tracystacktrace.icy.client.helper.BonsaiPlanterResolver;
+import net.tracystacktrace.hellogui.Translation;
+import net.tracystacktrace.icy.client.resolver.IActiveResolver;
+import net.tracystacktrace.icy.client.resolver.IPassiveResolver;
 import net.tracystacktrace.icy.event.IcyDescriptorEvent;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class ICYResolver {
 
+    private static final List<IPassiveResolver> passiveResolvers = new ArrayList<>();
+    private static final List<IActiveResolver> activeResolvers = new ArrayList<>();
+
+    public static void addPassiveResolver(IPassiveResolver resolver) {
+        passiveResolvers.add(resolver);
+    }
+
+    public static void addActiveResolver(IActiveResolver resolver) {
+        activeResolvers.add(resolver);
+    }
+
     public static String[] bakeLines(ItemStack stack, int blockMeta, int x, int y, int z) {
-        List<String> result = new ArrayList<>();
+        final List<String> result = new ArrayList<>();
 
         //add name
-        result.add(StringTranslate.getInstance().translateNamedKey(stack.getItemName()));
+        result.add(Translation.quickTranslate(stack.getItemName() + ".name"));
 
-        //crops data
-        if (isGrowable(stack.getItemID(), blockMeta)) {
-            final int growth = (blockMeta * 100) / getGrowthMax(stack.getItemID());
-            result.add(StringTranslate.getInstance().translateKeyFormat("icy.growth", growth));
+        for(IPassiveResolver resolver : passiveResolvers) {
+            if(resolver.passes(stack, blockMeta, x, y, z)) {
+                final String[] passResult = resolver.bake(stack, blockMeta, x, y, z);
+                result.addAll(Arrays.asList(passResult));
+            }
         }
 
         //process other mods' stuff
@@ -37,38 +51,19 @@ public final class ICYResolver {
     }
 
     public static String[] bakeQuichLines(ItemStack itemStack, Block block, int meta, int x, int y, int z) {
-        List<String> strings = new ArrayList<>();
+        final List<String> result = new ArrayList<>();
 
-        if(block.blockID == Blocks.BONSAI_PLANTER.blockID) {
-            strings.addAll(BonsaiPlanterResolver.resolve(block, meta, x, y, z));
+        for(IActiveResolver resolver : activeResolvers) {
+            if(resolver.passes(itemStack, block, meta, x, y, z)) {
+                result.addAll(Arrays.asList(resolver.bake(itemStack, block, meta, x, y, z)));
+            }
         }
 
-        return strings.isEmpty() ? null : strings.toArray(new String[0]);
+        return result.isEmpty() ? null : result.toArray(new String[0]);
     }
 
     private static String getBlockSource(ItemStack stack) {
         return ChatColors.BLUE + ChatColors.ITALIC + stack.getItem().getRegisteringMod().getModName();
-    }
-
-    private static boolean isGrowable(int id, int meta) {
-        return id == Items.SEEDS.itemID ||
-                id == Items.CARROT_SEEDS.itemID ||
-                id == Items.POTATO.itemID ||
-                id == Items.MINT_SEEDS.itemID ||
-                (id == Items.CORN_KERNELS.itemID && meta != 9 && meta != 10) ||
-                id == Items.PUMPKIN_SEEDS.itemID ||
-                id == Items.WATERMELON_SEEDS.itemID;
-    }
-
-    private static byte getGrowthMax(int id) {
-        if (id == Items.SEEDS.itemID) return 7;
-        if (id == Items.CARROT_SEEDS.itemID) return 4;
-        if (id == Items.POTATO.itemID) return 4;
-        if (id == Items.MINT_SEEDS.itemID) return 3;
-        if (id == Items.CORN_KERNELS.itemID) return 15;
-        if (id == Items.PUMPKIN_SEEDS.itemID) return 7;
-        if (id == Items.WATERMELON_SEEDS.itemID) return 7;
-        return 1;
     }
 
     public static ItemStack getDisplayItemStack(Block block, int meta) {
