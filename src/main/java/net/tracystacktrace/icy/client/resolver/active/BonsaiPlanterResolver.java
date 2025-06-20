@@ -1,4 +1,4 @@
-package net.tracystacktrace.icy.client.resolver.impl;
+package net.tracystacktrace.icy.client.resolver.active;
 
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
@@ -14,16 +14,16 @@ import java.util.List;
 public class BonsaiPlanterResolver implements IActiveResolver {
 
     @Override
-    public boolean passes(@NotNull ItemStack stack, Block block, int meta, int x, int y, int z) {
+    public boolean passes(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
         return block.blockID == Blocks.BONSAI_PLANTER.blockID;
     }
 
     @Override
-    public @NotNull String[] bake(@NotNull ItemStack stack, Block block, int meta, int x, int y, int z) {
+    public @NotNull String[] bake(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
         final List<String> data = new ArrayList<>();
         final TileEntityBonsaiPlanter planter = WorldHelper.getTileEntity(x, y, z);
 
-        if(!planter.hasTree()) {
+        if (!planter.hasTree()) {
             data.add("Empty");
         } else {
             data.add("Tree type: " + planter.getTreeType());

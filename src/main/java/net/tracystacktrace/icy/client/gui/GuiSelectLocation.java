@@ -34,7 +34,7 @@ public class GuiSelectLocation extends GuiScreen {
 
         final int s_width = this.width / 3;
         final int s_hegiht = this.height / 2;
-        
+
         this.controlList.add(new GuiButton(0, 0, 0, s_width, s_hegiht, Translation.quickTranslate("icy.location.topleft")));
         this.controlList.add(new GuiButton(1, s_width, 0, s_width, this.height / 3, Translation.quickTranslate("icy.location.top")));
         this.controlList.add(new GuiButton(2, s_width * 2, 0, s_width, s_hegiht, Translation.quickTranslate("icy.location.topright")));

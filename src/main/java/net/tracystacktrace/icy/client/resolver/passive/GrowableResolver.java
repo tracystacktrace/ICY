@@ -1,5 +1,6 @@
-package net.tracystacktrace.icy.client.resolver.impl;
+package net.tracystacktrace.icy.client.resolver.passive;
 
+import net.minecraft.common.block.Block;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.tracystacktrace.hellogui.Translation;
@@ -9,14 +10,22 @@ import org.jetbrains.annotations.NotNull;
 public class GrowableResolver implements IPassiveResolver {
 
     @Override
-    public boolean passes(@NotNull ItemStack stack, int meta, int x, int y, int z) {
-        return isGrowable(stack.getItemID(), meta);
+    public boolean passes(
+            @NotNull final ItemStack displayStack,
+            @NotNull final Block block, int meta,
+            int x, int y, int z
+    ) {
+        return isGrowable(displayStack.getItemID(), meta);
     }
 
     @Override
-    public String @NotNull [] bake(@NotNull ItemStack stack, int meta, int x, int y, int z) {
-        final int growth = (meta * 100) / getGrowthMax(stack.getItemID());
-        return new String[] {
+    public String @NotNull [] bake(
+            @NotNull final ItemStack displayStack,
+            @NotNull final Block block,
+            int meta, int x, int y, int z
+    ) {
+        final int growth = (meta * 100) / getGrowthMax(displayStack.getItemID());
+        return new String[]{
                 Translation.quickTranslate("icy.growth", growth)
         };
     }

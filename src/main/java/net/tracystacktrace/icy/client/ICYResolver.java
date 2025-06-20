@@ -28,15 +28,15 @@ public final class ICYResolver {
         activeResolvers.add(resolver);
     }
 
-    public static String[] bakeLines(ItemStack stack, int blockMeta, int x, int y, int z) {
+    public static String[] bakeLines(ItemStack stack, Block block, int blockMeta, int x, int y, int z) {
         final List<String> result = new ArrayList<>();
 
         //add name
-        result.add(Translation.quickTranslate(stack.getItemName() + ".name"));
+        result.add(Translation.quickTranslate(stack.getItemName() + ".name") + " " + stack.getItemID() + ":" + blockMeta);
 
-        for(IPassiveResolver resolver : passiveResolvers) {
-            if(resolver.passes(stack, blockMeta, x, y, z)) {
-                final String[] passResult = resolver.bake(stack, blockMeta, x, y, z);
+        for (IPassiveResolver resolver : passiveResolvers) {
+            if (resolver.passes(stack, block, blockMeta, x, y, z)) {
+                final String[] passResult = resolver.bake(stack, block, blockMeta, x, y, z);
                 result.addAll(Arrays.asList(passResult));
             }
         }
@@ -50,11 +50,11 @@ public final class ICYResolver {
         return result.toArray(new String[0]);
     }
 
-    public static String[] bakeQuichLines(ItemStack itemStack, Block block, int meta, int x, int y, int z) {
+    public static String[] bakeActiveLines(ItemStack itemStack, Block block, int meta, int x, int y, int z) {
         final List<String> result = new ArrayList<>();
 
-        for(IActiveResolver resolver : activeResolvers) {
-            if(resolver.passes(itemStack, block, meta, x, y, z)) {
+        for (IActiveResolver resolver : activeResolvers) {
+            if (resolver.passes(itemStack, block, meta, x, y, z)) {
                 result.addAll(Arrays.asList(resolver.bake(itemStack, block, meta, x, y, z)));
             }
         }

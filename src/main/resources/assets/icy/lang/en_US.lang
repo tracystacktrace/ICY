@@ -18,3 +18,5 @@ icy.location.bottomleft=§cBottom Left
 icy.location.bottom=§cBottom
 icy.location.bottomright=§cBottom Right
 icy.location.center=§cCenter (Special)
+
+icy.hint.magma=§4Damages when walked on

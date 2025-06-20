@@ -45,7 +45,7 @@ public class TinyCache {
         this.renderLocation = ICYInit.CONFIG.location;
 
         this.itemStack = ICYResolver.getDisplayItemStack(block, meta);
-        this.strings = ICYResolver.bakeLines(this.itemStack, meta, x, y, z);
+        this.strings = ICYResolver.bakeLines(this.itemStack, block, meta, x, y, z);
         this.largestStrWidth = ICYInit.getLargestString(fontRenderer, this.strings);
         this.harvestable = Minecraft.getInstance().currentScreen != null || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
 
@@ -55,7 +55,7 @@ public class TinyCache {
     }
 
     public void bakeActiveCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
-        this.activeCacheStrings = ICYResolver.bakeQuichLines(this.itemStack, block, meta, x, y, z);
+        this.activeCacheStrings = ICYResolver.bakeActiveLines(this.itemStack, block, meta, x, y, z);
         this.largestACS = (this.activeCacheStrings != null) ? ICYInit.getLargestString(fontRenderer, activeCacheStrings) : 0;
     }
 
