@@ -6,6 +6,7 @@ import net.minecraft.common.block.children.BlockCarvedPumpkin;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.tracystacktrace.hellogui.Translation;
+import net.tracystacktrace.icy.ICYInit;
 import net.tracystacktrace.icy.resolver.IResolver;
 
 import java.util.ArrayList;
@@ -19,20 +20,22 @@ public final class ICYResolver {
 
     /**
      * Adds the resolver to ICY and marks it as "passive"
+     *
      * @param resolver A resolver instance to be registered
      */
     public static void addPassiveResolver(IResolver resolver) {
-        if(resolver != null && !passiveResolvers.contains(resolver)) {
+        if (resolver != null && !passiveResolvers.contains(resolver)) {
             passiveResolvers.add(resolver);
         }
     }
 
     /**
      * Adds the resolver to ICY and marks it as "active"
+     *
      * @param resolver A resolver instance to be registered
      */
     public static void addActiveResolver(IResolver resolver) {
-        if(resolver != null && !activeResolvers.contains(resolver)) {
+        if (resolver != null && !activeResolvers.contains(resolver)) {
             activeResolvers.add(resolver);
         }
     }
@@ -41,7 +44,17 @@ public final class ICYResolver {
         final List<String> result = new ArrayList<>();
 
         //add name
-        result.add(Translation.quickTranslate(stack.getItemName() + ".name") + " " + stack.getItemID() + ":" + blockMeta);
+        final String raw_name = stack.getItemName() + ".name";
+        String cooked_name = Translation.quickTranslate(raw_name);
+        if (raw_name.equals(cooked_name)) {
+            cooked_name = Translation.quickTranslate(getDisplayItemStack(block, blockMeta).getItemName() + ".name");
+        }
+
+        if(ICYInit.CONFIG.showIDandMetadata) {
+            cooked_name += (" (" + stack.getItemID() + ":" + blockMeta + ")");
+        }
+
+        result.add(cooked_name);
 
         //add custom lines/info
         for (IResolver resolver : passiveResolvers) {
@@ -96,6 +109,9 @@ public final class ICYResolver {
         if (id == Blocks.CORN_CROPS.blockID) return new ItemStack(Items.CORN_KERNELS);
         if (id == Blocks.PUMPKIN_STEM.blockID) return new ItemStack(Items.PUMPKIN_SEEDS);
         if (id == Blocks.WATERMELON_STEM.blockID) return new ItemStack(Items.WATERMELON_SEEDS);
+
+        if (id == Blocks.CAKE.blockID) return new ItemStack(Items.CAKE);
+        if (id == Blocks.BLUEBERRY_PIE.blockID) return new ItemStack(Items.BLUEBERRY_PIE);
 
 
         if (id == Blocks.OAK_DOOR.blockID) return new ItemStack(Items.OAK_DOOR);

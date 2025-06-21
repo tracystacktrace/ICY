@@ -1,9 +1,10 @@
 icy.growth=Growth: %s%
 
 icy.config.title=Configure ICY
-icy.config.enable=Enable ICY: %s
+icy.config.enable=Enable: %s
+icy.config.showid=IDs: %s
 icy.config.harvest=Show Harvestability: %s
-icy.config.gradient=Gradient Mode: %s
+icy.config.gradient=Gradient: %s
 icy.config.location=Change Tooltip Location
 icy.config.exit=§eExit Configuration Screen
 
@@ -25,6 +26,13 @@ icy.location.bottomright=§cBottom Right
 icy.location.center=§cCenter (Special)
 
 icy.hint.magma=§4Damages when walked on
+icy.hint.dungeon_chest.active=§5Locked
+icy.hint.dungeon_chest.inactive=§5Unlocked
+icy.hint.carving=§7Carving: §3§o%s
+icy.hint.pieces=§7Pieces left: %s
+icy.hint.gear.power=§7Power: §c%s
+icy.hint.gear.active=§aPowered
+icy.hint.gear.inactive=§cUnpowered
 
 
 # HelloGUI library lang values (temporary solution)

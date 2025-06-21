@@ -8,8 +8,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.tracystacktrace.icy.client.ICYRenderer;
 import net.tracystacktrace.icy.client.ICYResolver;
 import net.tracystacktrace.icy.resolver.active.BonsaiPlanterResolver;
-import net.tracystacktrace.icy.resolver.passive.GrowableResolver;
-import net.tracystacktrace.icy.resolver.passive.MagmaResolver;
+import net.tracystacktrace.icy.resolver.passive.*;
 import org.lwjgl.input.Keyboard;
 
 public class ICYInit extends Mod {
@@ -27,6 +26,11 @@ public class ICYInit extends Mod {
         /* init passive resolvers */
         ICYResolver.addPassiveResolver(new GrowableResolver());
         ICYResolver.addPassiveResolver(new MagmaResolver());
+        ICYResolver.addPassiveResolver(new DungeonChestResolver());
+        ICYResolver.addPassiveResolver(new CarvingResolver());
+        ICYResolver.addPassiveResolver(new YummyBlockResolver());
+        ICYResolver.addPassiveResolver(new PistonPowerResolver());
+        ICYResolver.addPassiveResolver(new GearPowerResolver());
 
         /* init active resolvers */
         ICYResolver.addActiveResolver(new BonsaiPlanterResolver());

@@ -19,7 +19,7 @@ public class GuiConfigHome extends GuiScreen {
         final int offsetX = this.width / 2 - 100;
         final int offsetY = this.height / 2 - (142) / 2;
 
-        this.controlList.add(new ButtonToggle(0, offsetX, offsetY + 22, 135, 20, "icy.config.enable"));
+        this.controlList.add(new ButtonToggle(0, offsetX + 65, offsetY + 22, 70, 20, "icy.config.enable"));
         this.controlList.add(new ButtonToggle(1, offsetX, offsetY + 22 + 25, 200, 20, "icy.config.harvest"));
         this.controlList.add(new ButtonToggle(2, offsetX, offsetY + 22 + 50, 110, 20, "icy.config.gradient"));
         this.controlList.add(new GuiButton(3, offsetX + 115, offsetY + 22 + 50, 40, 20, "§fA§cR§aG§9B"));
@@ -29,10 +29,12 @@ public class GuiConfigHome extends GuiScreen {
         this.controlList.add(new GuiButton(6, offsetX, offsetY + 22 + 100, 200, 20, Translation.quickTranslate("icy.config.exit")));
 
         this.controlList.add(new GuiButton(7, offsetX + 140, offsetY + 22, 60, 20, "§bX ↔ §r| §dY ↕"));
+        this.controlList.add(new ButtonToggle(8, offsetX, offsetY + 22, 60, 20, "icy.config.showid"));
 
         ((ButtonToggle) this.controlList.get(0)).toggleValue(ICYInit.CONFIG.enable);
         ((ButtonToggle) this.controlList.get(1)).toggleValue(ICYInit.CONFIG.showBlockHarvestability);
         ((ButtonToggle) this.controlList.get(2)).toggleValue(ICYInit.CONFIG.gradientColor);
+        ((ButtonToggle) this.controlList.get(8)).toggleValue(ICYInit.CONFIG.showIDandMetadata);
 
         this.updateColorState();
     }
@@ -115,6 +117,14 @@ public class GuiConfigHome extends GuiScreen {
                 //x/y offset
                 case 7: {
                     this.mc.displayGuiScreen(new GuiChangeOffset(this));
+                    return;
+                }
+
+                //id/meta
+                case 8: {
+                    ((ButtonToggle) guiButton).toggleValue();
+                    ICYInit.CONFIG.showIDandMetadata = ((ButtonToggle) guiButton).getValue();
+                    ICYInit.forceSaveConfig();
                     return;
                 }
             }

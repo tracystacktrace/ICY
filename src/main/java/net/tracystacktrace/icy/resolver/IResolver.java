@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
  * This is the interface you should implement to your resolver class.
  * <br>
  * Use this one for both or either passive or active resolver implementations.
+ *
  * @since 1.0.2
  */
 public interface IResolver {
@@ -19,12 +20,13 @@ public interface IResolver {
      * There, you check if the hovered block has the same blockID as block X you created.
      * <br>
      * Please, return "true" to everything if the resolver is very flexible and usually output generic stuff.
+     *
      * @param displayStack The display {@link ItemStack}, basically what's being shown in UI
-     * @param block The {@link Block} instance of hovered block
-     * @param meta The metadata of hovered block
-     * @param x The x coordinate of hovered block
-     * @param y The y coordinate of hovered block
-     * @param z The z coordinate of hovered block
+     * @param block        The {@link Block} instance of hovered block
+     * @param meta         The metadata of hovered block
+     * @param x            The x coordinate of hovered block
+     * @param y            The y coordinate of hovered block
+     * @param z            The z coordinate of hovered block
      * @return True if the hovered block is suitable to be processed by this resolver.
      */
     boolean passes(
@@ -37,12 +39,13 @@ public interface IResolver {
      * Processes a hovered item and "bakes" an array of strings to be shown in the hint UI.
      * <br>
      * If the hovered block successfully goes through {@link IResolver#passes(ItemStack, Block, int, int, int, int)}, the ICY manager passes it to this method to receive baked strings.
+     *
      * @param displayStack The display {@link ItemStack}, basically what's being shown in UI
-     * @param block The {@link Block} instance of hovered block
-     * @param meta The metadata of hovered block
-     * @param x The x coordinate of hovered block
-     * @param y The y coordinate of hovered block
-     * @param z The z coordinate of hovered block
+     * @param block        The {@link Block} instance of hovered block
+     * @param meta         The metadata of hovered block
+     * @param x            The x coordinate of hovered block
+     * @param y            The y coordinate of hovered block
+     * @param z            The z coordinate of hovered block
      * @return An array of "baked" strings to show
      */
     String @NotNull [] bake(

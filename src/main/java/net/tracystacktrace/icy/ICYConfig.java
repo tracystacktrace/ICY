@@ -8,6 +8,9 @@ public class ICYConfig {
     public boolean enable = true;
 
     @ConfigEntry
+    public boolean showIDandMetadata = false;
+
+    @ConfigEntry
     public boolean showBlockHarvestability = true;
 
     @ConfigEntry(
