@@ -11,6 +11,11 @@ icy.config.title.gradient.start=Change start tooltip gradient color
 icy.config.title.gradient.end=Change end tooltip gradient color
 icy.config.title.static=Change static tooltip color
 
+icy.config.title.offset=Change the value of §bX§dY§r offset
+
+icy.config.offset.x=X offset: %s
+icy.config.offset.y=Y offset: %s
+
 icy.location.topleft=§cTop Left
 icy.location.top=§cTop
 icy.location.topright=§cTop Right
@@ -20,3 +25,21 @@ icy.location.bottomright=§cBottom Right
 icy.location.center=§cCenter (Special)
 
 icy.hint.magma=§4Damages when walked on
+
+
+# HelloGUI library lang values (temporary solution)
+hellogui.on=§aOn
+hellogui.off=§cOff
+
+hellogui.yes=§aYes
+hellogui.no=§cNo
+
+hellogui.done=§cSave§r & Close
+hellogui.save_exit=§cSave§r & Exit
+hellogui.reset=Reset
+hellogui.cancel=Cancel
+
+hellogui.red=Red: %s
+hellogui.green=Green: %s
+hellogui.blue=Blue: %s
+hellogui.alpha=Alpha: %s

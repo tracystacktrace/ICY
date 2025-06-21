@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(value = GuiModMenu.class, remap = false)
 public class MixinGuiModMenu {
+
     @Shadow
     private GuiModMenuContainer modListContainer;
 
@@ -24,18 +25,4 @@ public class MixinGuiModMenu {
         return gui;
     }
 
-    //OH CRAP
-//    @Inject(method = "actionPerformed", at = @At("HEAD"), cancellable = true)
-//    private void icy$redirectOpenConfig(GuiButton button, CallbackInfo ci) {
-//        if (button.id >= 4 && button.id < 8 && this.modListContainer.getSelectedModContainer().getModId().equals("icy")) {
-//            final Object[] buttonTypes = (Object[]) ReflectExtractor.getValueFromField(GuiModMenu.class, this, "modActionButtonsTypes");
-//            if (buttonTypes != null) {
-//                Object fetch_1 = buttonTypes[button.id - 4];
-//                if (ReflectExtractor.objectToStringEquals(fetch_1, "CONFIGURE")) {
-//                    Minecraft.getInstance().displayGuiScreen(new GuiConfigHome());
-//                    ci.cancel();
-//                }
-//            }
-//        }
-//    }
 }

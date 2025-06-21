@@ -66,18 +66,18 @@ public class TinyCache {
 
     private int getXLocation(int screenWidth, int plaqueWidth) {
         return switch (ICYInit.CONFIG.location) {
-            case 0, 3 -> 5;
+            case 0, 3 -> ICYInit.CONFIG.offset_x;
             case 1, 4 -> (screenWidth - plaqueWidth) / 2;
-            case 2, 5 -> screenWidth - plaqueWidth - 5;
+            case 2, 5 -> screenWidth - plaqueWidth - ICYInit.CONFIG.offset_x;
             default -> 0;
         };
     }
 
     private int getYLocation(int screenHeight, int plaqueHeight) {
         return switch (ICYInit.CONFIG.location) {
-            case 0, 1, 2 -> 5;
-            case 3, 5 -> screenHeight - 5 - plaqueHeight;
-            case 4 -> screenHeight - plaqueHeight - 45;
+            case 0, 1, 2 -> ICYInit.CONFIG.offset_y;
+            case 3, 5 -> screenHeight - plaqueHeight - ICYInit.CONFIG.offset_y;
+            case 4 -> screenHeight - plaqueHeight - 40 - ICYInit.CONFIG.offset_y;
             default -> 0;
         };
     }

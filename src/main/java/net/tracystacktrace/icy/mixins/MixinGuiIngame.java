@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiIngame.class)
 public class MixinGuiIngame {
+
     @Shadow
     @Final
     private Minecraft mc;
@@ -26,4 +27,5 @@ public class MixinGuiIngame {
             ICYInit.RENDERER.renderICY(this.mc.fontRenderer);
         }
     }
+
 }

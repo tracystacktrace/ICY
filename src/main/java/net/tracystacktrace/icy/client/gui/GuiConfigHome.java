@@ -17,9 +17,9 @@ public class GuiConfigHome extends GuiScreen {
         this.controlList.clear();
 
         final int offsetX = this.width / 2 - 100;
-        final int offsetY = this.height / 2 - 71;
+        final int offsetY = this.height / 2 - (142) / 2;
 
-        this.controlList.add(new ButtonToggle(0, offsetX, offsetY + 22, 200, 20, "icy.config.enable"));
+        this.controlList.add(new ButtonToggle(0, offsetX, offsetY + 22, 135, 20, "icy.config.enable"));
         this.controlList.add(new ButtonToggle(1, offsetX, offsetY + 22 + 25, 200, 20, "icy.config.harvest"));
         this.controlList.add(new ButtonToggle(2, offsetX, offsetY + 22 + 50, 110, 20, "icy.config.gradient"));
         this.controlList.add(new GuiButton(3, offsetX + 115, offsetY + 22 + 50, 40, 20, "§fA§cR§aG§9B"));
@@ -27,6 +27,8 @@ public class GuiConfigHome extends GuiScreen {
 
         this.controlList.add(new GuiButton(5, offsetX, offsetY + 22 + 75, 200, 20, Translation.quickTranslate("icy.config.location")));
         this.controlList.add(new GuiButton(6, offsetX, offsetY + 22 + 100, 200, 20, Translation.quickTranslate("icy.config.exit")));
+
+        this.controlList.add(new GuiButton(7, offsetX + 140, offsetY + 22, 60, 20, "§bX ↔ §r| §dY ↕"));
 
         ((ButtonToggle) this.controlList.get(0)).toggleValue(ICYInit.CONFIG.enable);
         ((ButtonToggle) this.controlList.get(1)).toggleValue(ICYInit.CONFIG.showBlockHarvestability);
@@ -38,74 +40,83 @@ public class GuiConfigHome extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton guiButton) {
         if (guiButton.enabled) {
-            if (guiButton.id == 0) {
-                ((ButtonToggle) guiButton).toggleValue();
-                ICYInit.CONFIG.enable = ((ButtonToggle) guiButton).getValue();
-                ICYInit.forceSaveConfig();
-                return;
-            }
-
-            if (guiButton.id == 5) {
-                this.mc.displayGuiScreen(new GuiSelectLocation(this));
-                return;
-            }
-
-            if (guiButton.id == 3) {
-                if (ICYInit.CONFIG.gradientColor) {
-                    this.mc.displayGuiScreen(new GuiChangeARGB(
-                            this,
-                            Translation.quickTranslate("icy.config.title.gradient.start"),
-                            ICYInit.CONFIG.startPlaqueGradient,
-                            color -> {
-                                ICYInit.CONFIG.startPlaqueGradient = color;
-                                ICYInit.forceSaveConfig();
-                            }
-                    ));
-                } else {
-                    this.mc.displayGuiScreen(new GuiChangeARGB(
-                            this,
-                            Translation.quickTranslate("icy.config.title.static"),
-                            ICYInit.CONFIG.staticPlaqueColor,
-                            color -> {
-                                ICYInit.CONFIG.staticPlaqueColor = color;
-                                ICYInit.forceSaveConfig();
-                            }
-                    ));
+            switch (guiButton.id) {
+                //toggle icy
+                case 0: {
+                    ((ButtonToggle) guiButton).toggleValue();
+                    ICYInit.CONFIG.enable = ((ButtonToggle) guiButton).getValue();
+                    ICYInit.forceSaveConfig();
+                    return;
                 }
-                return;
-            }
+                //toggle harvestability
+                case 1: {
+                    ((ButtonToggle) guiButton).toggleValue();
+                    ICYInit.CONFIG.showBlockHarvestability = ((ButtonToggle) guiButton).getValue();
+                    ICYInit.forceSaveConfig();
+                    return;
+                }
+                //toggle color
+                case 2: {
+                    ((ButtonToggle) guiButton).toggleValue();
+                    ICYInit.CONFIG.gradientColor = ((ButtonToggle) guiButton).getValue();
+                    this.updateColorState();
+                    ICYInit.forceSaveConfig();
+                    return;
+                }
 
-            if (guiButton.id == 4) {
-                this.mc.displayGuiScreen(new GuiChangeARGB(
-                        this,
-                        Translation.quickTranslate("icy.config.title.gradient.end"),
-                        ICYInit.CONFIG.endPlaqueGradient,
-                        color -> {
-                            ICYInit.CONFIG.endPlaqueGradient = color;
-                            ICYInit.forceSaveConfig();
-                        }
-                ));
-                return;
-            }
-
-            if (guiButton.id == 1) {
-                ((ButtonToggle) guiButton).toggleValue();
-                ICYInit.CONFIG.showBlockHarvestability = ((ButtonToggle) guiButton).getValue();
-                ICYInit.forceSaveConfig();
-                return;
-            }
-
-            if (guiButton.id == 2) {
-                ((ButtonToggle) guiButton).toggleValue();
-                ICYInit.CONFIG.gradientColor = ((ButtonToggle) guiButton).getValue();
-                this.updateColorState();
-                ICYInit.forceSaveConfig();
-                return;
-            }
-
-            if (guiButton.id == 6) {
-                this.mc.displayGuiScreen(null);
-                return;
+                //first color/static color
+                case 3: {
+                    if (ICYInit.CONFIG.gradientColor) {
+                        this.mc.displayGuiScreen(new GuiChangeARGB(
+                                this,
+                                Translation.quickTranslate("icy.config.title.gradient.start"),
+                                ICYInit.CONFIG.startPlaqueGradient,
+                                color -> {
+                                    ICYInit.CONFIG.startPlaqueGradient = color;
+                                    ICYInit.forceSaveConfig();
+                                }
+                        ));
+                    } else {
+                        this.mc.displayGuiScreen(new GuiChangeARGB(
+                                this,
+                                Translation.quickTranslate("icy.config.title.static"),
+                                ICYInit.CONFIG.staticPlaqueColor,
+                                color -> {
+                                    ICYInit.CONFIG.staticPlaqueColor = color;
+                                    ICYInit.forceSaveConfig();
+                                }
+                        ));
+                    }
+                    return;
+                }
+                //second color
+                case 4: {
+                    this.mc.displayGuiScreen(new GuiChangeARGB(
+                            this,
+                            Translation.quickTranslate("icy.config.title.gradient.end"),
+                            ICYInit.CONFIG.endPlaqueGradient,
+                            color -> {
+                                ICYInit.CONFIG.endPlaqueGradient = color;
+                                ICYInit.forceSaveConfig();
+                            }
+                    ));
+                    return;
+                }
+                //location
+                case 5: {
+                    this.mc.displayGuiScreen(new GuiSelectLocation(this));
+                    return;
+                }
+                //exit
+                case 6: {
+                    this.mc.displayGuiScreen(null);
+                    return;
+                }
+                //x/y offset
+                case 7: {
+                    this.mc.displayGuiScreen(new GuiChangeOffset(this));
+                    return;
+                }
             }
         }
     }

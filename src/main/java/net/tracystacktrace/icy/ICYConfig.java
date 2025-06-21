@@ -27,4 +27,10 @@ public class ICYConfig {
 
     @ConfigEntry
     public int staticPlaqueColor = -1073741824;
+
+    @ConfigEntry(lowerBounds = 0, upperBounds = 255)
+    public short offset_x = 5;
+
+    @ConfigEntry(lowerBounds = 0, upperBounds = 255)
+    public short offset_y = 5;
 }
