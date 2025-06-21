@@ -17,12 +17,24 @@ public final class ICYResolver {
     private static final List<IResolver> passiveResolvers = new ArrayList<>();
     private static final List<IResolver> activeResolvers = new ArrayList<>();
 
+    /**
+     * Adds the resolver to ICY and marks it as "passive"
+     * @param resolver A resolver instance to be registered
+     */
     public static void addPassiveResolver(IResolver resolver) {
-        passiveResolvers.add(resolver);
+        if(resolver != null && !passiveResolvers.contains(resolver)) {
+            passiveResolvers.add(resolver);
+        }
     }
 
+    /**
+     * Adds the resolver to ICY and marks it as "active"
+     * @param resolver A resolver instance to be registered
+     */
     public static void addActiveResolver(IResolver resolver) {
-        activeResolvers.add(resolver);
+        if(resolver != null && !activeResolvers.contains(resolver)) {
+            activeResolvers.add(resolver);
+        }
     }
 
     public static String[] bakeLines(ItemStack stack, Block block, int blockMeta, int x, int y, int z) {
