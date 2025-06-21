@@ -1,19 +1,19 @@
-package net.tracystacktrace.icy.client.resolver;
+package net.tracystacktrace.icy.resolver;
 
 import net.minecraft.common.block.Block;
 import net.minecraft.common.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public interface IActiveResolver {
+public interface IResolver {
 
     boolean passes(
-            @NotNull ItemStack displayStack,
+            @NotNull final ItemStack displayStack,
             @NotNull final Block block,
             int meta, int x, int y, int z
     );
 
-    @NotNull String[] bake(
-            @NotNull ItemStack displayStack,
+    String @NotNull [] bake(
+            @NotNull final ItemStack displayStack,
             @NotNull final Block block,
             int meta, int x, int y, int z
     );

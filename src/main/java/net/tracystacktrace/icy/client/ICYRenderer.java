@@ -7,10 +7,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.world.RenderHelper;
 import net.minecraft.common.block.Block;
+import net.minecraft.common.entity.Entity;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.physics.MovingObjectPosition;
-import net.minecraft.common.world.EnumMovingObjectType;
 import net.tracystacktrace.icy.ICYInit;
 import org.lwjgl.opengl.GL11;
 
@@ -32,29 +32,36 @@ public class ICYRenderer extends Gui {
         }
 
         //render tile info
-        if (omo.typeOfHit == EnumMovingObjectType.TILE) {
-            final Block block = WorldHelper.getBlock(omo);
+        switch (omo.typeOfHit) {
+            case TILE -> {
+                final Block block = WorldHelper.getBlock(omo);
 
-            if (block == null) {
-                cache.clear();
-                return;
+                if (block == null) {
+                    cache.clear();
+                    return;
+                }
+
+                final int meta = WorldHelper.getMetadata(omo);
+
+                if (block.blockID != cache.block || meta != cache.meta || cache.renderLocation != ICYInit.CONFIG.location) {
+                    cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                }
+
+                if (ICYInit.enableActiveCache()) {
+                    cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                } else {
+                    cache.dumpActiveCache();
+                }
+
+                this.renderItemPlaque(fontRenderer);
+                break;
             }
+            case ENTITY -> {
+                final Entity entity = omo.entityHit;
 
-            final int meta = WorldHelper.getMetadata(omo);
-
-            if (block.blockID != cache.block || meta != cache.meta || cache.renderLocation != ICYInit.CONFIG.location) {
-                cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                break;
             }
-
-            if (ICYInit.enableActiveCache()) {
-                cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
-            } else {
-                cache.dumpActiveCache();
-            }
-
-            this.renderItemPlaque(fontRenderer);
         }
-
     }
 
     public void renderItemPlaque(FontRenderer fontRenderer) {

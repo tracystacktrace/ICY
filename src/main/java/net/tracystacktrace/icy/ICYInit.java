@@ -7,9 +7,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.tracystacktrace.icy.client.ICYRenderer;
 import net.tracystacktrace.icy.client.ICYResolver;
-import net.tracystacktrace.icy.client.resolver.active.BonsaiPlanterResolver;
-import net.tracystacktrace.icy.client.resolver.passive.GrowableResolver;
-import net.tracystacktrace.icy.client.resolver.passive.MagmaResolver;
+import net.tracystacktrace.icy.resolver.active.BonsaiPlanterResolver;
+import net.tracystacktrace.icy.resolver.passive.GrowableResolver;
+import net.tracystacktrace.icy.resolver.passive.MagmaResolver;
 import org.lwjgl.input.Keyboard;
 
 public class ICYInit extends Mod {

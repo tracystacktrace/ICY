@@ -5,11 +5,8 @@ import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.children.BlockCarvedPumpkin;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
-import net.minecraft.common.util.ChatColors;
 import net.tracystacktrace.hellogui.Translation;
-import net.tracystacktrace.icy.client.resolver.IActiveResolver;
-import net.tracystacktrace.icy.client.resolver.IPassiveResolver;
-import net.tracystacktrace.icy.event.IcyDescriptorEvent;
+import net.tracystacktrace.icy.resolver.IResolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,14 +14,14 @@ import java.util.List;
 
 public final class ICYResolver {
 
-    private static final List<IPassiveResolver> passiveResolvers = new ArrayList<>();
-    private static final List<IActiveResolver> activeResolvers = new ArrayList<>();
+    private static final List<IResolver> passiveResolvers = new ArrayList<>();
+    private static final List<IResolver> activeResolvers = new ArrayList<>();
 
-    public static void addPassiveResolver(IPassiveResolver resolver) {
+    public static void addPassiveResolver(IResolver resolver) {
         passiveResolvers.add(resolver);
     }
 
-    public static void addActiveResolver(IActiveResolver resolver) {
+    public static void addActiveResolver(IResolver resolver) {
         activeResolvers.add(resolver);
     }
 
@@ -34,15 +31,13 @@ public final class ICYResolver {
         //add name
         result.add(Translation.quickTranslate(stack.getItemName() + ".name") + " " + stack.getItemID() + ":" + blockMeta);
 
-        for (IPassiveResolver resolver : passiveResolvers) {
+        //add custom lines/info
+        for (IResolver resolver : passiveResolvers) {
             if (resolver.passes(stack, block, blockMeta, x, y, z)) {
                 final String[] passResult = resolver.bake(stack, block, blockMeta, x, y, z);
                 result.addAll(Arrays.asList(passResult));
             }
         }
-
-        //process other mods' stuff
-        new IcyDescriptorEvent(result, stack.getItemID(), blockMeta, x, y, z).callEvent();
 
         //add mod source
         result.add(getBlockSource(stack));
@@ -53,7 +48,7 @@ public final class ICYResolver {
     public static String[] bakeActiveLines(ItemStack itemStack, Block block, int meta, int x, int y, int z) {
         final List<String> result = new ArrayList<>();
 
-        for (IActiveResolver resolver : activeResolvers) {
+        for (IResolver resolver : activeResolvers) {
             if (resolver.passes(itemStack, block, meta, x, y, z)) {
                 result.addAll(Arrays.asList(resolver.bake(itemStack, block, meta, x, y, z)));
             }
@@ -62,8 +57,9 @@ public final class ICYResolver {
         return result.isEmpty() ? null : result.toArray(new String[0]);
     }
 
+    @SuppressWarnings("UnnecessaryUnicodeEscape")
     private static String getBlockSource(ItemStack stack) {
-        return ChatColors.BLUE + ChatColors.ITALIC + stack.getItem().getRegisteringMod().getModName();
+        return "\u00A79\u00A7o" + stack.getItem().getRegisteringMod().getModName();
     }
 
     public static ItemStack getDisplayItemStack(Block block, int meta) {

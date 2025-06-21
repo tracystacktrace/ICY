@@ -1,17 +1,17 @@
-package net.tracystacktrace.icy.client.resolver.active;
+package net.tracystacktrace.icy.resolver.active;
 
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.tileentity.TileEntityBonsaiPlanter;
 import net.minecraft.common.item.ItemStack;
 import net.tracystacktrace.icy.client.WorldHelper;
-import net.tracystacktrace.icy.client.resolver.IActiveResolver;
+import net.tracystacktrace.icy.resolver.IResolver;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BonsaiPlanterResolver implements IActiveResolver {
+public class BonsaiPlanterResolver implements IResolver {
 
     @Override
     public boolean passes(
@@ -23,7 +23,7 @@ public class BonsaiPlanterResolver implements IActiveResolver {
     }
 
     @Override
-    public @NotNull String[] bake(
+    public String @NotNull [] bake(
             @NotNull ItemStack displayStack,
             @NotNull Block block,
             int meta, int x, int y, int z
@@ -39,4 +39,5 @@ public class BonsaiPlanterResolver implements IActiveResolver {
 
         return data.toArray(new String[0]);
     }
+
 }
