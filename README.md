@@ -17,6 +17,12 @@ You can contribute or provide suggestions for new features!
 
 ![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_1.png)
 
+![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_2.png)
+
+![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_3.png)
+
+![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_4.png)
+
 ## Installation
 
 Simply grab a `.jar` file from releases and put into `mods` folder of your instance!
