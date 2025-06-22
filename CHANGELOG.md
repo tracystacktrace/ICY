@@ -1,5 +1,5 @@
 
-## [1.0.2] - 2025-06-19
+## [1.0.2] - 2025-06-22
 Briefcase update! Updated some branding elements, including big logo!
 
 **Internal changes:**
