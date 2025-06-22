@@ -1,5 +1,7 @@
 
 ## [1.0.2] - 2025-06-19
+Briefcase update! Updated some branding elements, including big logo!
+
 **Internal changes:**
 - Added a separate, a little bit advanced caching for this mod
 - Internal GUI code changes, the mod now uses [HelloGUI](https://github.com/tracystacktrace/HelloGUI) for dynamic config GUIs

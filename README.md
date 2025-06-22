@@ -1,7 +1,5 @@
 # ICY
-<img src="https://github.com/tracystacktrace/ICY/raw/main/src/main/resources/assets/icy/icon.png" alt="MOD LOGO" width="256" height="256"/>
-
-**ICY - I See You**
+![Mod Plaque](https://github.com/tracystacktrace/ICY/raw/main/docs/icy_big_logo.png)
 
 Mod that adds a handy tooltip that reveals some info about the block you aim with your cursor!
 
@@ -9,7 +7,7 @@ The 1.0 version is the first release with basic features. However, I'm planning 
 
 You can contribute or provide suggestions for new features!
 
-![Showcase!](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_1.png)
+![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_1.png)
 
 ## Installation
 
@@ -106,3 +104,5 @@ That's all! Your resolver is now registered in ICY and will be used!
 ## License
 
 This mod is licensed under [Apache License 2.0](https://github.com/tracystacktrace/ICY/blob/main/LICENSE)
+
+The library `HelloGUI` is licensed under [GNU Lesser General Public License v2.1](https://github.com/tracystacktrace/HelloGUI/blob/main/LICENSE_HELLOGUI)
