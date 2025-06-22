@@ -11,7 +11,14 @@ Briefcase update! Updated some branding elements, including big logo!
 **Visible changes:**
 - Now you can see ID/Metadata of the hovered block. Open config screen to turn on it
 - Added settings to change X and Y offsets of a hint ui
-- Added additional description for following blocks: pistons, magma blocks, gears, carved pumpkings and watermelons, dungeon chest, cake and pie.
+- Added additional description for following blocks:
+  - Pistons (both standard and sticky)
+  - Magma blocks (except for kottamagma)
+  - Gears
+  - Carved pumpkins and watermelons
+  - Dungeon chest
+  - Cake and pie
+  - Wait block
 
 ## [1.0.1] - 2025-06-13
 - Small bugfix: includes all item blocks that weren't added in version 1.0 

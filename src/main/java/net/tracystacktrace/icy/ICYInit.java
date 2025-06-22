@@ -31,6 +31,7 @@ public class ICYInit extends Mod {
         ICYResolver.addPassiveResolver(new YummyBlockResolver());
         ICYResolver.addPassiveResolver(new PistonPowerResolver());
         ICYResolver.addPassiveResolver(new GearPowerResolver());
+        ICYResolver.addPassiveResolver(new WaitBlockResolver());
 
         /* init active resolvers */
         ICYResolver.addActiveResolver(new BonsaiPlanterResolver());

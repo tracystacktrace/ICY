@@ -25,6 +25,8 @@ icy.location.bottom=§cBottom
 icy.location.bottomright=§cBottom Right
 icy.location.center=§cCenter (Special)
 
+# hints for resolvers
+
 icy.hint.magma=§4Damages when walked on
 icy.hint.dungeon_chest.active=§5Locked
 icy.hint.dungeon_chest.inactive=§5Unlocked
@@ -33,7 +35,7 @@ icy.hint.pieces=§7Pieces left: %s
 icy.hint.gear.power=§7Power: §c%s
 icy.hint.gear.active=§aPowered
 icy.hint.gear.inactive=§cUnpowered
-
+icy.hint.gear.wait=§7Delay: §b%s
 
 # HelloGUI library lang values (temporary solution)
 hellogui.on=§aOn

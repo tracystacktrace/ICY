@@ -50,7 +50,7 @@ jar {
 
 foxloader {
     modId = "icy"
-    modName = "ICY (I See Y[ou])"
+    modName = "ICY"
     modIcon = "assets/icy/icon.png"
     modVersion = project.version
     modAuthors = "tracystacktrace"

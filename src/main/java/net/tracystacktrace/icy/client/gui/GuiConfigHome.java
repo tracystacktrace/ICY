@@ -141,6 +141,12 @@ public class GuiConfigHome extends GuiScreen {
         super.drawScreen(mouseX, mouseY, deltaTicks);
     }
 
+    @Override
+    public void onGuiClosed() {
+        super.onGuiClosed();
+        ICYInit.RENDERER.getCache().clear();
+    }
+
     private void updateColorState() {
         ((GuiButton) this.controlList.get(3)).width = ICYInit.CONFIG.gradientColor ? 40 : 85;
         ((GuiButton) this.controlList.get(4)).enabled = ICYInit.CONFIG.gradientColor;
