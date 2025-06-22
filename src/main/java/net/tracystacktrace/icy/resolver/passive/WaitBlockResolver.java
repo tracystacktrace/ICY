@@ -16,7 +16,7 @@ public class WaitBlockResolver implements IResolver {
     @Override
     public String @NotNull [] bake(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
         final int wait_type = (meta / 4);
-        return new String[] {
+        return new String[]{
                 Translation.quickTranslate("icy.hint.gear.wait", wait_type)
         };
     }

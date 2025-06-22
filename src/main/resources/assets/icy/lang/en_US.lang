@@ -1,5 +1,3 @@
-icy.growth=Growth: %s%%
-
 icy.config.title=Configure ICY
 icy.config.enable=Enable: %s
 icy.config.showid=IDs: %s
@@ -27,26 +25,24 @@ icy.location.center=§cCenter (Special)
 
 # hints for resolvers
 
+icy.hint.growth=Growth: §f%s%%
 icy.hint.magma=§4Damages when walked on
 icy.hint.dungeon_chest.active=§5Locked
 icy.hint.dungeon_chest.inactive=§5Unlocked
 icy.hint.carving=§7Carving: §3§o%s
-icy.hint.pieces=§7Pieces left: %s
+icy.hint.pieces=§7Pieces left: §f%s
 icy.hint.gear.power=§7Power: §c%s
 icy.hint.gear.active=§aPowered
 icy.hint.gear.inactive=§cUnpowered
 icy.hint.gear.wait=§7Delay: §b%s
 
-icy.cauldron.empty=§7Empty
-icy.cauldron.fluid=§7Fluid: §a%s
 
 # incinerator, furnace, forge, refridgerizer
 
 icy.fuel=§7Fuel: §e%s
 icy.input=§7Input: §3%s
 icy.output=§7Output: §c%s
-
-icy.incinerator.status=§7Progress: §f%s%% §7| Fuel: §f%s ticks
+icy.burn.status=§7Progress: §f%s%% §7| Fuel: §f%s ticks
 
 # bonsai hint stuff
 
@@ -68,6 +64,9 @@ icy.bonsai.type.ignethistle=§6§oIgnethistle
 
 # cauldron hint stuff
 
+icy.cauldron.empty=§7Empty
+icy.cauldron.fluid=§7Fluid: §a%s
+
 icy.cauldron.0.title=§7--- General Info ---
 icy.cauldron.potion_type=§7Potion type: §b%s
 icy.cauldron.progress=§7Progress: §c%s§7/§c7
@@ -84,6 +83,7 @@ tile.flowing_acid.name=Acid
 tile.flowing_sanguis.name=Sanguis
 
 # HelloGUI library lang values (temporary solution)
+
 hellogui.on=§aOn
 hellogui.off=§cOff
 

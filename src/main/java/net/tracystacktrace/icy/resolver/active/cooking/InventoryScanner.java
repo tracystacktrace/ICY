@@ -14,28 +14,28 @@ public final class InventoryScanner {
             @NotNull IInventory inventory,
             char prefix, int start, int end
     ) {
-        if(start > end) {
+        if (start > end) {
             return null;
         }
 
         final List<String> strings = new ArrayList<>();
-        for(int i = start; i < end; i++) {
+        for (int i = start; i < end; i++) {
             final ItemStack stack = inventory.getStackInSlot(i);
 
-            if(stack != null) {
+            if (stack != null) {
                 strings.add("§" + prefix + stack.getDisplayName() + " x" + stack.stackSize);
             }
         }
 
-        if(strings.isEmpty()) {
+        if (strings.isEmpty()) {
             return null;
         }
 
         final StringBuilder builder = new StringBuilder();
         final int size = strings.size();
-        for(int i = 0 ; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             builder.append(strings.get(i));
-            if(i + 1 < size) {
+            if (i + 1 < size) {
                 builder.append(" §7| ");
             }
         }
@@ -44,7 +44,7 @@ public final class InventoryScanner {
     }
 
     public static @Nullable String nameItemStack(@Nullable ItemStack itemStack) {
-        if(itemStack == null) return null;
+        if (itemStack == null) return null;
         return itemStack.getDisplayName() + " x" + itemStack.stackSize;
     }
 }

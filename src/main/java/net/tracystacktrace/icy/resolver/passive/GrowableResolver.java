@@ -26,7 +26,7 @@ public class GrowableResolver implements IResolver {
     ) {
         final int growth = (meta * 100) / getGrowthMax(displayStack.getItemID());
         return new String[]{
-                Translation.quickTranslate("icy.growth", growth)
+                Translation.quickTranslate("icy.hint.growth", growth)
         };
     }
 

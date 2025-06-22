@@ -2,7 +2,6 @@ package net.tracystacktrace.icy.resolver.active;
 
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
-import net.minecraft.common.block.children.BlockBonsaiPlanter;
 import net.minecraft.common.block.tileentity.TileEntityBonsaiPlanter;
 import net.minecraft.common.item.ItemStack;
 import net.tracystacktrace.hellogui.Translation;
@@ -48,7 +47,7 @@ public class BonsaiPlanterResolver implements IResolver {
         compiled.add(ageCompiled);
 
         //fertilized
-        if(meta == 1) {
+        if (meta == 1) {
             compiled.add(Translation.quickTranslate("icy.bonsai.fertilized"));
         }
 

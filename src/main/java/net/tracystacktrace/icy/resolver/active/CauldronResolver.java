@@ -32,8 +32,8 @@ public class CauldronResolver implements IResolver {
 
         final String totalVolumeState = cauldron.fluid == 0 ? Translation.quickTranslate("icy.cauldron.empty") : Translation.quickTranslate("icy.cauldron.fluid", Blocks.BLOCKS_LIST[cauldron.fluid].getBlockName() + ".name");
 
-        if(!TileEntityCauldron.brewingHandlers.containsKey(cauldron.fluid)) {
-            return new String[] {
+        if (!TileEntityCauldron.brewingHandlers.containsKey(cauldron.fluid)) {
+            return new String[]{
                     totalVolumeState
             };
         }
@@ -47,13 +47,13 @@ public class CauldronResolver implements IResolver {
         parse.add(Translation.quickTranslate("icy.cauldron.potion_type", simulatedCauldron.potionType.name));
         parse.add(Translation.quickTranslate("icy.cauldron.progress", simulatedCauldron.recipeProgress));
         parse.add(Translation.quickTranslate("icy.cauldron.current_potion", simulatedCauldron.potion));
-        if(simulatedCauldron.previousItem != 0) {
-            parse.add(Translation.quickTranslate("icy.cauldron.prev_item", new ItemStack(simulatedCauldron.previousItem, 1 ,0).getItemName() + ".name"));
+        if (simulatedCauldron.previousItem != 0) {
+            parse.add(Translation.quickTranslate("icy.cauldron.prev_item", new ItemStack(simulatedCauldron.previousItem, 1, 0).getItemName() + ".name"));
         }
 
 
         //current potion type
-        if(simulatedCauldron.recipeProgress > 1) {
+        if (simulatedCauldron.recipeProgress > 1) {
             final ItemStack current = getCurrentPotion(simulatedCauldron);
             parse.add(Translation.quickTranslate("icy.cauldron.1.title"));
             parse.add(Translation.quickTranslate("icy.cauldron.1.expected", current.getDisplayName()));
@@ -72,12 +72,12 @@ public class CauldronResolver implements IResolver {
             currentPotion.compoundTag.setBoolean("Fishy", true);
         }
 
-        if(cauldron.potionType == EPotionType.CURSED) {
+        if (cauldron.potionType == EPotionType.CURSED) {
             currentPotion.setTagCompound(new CompoundTag());
             currentPotion.compoundTag.setInteger("Flavor", cauldron.potion);
         }
 
-        if(cauldron.potionType == EPotionType.FLASH_FLASK) {
+        if (cauldron.potionType == EPotionType.FLASH_FLASK) {
             currentPotion.setTagCompound(new CompoundTag());
             currentPotion.compoundTag.setInteger("flavor", cauldron.potion & 127);
         }

@@ -51,14 +51,14 @@ public final class ICYResolver {
             cooked_name = Translation.quickTranslate(getDisplayItemStack(block, blockMeta).getItemName() + ".name");
         }
 
-        if(ICYInit.CONFIG.showIDandMetadata) {
+        if (ICYInit.CONFIG.showIDandMetadata) {
             cooked_name += (" (" + stack.getItemID() + ":" + blockMeta + ")");
         }
 
         result.add(cooked_name);
 
         //add custom lines/info
-        if(Minecraft.getInstance().currentScreen == null) {
+        if (Minecraft.getInstance().currentScreen == null) {
             for (IResolver resolver : passiveResolvers) {
                 if (resolver.passes(stack, block, blockMeta, x, y, z)) {
                     final String[] passResult = resolver.bake(stack, block, blockMeta, x, y, z);
@@ -79,7 +79,7 @@ public final class ICYResolver {
         for (IResolver resolver : activeResolvers) {
             if (resolver.passes(itemStack, block, meta, x, y, z)) {
                 String[] data = resolver.bake(itemStack, block, meta, x, y, z);
-                if(data != null) {
+                if (data != null) {
                     result.addAll(Arrays.asList(data));
                 }
             }

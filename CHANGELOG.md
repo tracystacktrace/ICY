@@ -21,6 +21,11 @@ Briefcase update! Updated some branding elements, including big logo!
   - Wait block
   - Bonsai planter
   - Cauldron (WIP)
+  - Forge
+  - Refridgifreezer
+  - Furnace
+  - Incinerator
+For some blocks, you need to press **SHIFT** to see additional description!
 
 ## [1.0.1] - 2025-06-13
 - Small bugfix: includes all item blocks that weren't added in version 1.0 
