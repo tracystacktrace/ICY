@@ -1,4 +1,4 @@
-icy.growth=Growth: %s%
+icy.growth=Growth: %s%%
 
 icy.config.title=Configure ICY
 icy.config.enable=Enable: %s
@@ -36,6 +36,24 @@ icy.hint.gear.power=§7Power: §c%s
 icy.hint.gear.active=§aPowered
 icy.hint.gear.inactive=§cUnpowered
 icy.hint.gear.wait=§7Delay: §b%s
+
+icy.cauldron.empty=§7Empty
+icy.cauldron.fluid=§7Fluid: §a%s
+
+icy.cauldron.0.title=§7--- General Info ---
+icy.cauldron.potion_type=§7Potion type: §b%s
+icy.cauldron.progress=§7Progress: §c%s§7/§c7
+icy.cauldron.current_potion=§7Potion: §d%s
+icy.cauldron.prev_item=§7Previous item: §e%s
+
+icy.cauldron.1.title=§3--- Current Potion ---
+icy.cauldron.1.expected=§3Name: §a%s
+icy.cauldron.1.effect=§3Effect: §b%s §3(§b%s§3)
+
+tile.flowing_water.name=Water
+tile.flowing_lava.name=Lava
+tile.flowing_acid.name=Acid
+tile.flowing_sanguis.name=Sanguis
 
 # HelloGUI library lang values (temporary solution)
 hellogui.on=§aOn

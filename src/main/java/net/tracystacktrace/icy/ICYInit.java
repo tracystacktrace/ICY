@@ -8,6 +8,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.tracystacktrace.icy.client.ICYRenderer;
 import net.tracystacktrace.icy.client.ICYResolver;
 import net.tracystacktrace.icy.resolver.active.BonsaiPlanterResolver;
+import net.tracystacktrace.icy.resolver.active.CauldronResolver;
 import net.tracystacktrace.icy.resolver.passive.*;
 import org.lwjgl.input.Keyboard;
 
@@ -35,6 +36,7 @@ public class ICYInit extends Mod {
 
         /* init active resolvers */
         ICYResolver.addActiveResolver(new BonsaiPlanterResolver());
+        ICYResolver.addActiveResolver(new CauldronResolver());
     }
 
     public static void forceSaveConfig() {

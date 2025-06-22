@@ -1,5 +1,6 @@
 package net.tracystacktrace.icy.client;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.children.BlockCarvedPumpkin;
@@ -57,10 +58,12 @@ public final class ICYResolver {
         result.add(cooked_name);
 
         //add custom lines/info
-        for (IResolver resolver : passiveResolvers) {
-            if (resolver.passes(stack, block, blockMeta, x, y, z)) {
-                final String[] passResult = resolver.bake(stack, block, blockMeta, x, y, z);
-                result.addAll(Arrays.asList(passResult));
+        if(Minecraft.getInstance().currentScreen == null) {
+            for (IResolver resolver : passiveResolvers) {
+                if (resolver.passes(stack, block, blockMeta, x, y, z)) {
+                    final String[] passResult = resolver.bake(stack, block, blockMeta, x, y, z);
+                    result.addAll(Arrays.asList(passResult));
+                }
             }
         }
 
