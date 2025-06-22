@@ -40,6 +40,26 @@ icy.hint.gear.wait=§7Delay: §b%s
 icy.cauldron.empty=§7Empty
 icy.cauldron.fluid=§7Fluid: §a%s
 
+# bonsai hint stuff
+
+icy.bonsai.empty=§7Empty
+icy.bonsai.tree=§7Tree: %s
+icy.bonsai.age=§7Age: §b%s§7/§b7
+icy.bonsai.adult=§aCan be trimmed
+icy.bonsai.fertilized=§7Fertilized
+
+icy.bonsai.type.oak=§a§oOak
+icy.bonsai.type.fir=§e§oFir
+icy.bonsai.type.cherry=§d§oCheery
+icy.bonsai.type.spruce=§6§oSpruce
+icy.bonsai.type.crimson=§4§oCrimson
+icy.bonsai.type.ebony=§5§oEbony
+icy.bonsai.type.azure=§3§oAzure
+icy.bonsai.type.scornthistle=§c§oScornthistle
+icy.bonsai.type.ignethistle=§6§oIgnethistle
+
+# cauldron hint stuff
+
 icy.cauldron.0.title=§7--- General Info ---
 icy.cauldron.potion_type=§7Potion type: §b%s
 icy.cauldron.progress=§7Progress: §c%s§7/§c7

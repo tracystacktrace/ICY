@@ -19,6 +19,8 @@ Briefcase update! Updated some branding elements, including big logo!
   - Dungeon chest
   - Cake and pie
   - Wait block
+  - Bonsai planter
+  - Cauldron (WIP)
 
 ## [1.0.1] - 2025-06-13
 - Small bugfix: includes all item blocks that weren't added in version 1.0 

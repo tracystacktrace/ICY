@@ -2,8 +2,10 @@ package net.tracystacktrace.icy.resolver.active;
 
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
+import net.minecraft.common.block.children.BlockBonsaiPlanter;
 import net.minecraft.common.block.tileentity.TileEntityBonsaiPlanter;
 import net.minecraft.common.item.ItemStack;
+import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.icy.client.WorldHelper;
 import net.tracystacktrace.icy.resolver.IResolver;
 import org.jetbrains.annotations.NotNull;
@@ -28,16 +30,32 @@ public class BonsaiPlanterResolver implements IResolver {
             @NotNull Block block,
             int meta, int x, int y, int z
     ) {
-        final List<String> data = new ArrayList<>();
         final TileEntityBonsaiPlanter planter = WorldHelper.getTileEntity(x, y, z);
 
         if (!planter.hasTree()) {
-            data.add("Empty");
-        } else {
-            data.add("Tree type: " + planter.getTreeType());
+            return new String[]{
+                    Translation.quickTranslate("icy.bonsai.empty")
+            };
         }
 
-        return data.toArray(new String[0]);
+        final List<String> compiled = new ArrayList<>();
+        compiled.add(Translation.quickTranslate("icy.bonsai.tree", translateTreeType(planter.getTreeType())));
+
+        String ageCompiled = Translation.quickTranslate("icy.bonsai.age", planter.getAge());
+        if (planter.getAge() == TileEntityBonsaiPlanter.MAX_AGE) {
+            ageCompiled += " §7| " + Translation.quickTranslate("icy.bonsai.adult");
+        }
+        compiled.add(ageCompiled);
+
+        //fertilized
+        if(meta == 1) {
+            compiled.add(Translation.quickTranslate("icy.bonsai.fertilized"));
+        }
+
+        return compiled.toArray(new String[0]);
     }
 
+    private static String translateTreeType(TileEntityBonsaiPlanter.BonsaiTree bonsaiTree) {
+        return Translation.quickTranslate("icy.bonsai.type." + bonsaiTree.name().toLowerCase());
+    }
 }
