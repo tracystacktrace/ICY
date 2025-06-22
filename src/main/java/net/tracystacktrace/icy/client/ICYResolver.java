@@ -78,7 +78,10 @@ public final class ICYResolver {
 
         for (IResolver resolver : activeResolvers) {
             if (resolver.passes(itemStack, block, meta, x, y, z)) {
-                result.addAll(Arrays.asList(resolver.bake(itemStack, block, meta, x, y, z)));
+                String[] data = resolver.bake(itemStack, block, meta, x, y, z);
+                if(data != null) {
+                    result.addAll(Arrays.asList(data));
+                }
             }
         }
 

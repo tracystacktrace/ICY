@@ -40,12 +40,20 @@ icy.hint.gear.wait=§7Delay: §b%s
 icy.cauldron.empty=§7Empty
 icy.cauldron.fluid=§7Fluid: §a%s
 
+# incinerator, furnace, forge, refridgerizer
+
+icy.fuel=§7Fuel: §e%s
+icy.input=§7Input: §3%s
+icy.output=§7Output: §c%s
+
+icy.incinerator.status=§7Progress: §f%s%% §7| Fuel: §f%s ticks
+
 # bonsai hint stuff
 
 icy.bonsai.empty=§7Empty
 icy.bonsai.tree=§7Tree: %s
 icy.bonsai.age=§7Age: §b%s§7/§b7
-icy.bonsai.adult=§aCan be trimmed
+icy.bonsai.adult=§acan be trimmed
 icy.bonsai.fertilized=§7Fertilized
 
 icy.bonsai.type.oak=§a§oOak

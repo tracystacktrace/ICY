@@ -5,10 +5,12 @@ import com.fox2code.foxloader.loader.Mod;
 import com.fox2code.foxloader.loader.ModContainer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.common.block.tileentity.TileEntityIncinerator;
 import net.tracystacktrace.icy.client.ICYRenderer;
 import net.tracystacktrace.icy.client.ICYResolver;
 import net.tracystacktrace.icy.resolver.active.BonsaiPlanterResolver;
 import net.tracystacktrace.icy.resolver.active.CauldronResolver;
+import net.tracystacktrace.icy.resolver.active.cooking.IncineratorResolver;
 import net.tracystacktrace.icy.resolver.passive.*;
 import org.lwjgl.input.Keyboard;
 
@@ -37,6 +39,7 @@ public class ICYInit extends Mod {
         /* init active resolvers */
         ICYResolver.addActiveResolver(new BonsaiPlanterResolver());
         ICYResolver.addActiveResolver(new CauldronResolver());
+        ICYResolver.addActiveResolver(new IncineratorResolver());
     }
 
     public static void forceSaveConfig() {

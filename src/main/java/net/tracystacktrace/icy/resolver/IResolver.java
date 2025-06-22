@@ -3,6 +3,7 @@ package net.tracystacktrace.icy.resolver;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * This is the interface you should implement to your resolver class.
@@ -48,7 +49,7 @@ public interface IResolver {
      * @param z            The z coordinate of hovered block
      * @return An array of "baked" strings to show
      */
-    String @NotNull [] bake(
+    String @Nullable [] bake(
             @NotNull final ItemStack displayStack,
             @NotNull final Block block,
             int meta, int x, int y, int z
