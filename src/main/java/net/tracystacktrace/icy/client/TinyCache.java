@@ -47,7 +47,7 @@ public class TinyCache {
         this.itemStack = ICYResolver.getDisplayItemStack(block, meta);
         this.strings = ICYResolver.bakeLines(this.itemStack, block, meta, x, y, z);
         this.largestStrWidth = ICYInit.getLargestString(fontRenderer, this.strings);
-        this.harvestable = Minecraft.getInstance().currentScreen != null || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
+        this.harvestable = (!ICYInit.isScreenEmpty()) || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
 
         final ScaledResolution scaledResolution = ScaledResolution.instance;
         this.x = this.getXLocation(scaledResolution.getScaledWidth(), this.getPlaqueWidth());

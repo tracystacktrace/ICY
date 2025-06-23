@@ -63,6 +63,10 @@ public class ICYInit extends Mod {
         return result;
     }
 
+    public static boolean isScreenEmpty() {
+        return Minecraft.getInstance().currentScreen == null;
+    }
+
     public static boolean enableActiveCache() {
         return Minecraft.getInstance().currentScreen == null && (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT));
     }

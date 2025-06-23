@@ -1,6 +1,5 @@
 package net.tracystacktrace.icy.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.children.BlockCarvedPumpkin;
@@ -9,25 +8,27 @@ import net.minecraft.common.item.Items;
 import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.icy.ICYInit;
 import net.tracystacktrace.icy.resolver.IResolver;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@SuppressWarnings({"ManualArrayToCollectionCopy", "UseBulkOperation"})
 public final class ICYResolver {
 
-    private static final List<IResolver> passiveResolvers = new ArrayList<>();
-    private static final List<IResolver> activeResolvers = new ArrayList<>();
+    private static final Set<IResolver> passiveResolvers = new HashSet<>();
+    private static final Set<IResolver> activeResolvers = new HashSet<>();
 
     /**
      * Adds the resolver to ICY and marks it as "passive"
      *
      * @param resolver A resolver instance to be registered
      */
-    public static void addPassiveResolver(IResolver resolver) {
-        if (resolver != null && !passiveResolvers.contains(resolver)) {
-            passiveResolvers.add(resolver);
-        }
+    public static void addPassiveResolver(@NotNull IResolver resolver) {
+        passiveResolvers.add(resolver);
     }
 
     /**
@@ -35,61 +36,76 @@ public final class ICYResolver {
      *
      * @param resolver A resolver instance to be registered
      */
-    public static void addActiveResolver(IResolver resolver) {
-        if (resolver != null && !activeResolvers.contains(resolver)) {
-            activeResolvers.add(resolver);
-        }
+    public static void addActiveResolver(@NotNull IResolver resolver) {
+        activeResolvers.add(resolver);
     }
 
-    public static String[] bakeLines(ItemStack stack, Block block, int blockMeta, int x, int y, int z) {
-        final List<String> result = new ArrayList<>();
+    public static String @NotNull [] bakeLines(
+            @NotNull ItemStack stack,
+            @NotNull Block block,
+            int meta, int x, int y, int z
+    ) {
+        final List<String> collector = new ArrayList<>(3);
 
         //add name
         final String raw_name = stack.getItemName() + ".name";
         String cooked_name = Translation.quickTranslate(raw_name);
+
+        //reference to displaying name
         if (raw_name.equals(cooked_name)) {
-            cooked_name = Translation.quickTranslate(getDisplayItemStack(block, blockMeta).getItemName() + ".name");
+            cooked_name = Translation.quickTranslate(getDisplayItemStack(block, meta).getItemName() + ".name");
         }
 
+        //put id and meta
         if (ICYInit.CONFIG.showIDandMetadata) {
-            cooked_name += (" (" + stack.getItemID() + ":" + blockMeta + ")");
+            cooked_name += String.format(" (%d:%d)", stack.getItemID(), meta);
         }
 
-        result.add(cooked_name);
+        collector.add(cooked_name);
 
         //add custom lines/info
-        if (Minecraft.getInstance().currentScreen == null) {
+        if (ICYInit.isScreenEmpty()) {
             for (IResolver resolver : passiveResolvers) {
-                if (resolver.passes(stack, block, blockMeta, x, y, z)) {
-                    final String[] passResult = resolver.bake(stack, block, blockMeta, x, y, z);
-                    result.addAll(Arrays.asList(passResult));
+                if (resolver.passes(stack, block, meta, x, y, z)) {
+                    final String[] passResult = resolver.bake(stack, block, meta, x, y, z);
+                    if(passResult != null) {
+                        for(String d : passResult) {
+                            collector.add(d);
+                        }
+                    }
                 }
             }
         }
 
         //add mod source
-        result.add(getBlockSource(stack));
+        collector.add(getBlockSource(stack));
 
-        return result.toArray(new String[0]);
+        return collector.toArray(new String[0]);
     }
 
-    public static String[] bakeActiveLines(ItemStack itemStack, Block block, int meta, int x, int y, int z) {
-        final List<String> result = new ArrayList<>();
+    public static String @Nullable [] bakeActiveLines(
+            @NotNull ItemStack itemStack,
+            @NotNull Block block,
+            int meta, int x, int y, int z
+    ) {
+        final List<String> collector = new ArrayList<>(4);
 
         for (IResolver resolver : activeResolvers) {
             if (resolver.passes(itemStack, block, meta, x, y, z)) {
-                String[] data = resolver.bake(itemStack, block, meta, x, y, z);
-                if (data != null) {
-                    result.addAll(Arrays.asList(data));
+                String[] passResult = resolver.bake(itemStack, block, meta, x, y, z);
+                if (passResult != null) {
+                    for(String d : passResult) {
+                        collector.add(d);
+                    }
                 }
             }
         }
 
-        return result.isEmpty() ? null : result.toArray(new String[0]);
+        return collector.isEmpty() ? null : collector.toArray(new String[0]);
     }
 
     @SuppressWarnings("UnnecessaryUnicodeEscape")
-    private static String getBlockSource(ItemStack stack) {
+    private static @NotNull String getBlockSource(@NotNull ItemStack stack) {
         return "\u00A79\u00A7o" + stack.getItem().getRegisteringMod().getModName();
     }
 

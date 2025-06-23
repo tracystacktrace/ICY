@@ -130,8 +130,9 @@ public class ICYRenderer extends Gui {
     }
 
     private boolean shouldMoveUp() {
-        if (Minecraft.getInstance().currentScreen != null)
-            return false;
-        return cache.renderLocation == 4 && Minecraft.getInstance().thePlayer.getHeldItem() != null && Minecraft.getInstance().hotbarTickCounter != 0;
+        return ICYInit.isScreenEmpty() &&
+                cache.renderLocation == 4 &&
+                Minecraft.getInstance().thePlayer.getHeldItem() != null &&
+                Minecraft.getInstance().hotbarTickCounter != 0;
     }
 }
