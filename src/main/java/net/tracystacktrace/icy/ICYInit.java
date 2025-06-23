@@ -14,19 +14,19 @@ import net.tracystacktrace.icy.resolver.active.cooking.FurnaceResolver;
 import net.tracystacktrace.icy.resolver.active.cooking.IncineratorResolver;
 import net.tracystacktrace.icy.resolver.active.cooking.RefridgifreezerResolver;
 import net.tracystacktrace.icy.resolver.passive.*;
+import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.input.Keyboard;
 
 public class ICYInit extends Mod {
 
-    public static ICYRenderer RENDERER;
-    public static ICYConfig CONFIG = new ICYConfig();
+    public static final ICYRenderer RENDERER = new ICYRenderer();
+    public static final ICYConfig CONFIG = new ICYConfig();
     private static ModContainer INTERNAL_CONTAINER;
 
     @Override
     public void onInit() {
         INTERNAL_CONTAINER = this.getModContainer();
         this.setConfigObject(CONFIG);
-        RENDERER = new ICYRenderer();
 
         /* init passive resolvers */
         ICYResolver.addPassiveResolver(new GrowableResolver());
@@ -47,10 +47,12 @@ public class ICYInit extends Mod {
         ICYResolver.addActiveResolver(new ForgeResolver());
     }
 
+    @ApiStatus.Internal
     public static void forceSaveConfig() {
         ConfigIO.writeConfiguration(INTERNAL_CONTAINER, CONFIG);
     }
 
+    @ApiStatus.Internal
     public static int getLargestString(FontRenderer fontRenderer, String[] strings) {
         if (strings == null || strings.length == 0) {
             return 0;
@@ -63,11 +65,14 @@ public class ICYInit extends Mod {
         return result;
     }
 
+    @ApiStatus.Internal
     public static boolean isScreenEmpty() {
         return Minecraft.getInstance().currentScreen == null;
     }
 
-    public static boolean enableActiveCache() {
-        return Minecraft.getInstance().currentScreen == null && (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT));
+    @ApiStatus.Internal
+    public static boolean showActiveCache() {
+        return Minecraft.getInstance().currentScreen == null &&
+                (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT));
     }
 }

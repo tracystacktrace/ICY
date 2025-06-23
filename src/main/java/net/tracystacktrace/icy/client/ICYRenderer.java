@@ -47,7 +47,7 @@ public class ICYRenderer extends Gui {
                     cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
                 }
 
-                if (ICYInit.enableActiveCache()) {
+                if (ICYInit.showActiveCache()) {
                     cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
                 } else {
                     cache.dumpActiveCache();
@@ -75,7 +75,7 @@ public class ICYRenderer extends Gui {
                 ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
         );
 
-        if (ICYInit.enableActiveCache()) {
+        if (ICYInit.showActiveCache()) {
             fontRenderer.drawStringWithShadow(cache.strings[0], cache.x + 28, realY + 4, 0xFFFFFFFF);
 
             int accumulated = 0;

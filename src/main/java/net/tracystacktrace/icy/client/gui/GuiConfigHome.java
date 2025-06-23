@@ -11,7 +11,6 @@ public class GuiConfigHome extends GuiScreen {
 
     private final String title = Translation.quickTranslate("icy.config.title");
 
-    //todo complete all config values
     @Override
     public void initGui() {
         this.controlList.clear();
@@ -131,6 +130,7 @@ public class GuiConfigHome extends GuiScreen {
         }
     }
 
+    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public void drawScreen(float mouseX, float mouseY, float deltaTicks) {
         this.drawDefaultBackground();

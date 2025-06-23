@@ -28,28 +28,26 @@ public class GuiSelectLocation extends GuiScreen {
         }
     }
 
+    @SuppressWarnings("ForLoopReplaceableByForEach")
     @Override
     public void initGui() {
 
         final int s_width = this.width / 3;
-        final int s_hegiht = this.height / 2;
+        final int s_height = this.height / 2;
 
-        this.controlList.add(new GuiButton(0, 0, 0, s_width, s_hegiht, Translation.quickTranslate("icy.location.topleft")));
+        this.controlList.add(new GuiButton(0, 0, 0, s_width, s_height, Translation.quickTranslate("icy.location.topleft")));
         this.controlList.add(new GuiButton(1, s_width, 0, s_width, this.height / 3, Translation.quickTranslate("icy.location.top")));
-        this.controlList.add(new GuiButton(2, s_width * 2, 0, s_width, s_hegiht, Translation.quickTranslate("icy.location.topright")));
+        this.controlList.add(new GuiButton(2, s_width * 2, 0, s_width, s_height, Translation.quickTranslate("icy.location.topright")));
 
-        this.controlList.add(new GuiButton(3, 0, s_hegiht, s_width, s_hegiht, Translation.quickTranslate("icy.location.bottomleft")));
+        this.controlList.add(new GuiButton(3, 0, s_height, s_width, s_height, Translation.quickTranslate("icy.location.bottomleft")));
         this.controlList.add(new GuiButton(4, s_width, this.height * 2 / 3, s_width, this.height / 3, Translation.quickTranslate("icy.location.bottom")));
-        this.controlList.add(new GuiButton(5, s_width * 2, s_hegiht, s_width, s_hegiht, Translation.quickTranslate("icy.location.bottomright")));
-
-        //this.controlList.add(new GuiButton(6, s_width, this.height / 3, s_width, this.height / 3, Translation.quickTranslate("icy.location.center")));
+        this.controlList.add(new GuiButton(5, s_width * 2, s_height, s_width, s_height, Translation.quickTranslate("icy.location.bottomright")));
 
         for (GuiElement element : this.controlList) {
             if (element instanceof GuiButton button) {
                 button.renderButtonBg = false;
             }
         }
-
     }
 
     @Override

@@ -68,8 +68,8 @@ public final class ICYResolver {
             for (IResolver resolver : passiveResolvers) {
                 if (resolver.passes(stack, block, meta, x, y, z)) {
                     final String[] passResult = resolver.bake(stack, block, meta, x, y, z);
-                    if(passResult != null) {
-                        for(String d : passResult) {
+                    if (passResult != null) {
+                        for (String d : passResult) {
                             collector.add(d);
                         }
                     }
@@ -94,7 +94,7 @@ public final class ICYResolver {
             if (resolver.passes(itemStack, block, meta, x, y, z)) {
                 String[] passResult = resolver.bake(itemStack, block, meta, x, y, z);
                 if (passResult != null) {
-                    for(String d : passResult) {
+                    for (String d : passResult) {
                         collector.add(d);
                     }
                 }

@@ -20,9 +20,11 @@ public class PotionEjector {
                 effect_name += " " + this.level;
             }
 
-            final String clock = String.format("%02d:%02d", totalSeconds / 60, totalSeconds % 60);
-
-            return String.format(Translation.quickTranslate("icy.cauldron.1.effect"), effect_name, clock);
+            return String.format(
+                    Translation.quickTranslate("icy.cauldron.1.effect"),
+                    effect_name,
+                    String.format("%02d:%02d", totalSeconds / 60, totalSeconds % 60)
+            );
         }
     }
 

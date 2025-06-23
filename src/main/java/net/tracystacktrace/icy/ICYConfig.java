@@ -36,4 +36,5 @@ public class ICYConfig {
 
     @ConfigEntry(lowerBounds = 0, upperBounds = 255)
     public short offset_y = 5;
+
 }
