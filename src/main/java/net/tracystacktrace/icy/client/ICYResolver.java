@@ -188,6 +188,8 @@ public final class ICYResolver {
         if (id == Blocks.CUCURBOO_TOMBSTONE.blockID) meta = 0;
         if (id == Blocks.BASALT.blockID) meta = 0;
 
+        if (id == Blocks.HONEYCOMB_BLOCK.blockID && meta != 0) meta = 1;
+
         if (id == Blocks.FOX_PLUSHIE.blockID) return new ItemStack(Items.FOX_PLUSHIE);
         if (id == Blocks.SNOW_FOX_PLUSHIE.blockID) return new ItemStack(Items.SNOW_FOX_PLUSHIE);
         if (id == Blocks.RED_WYVERN_PLUSHIE.blockID) return new ItemStack(Items.RED_WYVERN_PLUSHIE);

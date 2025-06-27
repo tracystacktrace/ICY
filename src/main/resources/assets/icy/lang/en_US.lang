@@ -36,6 +36,8 @@ icy.hint.gear.active=§aPowered
 icy.hint.gear.inactive=§cUnpowered
 icy.hint.gear.wait=§7Delay: §b%s
 
+icy.hint.honeycomb.filled=§7Filled
+icy.hint.honeycomb.empty=§7Empty
 
 # incinerator, furnace, forge, refridgerizer
 
