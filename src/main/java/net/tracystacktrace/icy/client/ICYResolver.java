@@ -119,6 +119,7 @@ public final class ICYResolver {
         if (id == Blocks.PISTON_EXTENSION.blockID && (meta > 7)) return new ItemStack(Blocks.PISTON_STICKY_BASE);
         if (id == Blocks.PISTON_EXTENSION.blockID) return new ItemStack(Blocks.PISTON_BASE);
 
+        if (id == Blocks.PRICKLY_PEAR.blockID) return new ItemStack(Items.PRICKLY_PEAR);
         if (id == Blocks.LILYPAD.blockID) return new ItemStack(Items.LILYPAD);
         if (id == Blocks.WATERLILY.blockID) return new ItemStack(Items.WATERLILY);
         if (id == Blocks.BLUE_WATERLILY.blockID) return new ItemStack(Items.BLUE_WATERLILY);
@@ -185,6 +186,7 @@ public final class ICYResolver {
         if (id == Blocks.ARTIFICIAL_HIVE.blockID) meta = 0;
         if (id == Blocks.TOMBSTONE.blockID) meta = 0;
         if (id == Blocks.CUCURBOO_TOMBSTONE.blockID) meta = 0;
+        if (id == Blocks.BASALT.blockID) meta = 0;
 
         if (id == Blocks.FOX_PLUSHIE.blockID) return new ItemStack(Items.FOX_PLUSHIE);
         if (id == Blocks.SNOW_FOX_PLUSHIE.blockID) return new ItemStack(Items.SNOW_FOX_PLUSHIE);
@@ -195,16 +197,26 @@ public final class ICYResolver {
         if (id == Blocks.DEMON_PLUSHIE.blockID) return new ItemStack(Items.DEMON_PLUSHIE);
         if (id == Blocks.SHARK_PLUSHIE.blockID) return new ItemStack(Items.SHARK_PLUSHIE);
 
-        if (id == Blocks.ZOMBIE_SKULL.blockID) return new ItemStack(Items.ZOMBIE_SKULL);
-        if (id == Blocks.SKELETON_SKULL.blockID) return new ItemStack(Items.SKELETON_SKULL);
-        if (id == Blocks.CREEPER_SKULL.blockID) return new ItemStack(Items.CREEPER_SKULL);
-        if (id == Blocks.SPIDER_SKULL.blockID) return new ItemStack(Items.SPIDER_SKULL);
-        if (id == Blocks.WITHER_SKELETON_SKULL.blockID) return new ItemStack(Items.WITHER_SKELETON_SKULL);
-        if (id == Blocks.NETHER_ZOMBIE_SKULL.blockID) return new ItemStack(Items.NETHER_ZOMBIE_SKULL);
-        if (id == Blocks.DEMON_SKULL.blockID) return new ItemStack(Items.DEMON_SKULL);
-        if (id == Blocks.ZOMBIE_PIGMEN_SKULL.blockID) return new ItemStack(Items.ZOMBIE_PIGMEN_SKULL);
-        if (id == Blocks.BLAZE_SKULL.blockID) return new ItemStack(Items.BLAZE_SKULL);
-        if (id == Blocks.SCARIBOU_SKULL.blockID) return new ItemStack(Items.SCARIBOU_SKULL);
+        if (id == Blocks.ZOMBIE_SKULL.blockID || id == Blocks.ZOMBIE_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.ZOMBIE_SKULL);
+        if (id == Blocks.SKELETON_SKULL.blockID || id == Blocks.SKELETON_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.SKELETON_SKULL);
+        if (id == Blocks.CREEPER_SKULL.blockID || id == Blocks.CREEPER_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.CREEPER_SKULL);
+        if (id == Blocks.SPIDER_SKULL.blockID || id == Blocks.SPIDER_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.SPIDER_SKULL);
+        if (id == Blocks.WITHER_SKELETON_SKULL.blockID || id == Blocks.WITHER_SKELETON_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.WITHER_SKELETON_SKULL);
+        if (id == Blocks.NETHER_ZOMBIE_SKULL.blockID || id == Blocks.NETHER_ZOMBIE_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.NETHER_ZOMBIE_SKULL);
+        if (id == Blocks.DEMON_SKULL.blockID || id == Blocks.DEMON_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.DEMON_SKULL);
+        if (id == Blocks.ZOMBIE_PIGMEN_SKULL.blockID || id == Blocks.ZOMBIE_PIGMEN_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.ZOMBIE_PIGMEN_SKULL);
+        if (id == Blocks.BLAZE_SKULL.blockID || id == Blocks.BLAZE_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.BLAZE_SKULL);
+        if (id == Blocks.SCARIBOU_SKULL.blockID || id == Blocks.SCARIBOU_SKULL_WALL_VARIANT.blockID)
+            return new ItemStack(Items.SCARIBOU_SKULL);
 
         return new ItemStack(block, 1, meta);
     }

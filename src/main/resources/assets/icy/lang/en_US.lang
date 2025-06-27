@@ -82,6 +82,8 @@ tile.flowing_lava.name=Lava
 tile.flowing_acid.name=Acid
 tile.flowing_sanguis.name=Sanguis
 
+carving.carved=Original
+
 # HelloGUI library lang values (temporary solution)
 
 hellogui.on=§aOn

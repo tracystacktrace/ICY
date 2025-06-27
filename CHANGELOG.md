@@ -1,4 +1,12 @@
 
+## [1.0.3] - 2025-06-27
+- Fixed original pumpking carving description name
+- Fixed wall hanged skulls names in tooltip hint
+- Fixed basalt block name
+- Fixed prickly pear name
+- Fixed a bug tooltip location when focused on blocks with active stats present
+- Fixed a bug where offset sliders would literally slide values
+
 ## [1.0.2] - 2025-06-22
 Briefcase update! Updated some branding elements, including big logo!
 

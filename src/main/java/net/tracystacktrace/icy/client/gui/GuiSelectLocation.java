@@ -28,7 +28,6 @@ public class GuiSelectLocation extends GuiScreen {
         }
     }
 
-    @SuppressWarnings("ForLoopReplaceableByForEach")
     @Override
     public void initGui() {
 

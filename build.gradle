@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'foxloader.dev'
 
 group = 'net.tracystacktrace'
-version = '1.0.2'
+version = '1.0.3'
 
 configurations {
     implAndInclude

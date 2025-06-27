@@ -1,7 +1,6 @@
 package net.tracystacktrace.icy.client.gui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.common.block.Blocks;
 import net.tracystacktrace.hellogui.Translation;
@@ -11,7 +10,7 @@ import net.tracystacktrace.icy.ICYInit;
 
 public class GuiChangeOffset extends GuiMultipleSliders {
 
-    protected short[] privateTempCache;
+    protected final short[] privateTempCache = new short[2];
 
     public GuiChangeOffset(GuiScreen parentScreen) {
         super(
@@ -30,7 +29,7 @@ public class GuiChangeOffset extends GuiMultipleSliders {
                     public float normalize(float f) {
                         if (f <= 0) return 0.0f;
                         if (f >= 255) return 1.0f;
-                        return f / 225.0f;
+                        return f / 255.0f;
                     }
 
                     @Override
@@ -46,7 +45,6 @@ public class GuiChangeOffset extends GuiMultipleSliders {
                     ICYInit.forceSaveConfig();
                 }
         );
-        this.privateTempCache = new short[2];
     }
 
     @Override
@@ -55,14 +53,10 @@ public class GuiChangeOffset extends GuiMultipleSliders {
     }
 
     @Override
-    protected void actionPerformed(GuiButton guiButton) {
-        super.actionPerformed(guiButton);
-    }
-
-    @Override
     public void drawScreen(float mouseX, float mouseY, float deltaTicks) {
         super.drawScreen(mouseX, mouseY, deltaTicks);
 
+        // render plaque
         this.privateTempCache[0] = ICYInit.CONFIG.offset_x;
         this.privateTempCache[1] = ICYInit.CONFIG.offset_y;
         ICYInit.CONFIG.offset_x = (short) this.value[0];

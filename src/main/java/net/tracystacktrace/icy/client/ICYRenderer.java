@@ -44,13 +44,14 @@ public class ICYRenderer extends Gui {
                 final int meta = WorldHelper.getMetadata(omo);
 
                 if (block.blockID != cache.block || meta != cache.meta || cache.renderLocation != ICYInit.CONFIG.location) {
-                    cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
-                }
-
-                if (ICYInit.showActiveCache()) {
-                    cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
-                } else {
                     cache.dumpActiveCache();
+                    cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                } else {
+                    if (ICYInit.showActiveCache()) {
+                        cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                    } else {
+                        cache.dumpActiveCache();
+                    }
                 }
 
                 this.renderItemPlaque(fontRenderer);
@@ -65,36 +66,37 @@ public class ICYRenderer extends Gui {
     }
 
     public void renderItemPlaque(FontRenderer fontRenderer) {
-        final int realY = cache.y + (this.shouldMoveUp() ? -25 : 0);
+        final int realX = cache.getX();
+        final int realY = cache.getY() + (this.shouldMoveUp() ? -25 : 0);
 
         this.drawGradientRect(
-                cache.x, realY,
-                cache.x + cache.getPlaqueWidth(),
+                realX, realY,
+                realX + cache.getPlaqueWidth(),
                 realY + cache.getPlaqueHeight(),
                 ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.startPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor,
                 ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
         );
 
         if (ICYInit.showActiveCache()) {
-            fontRenderer.drawStringWithShadow(cache.strings[0], cache.x + 28, realY + 4, 0xFFFFFFFF);
+            fontRenderer.drawStringWithShadow(cache.strings[0], realX + 28, realY + 4, 0xFFFFFFFF);
 
             int accumulated = 0;
             if (cache.activeCacheStrings != null) {
                 for (int i = 0; i < cache.activeCacheStrings.length; i++) {
-                    fontRenderer.drawStringWithShadow(cache.activeCacheStrings[i], cache.x + 28, realY + 16 + 12 * i, 0xFFFFFFFF);
+                    fontRenderer.drawStringWithShadow(cache.activeCacheStrings[i], realX + 28, realY + 16 + 12 * i, 0xFFFFFFFF);
                     accumulated++;
                 }
             }
 
             accumulated = accumulated * 12;
             for (int i = 1; i < cache.strings.length; i++) {
-                fontRenderer.drawStringWithShadow(cache.strings[i], cache.x + 28, realY + 4 + (accumulated) + 12 * i, 0xFFFFFFFF);
+                fontRenderer.drawStringWithShadow(cache.strings[i], realX + 28, realY + 4 + (accumulated) + 12 * i, 0xFFFFFFFF);
             }
 
         } else {
             //standard renderer
             for (int i = 0; i < cache.strings.length; i++) {
-                fontRenderer.drawStringWithShadow(cache.strings[i], cache.x + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
+                fontRenderer.drawStringWithShadow(cache.strings[i], realX + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
             }
         }
 
@@ -108,7 +110,7 @@ public class ICYRenderer extends Gui {
                 fontRenderer,
                 Minecraft.getInstance().renderEngine,
                 cache.itemStack, cache.itemStack.getIconIndex(),
-                cache.x + 5, realY + 5
+                realX + 5, realY + 5
         );
 
         RenderSystem.disableDepthTest();
@@ -120,7 +122,7 @@ public class ICYRenderer extends Gui {
                     fontRenderer,
                     Minecraft.getInstance().renderEngine,
                     this.harvestIconItem, this.harvestIconItem.getIconIndex(),
-                    (cache.x + 5) * 2, (realY + 5) * 2
+                    (realX + 5) * 2, (realY + 5) * 2
             );
         }
 

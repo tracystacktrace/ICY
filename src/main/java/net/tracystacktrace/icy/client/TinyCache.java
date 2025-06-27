@@ -19,8 +19,9 @@ public class TinyCache {
     protected boolean harvestable;
     protected byte renderLocation = -1;
 
+    protected boolean hasAnyActiveString;
     protected String[] activeCacheStrings;
-    protected int largestACS;
+    protected int largestActiveString;
 
     /**
      * Clears the cache
@@ -35,8 +36,9 @@ public class TinyCache {
         this.y = 0;
         this.renderLocation = -1;
         this.harvestable = false;
+        this.hasAnyActiveString = false;
         this.activeCacheStrings = null;
-        this.largestACS = 0;
+        this.largestActiveString = 0;
     }
 
     public void buildCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
@@ -49,19 +51,20 @@ public class TinyCache {
         this.largestStrWidth = ICYInit.getLargestString(fontRenderer, this.strings);
         this.harvestable = (!ICYInit.isScreenEmpty()) || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
 
-        final ScaledResolution scaledResolution = ScaledResolution.instance;
-        this.x = this.getXLocation(scaledResolution.getScaledWidth(), this.getPlaqueWidth());
-        this.y = this.getYLocation(scaledResolution.getScaledHeight(), this.getPlaqueHeight());
+        this.x = this.getRealX();
+        this.y = this.getRealY();
     }
 
     public void bakeActiveCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
         this.activeCacheStrings = ICYResolver.bakeActiveLines(this.itemStack, block, meta, x, y, z);
-        this.largestACS = (this.activeCacheStrings != null) ? ICYInit.getLargestString(fontRenderer, activeCacheStrings) : 0;
+        this.largestActiveString = (this.activeCacheStrings != null) ? ICYInit.getLargestString(fontRenderer, activeCacheStrings) : 0;
+        this.hasAnyActiveString = this.activeCacheStrings != null;
     }
 
     public void dumpActiveCache() {
         this.activeCacheStrings = null;
-        this.largestACS = 0;
+        this.largestActiveString = 0;
+        this.hasAnyActiveString = false;
     }
 
     private int getXLocation(int screenWidth, int plaqueWidth) {
@@ -82,12 +85,34 @@ public class TinyCache {
         };
     }
 
+    private int getRealX() {
+        return this.getXLocation(ScaledResolution.instance.getScaledWidth(), this.getPlaqueWidth());
+    }
+
+    private int getRealY() {
+        return this.getYLocation(ScaledResolution.instance.getScaledHeight(), this.getPlaqueHeight());
+    }
+
     public int getPlaqueWidth() {
-        return 28 + 5 + Math.max(this.largestStrWidth, this.largestACS);
+        return 28 + 5 + Math.max(this.largestStrWidth, this.largestActiveString);
     }
 
     public int getPlaqueHeight() {
         return 4 + (this.strings.length + ((this.activeCacheStrings != null) ? this.activeCacheStrings.length : 0)) * 12;
+    }
+
+    public int getX() {
+        if (this.hasAnyActiveString) {
+            return this.getRealX();
+        }
+        return this.x;
+    }
+
+    public int getY() {
+        if (this.hasAnyActiveString) {
+            return this.getRealY();
+        }
+        return this.y;
     }
 
 }
