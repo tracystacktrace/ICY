@@ -9,19 +9,43 @@
 [![Mod Thread - ReIndev Discord](https://img.shields.io/badge/Mod_Thread-ReIndev_Discord-5A66F1?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/channels/870388843076005950/1383151049027620946)
 </div>
 
-Mod that adds a handy tooltip that reveals some info about the block you aim with your cursor!
+A FoxLoader (ReIndev mod loader) client-side modification that adds a handy tooltip which reveals some info about the block you aim with your cursor.
 
-The 1.0 version is the first release with basic features. However, I'm planning to expand this mod in the future.
+Basically, the nearest mod that come to my mind is `WAILA`, but this mod is specifically designed for `ReIndev` mechanics and environment.
 
-You can contribute or provide suggestions for new features!
+At this moment, the mod shows such information:
+- Basic information (block name, id/meta if enabled, mod source)
+- Specific information for each block individually:
+	- Honeycomb: empty/filled status
+	- Pistons (+ sticky variant): enabled/disabled status
+	- Gears: power value
+	- Carved Pumpkins and Watermelons: carving type
+	- Dungeon Chest: loot status
+	- Cake and Pie blocks: pieces left
+	- Wait Block: wait delay
+	- Bonsai Planter: planted tree type and growth information
+	- Cauldron: potion information
+	- Forge, Refridgifreezer, Furnace, Incinerator: progress and inventory contents
 
-![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_1.png)
+**Attention!** For some blocks, such as `Bonsai Planter`, `Cauldron`, `Forge`, `Refridgifreezer`, `Furnace` and `Incinerator`, you need to hold `SHIFT` key to see the details!
+
 
 ![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_2.png)
 
 ![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_3.png)
 
 ![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_4.png)
+
+## Configuration
+
+The tooltip can be easily configured and has own menu, just follow `Mods` -> `ICY` -> `Configure mod`.
+
+Current tweakable options include:
+- Show/hide ID and metadata of a block
+- Show/hide harvestability icon
+- Use either static color or gradient of two colors (ARGB) for tooltip background
+- Change X/Y offset location of the tooltip
+- Change the global location (anchor) of the tooltip
 
 ## Installation
 
