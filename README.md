@@ -36,6 +36,8 @@ At this moment, the mod shows such information:
 
 ![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_4.png)
 
+![Showcase](https://github.com/tracystacktrace/ICY/raw/main/docs/showcase_5.png)
+
 ## Configuration
 
 The tooltip can be easily configured and has own menu, just follow `Mods` -> `ICY` -> `Configure mod`.

@@ -1,7 +1,7 @@
 
 ## [1.0.4] - 2025-07-08
 
-- Update toolchain to FoxLoader `2.0-alpha32` (2.9_03)
+- Updated toolchain to FoxLoader `2.0-alpha32` (2.9_03)
 - Instead of dirty mixing, using `GuiConfigProviderConfigObject` for config menu handler
 - Fixed nether portal name in tooltip
 - Added basic entity tooltip that can show: name, nature, source and entity id (if id/meta enabled in configs)
