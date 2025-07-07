@@ -5,6 +5,8 @@ import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.children.BlockCarvedPumpkin;
 import net.minecraft.common.entity.Entity;
 import net.minecraft.common.entity.EntityLiving;
+import net.minecraft.common.entity.EntityWaterMob;
+import net.minecraft.common.entity.animals.EntityAnimal;
 import net.minecraft.common.entity.monsters.*;
 import net.minecraft.common.entity.other.EntityHangingPainting;
 import net.minecraft.common.item.ItemStack;
@@ -57,7 +59,7 @@ public final class ICYResolver {
 
         //reference to displaying name
         if (raw_name.equals(cooked_name)) {
-            cooked_name = Translation.quickTranslate(getDisplayItemStack(block, meta).getItemName() + ".name");
+            cooked_name = getDisplayItemStack(block, meta).getDisplayName();
         }
 
         //put id and meta
@@ -224,6 +226,12 @@ public final class ICYResolver {
         if (id == Blocks.SCARIBOU_SKULL.blockID || id == Blocks.SCARIBOU_SKULL_WALL_VARIANT.blockID)
             return new ItemStack(Items.SCARIBOU_SKULL);
 
+        if (id == Blocks.PORTAL.blockID) {
+            final ItemStack stack = new ItemStack(Blocks.PORTAL);
+            stack.setItemName(Translation.quickTranslate("tile.nether_portal.name"));
+            return stack;
+        }
+
         return new ItemStack(block, 1, meta);
     }
 
@@ -248,5 +256,15 @@ public final class ICYResolver {
         }
 
         return null;
+    }
+
+    public static String resolveEntityPrefix(Entity entity) {
+        if (entity != null) {
+            if (EntityWaterMob.class.isAssignableFrom(entity.getClass())) return "\u00A7b";
+            if (EntityAnimal.class.isAssignableFrom(entity.getClass())) return "\u00A7a";
+            if (EntityMonster.class.isAssignableFrom(entity.getClass())) return "\u00A7c";
+            if (entity instanceof EntityHangingPainting) return "\u00A7e";
+        }
+        return "\u00A7d";
     }
 }

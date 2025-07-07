@@ -66,12 +66,12 @@ public class TinyCache {
     public void buildEntityCache(FontRenderer fontRenderer, Entity entity) {
         this.renderLocation = ICYInit.CONFIG.location;
 
-        String firstLine = entity.getEntityName();
-        if(ICYInit.CONFIG.showIDandMetadata) {
+        String firstLine = ICYResolver.resolveEntityPrefix(entity) + String.join(" ", entity.getEntityName().split("(?<!^)(?=[A-Z])"));
+        if (ICYInit.CONFIG.showIDandMetadata) {
             firstLine += " \u00A7r(" + entity.entityId + ")";
         }
         this.itemStack = ICYResolver.getEntitySkullPossible(entity);
-        this.strings = new String[] {firstLine, "\u00A79\u00A7oReIndev"};
+        this.strings = new String[]{firstLine, "\u00A79\u00A7oReIndev"};
         this.largestStrWidth = ICYInit.getLargestString(fontRenderer, this.strings);
 
         this.x = this.getRealX();

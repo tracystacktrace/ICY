@@ -83,6 +83,7 @@ tile.flowing_water.name=Water
 tile.flowing_lava.name=Lava
 tile.flowing_acid.name=Acid
 tile.flowing_sanguis.name=Sanguis
+tile.nether_portal.name=Nether Portal
 
 carving.carved=Original
 
