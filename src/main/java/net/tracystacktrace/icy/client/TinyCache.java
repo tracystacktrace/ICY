@@ -4,10 +4,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.common.block.Block;
+import net.minecraft.common.entity.Entity;
 import net.minecraft.common.item.ItemStack;
 import net.tracystacktrace.icy.ICYInit;
 
 public class TinyCache {
+
+    protected byte code = 0; //1 - for block, 2 - for entity
 
     protected String[] strings;
     protected ItemStack itemStack;
@@ -22,6 +25,8 @@ public class TinyCache {
     protected boolean hasAnyActiveString;
     protected String[] activeCacheStrings;
     protected int largestActiveString;
+
+    protected int entityID = -1;
 
     /**
      * Clears the cache
@@ -39,9 +44,11 @@ public class TinyCache {
         this.hasAnyActiveString = false;
         this.activeCacheStrings = null;
         this.largestActiveString = 0;
+        this.entityID = -1;
+        this.code = 0;
     }
 
-    public void buildCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
+    public void buildBlockCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
         this.block = block.blockID;
         this.meta = meta;
         this.renderLocation = ICYInit.CONFIG.location;
@@ -53,9 +60,26 @@ public class TinyCache {
 
         this.x = this.getRealX();
         this.y = this.getRealY();
+        this.code = 1;
     }
 
-    public void bakeActiveCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
+    public void buildEntityCache(FontRenderer fontRenderer, Entity entity) {
+        this.renderLocation = ICYInit.CONFIG.location;
+
+        String firstLine = entity.getEntityName();
+        if(ICYInit.CONFIG.showIDandMetadata) {
+            firstLine += " \u00A7r(" + entity.entityId + ")";
+        }
+        this.itemStack = ICYResolver.getEntitySkullPossible(entity);
+        this.strings = new String[] {firstLine, "\u00A79\u00A7oReIndev"};
+        this.largestStrWidth = ICYInit.getLargestString(fontRenderer, this.strings);
+
+        this.x = this.getRealX();
+        this.y = this.getRealY();
+        this.code = 2;
+    }
+
+    public void buildActiveBlockCache(FontRenderer fontRenderer, Block block, int meta, int x, int y, int z) {
         this.activeCacheStrings = ICYResolver.bakeActiveLines(this.itemStack, block, meta, x, y, z);
         this.largestActiveString = (this.activeCacheStrings != null) ? ICYInit.getLargestString(fontRenderer, activeCacheStrings) : 0;
         this.hasAnyActiveString = this.activeCacheStrings != null;

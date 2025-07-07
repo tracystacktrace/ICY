@@ -1,8 +1,11 @@
 package net.tracystacktrace.icy;
 
+import com.fox2code.foxloader.client.gui.GuiConfigProviderConfigObject;
 import com.fox2code.foxloader.config.ConfigEntry;
+import net.minecraft.client.gui.GuiScreen;
+import net.tracystacktrace.icy.client.gui.GuiConfigHome;
 
-public class ICYConfig {
+public class ICYConfig implements GuiConfigProviderConfigObject {
 
     @ConfigEntry
     public boolean enable = true;
@@ -37,4 +40,8 @@ public class ICYConfig {
     @ConfigEntry(lowerBounds = 0, upperBounds = 255)
     public short offset_y = 5;
 
+    @Override
+    public GuiScreen provideConfigScreen(GuiScreen parent) {
+        return new GuiConfigHome();
+    }
 }

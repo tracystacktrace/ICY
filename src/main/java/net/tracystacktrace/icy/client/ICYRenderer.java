@@ -27,7 +27,9 @@ public class ICYRenderer extends Gui {
     public void renderICY(FontRenderer fontRenderer) {
         final MovingObjectPosition omo = Minecraft.getInstance().objectMouseOver;
         if (omo == null) {
-            cache.clear();
+            if (cache.code != 0) {
+                cache.clear();
+            }
             return;
         }
 
@@ -36,8 +38,11 @@ public class ICYRenderer extends Gui {
             case TILE -> {
                 final Block block = WorldHelper.getBlock(omo);
 
-                if (block == null) {
+                if (cache.code != 1) {
                     cache.clear();
+                }
+
+                if (block == null) {
                     return;
                 }
 
@@ -45,22 +50,36 @@ public class ICYRenderer extends Gui {
 
                 if (block.blockID != cache.block || meta != cache.meta || cache.renderLocation != ICYInit.CONFIG.location) {
                     cache.dumpActiveCache();
-                    cache.buildCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                    cache.buildBlockCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
                 } else {
                     if (ICYInit.showActiveCache()) {
-                        cache.bakeActiveCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
+                        cache.buildActiveBlockCache(fontRenderer, block, meta, omo.blockX, omo.blockY, omo.blockZ);
                     } else {
                         cache.dumpActiveCache();
                     }
                 }
 
                 this.renderItemPlaque(fontRenderer);
-                break;
+                return;
             }
             case ENTITY -> {
                 final Entity entity = omo.entityHit;
 
-                break;
+                if (cache.code != 2) {
+                    cache.clear();
+                }
+
+                if (entity == null) {
+                    return;
+                }
+
+                if (entity.entityId != cache.entityID) {
+                    cache.dumpActiveCache();
+                    cache.buildEntityCache(fontRenderer, entity);
+                }
+
+                this.renderEntityPlaque(fontRenderer);
+                return;
             }
         }
     }
@@ -129,6 +148,43 @@ public class ICYRenderer extends Gui {
         RenderSystem.enableLighting();
         RenderHelper.disableStandardItemLighting();
         GL11.glPopMatrix();
+    }
+
+    public void renderEntityPlaque(FontRenderer fontRenderer) {
+        final int realX = cache.getX();
+        final int realY = cache.getY() + (this.shouldMoveUp() ? -25 : 0);
+
+        this.drawGradientRect(
+                realX, realY,
+                realX + cache.getPlaqueWidth(),
+                realY + cache.getPlaqueHeight(),
+                ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.startPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor,
+                ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
+        );
+
+        for (int i = 0; i < cache.strings.length; i++) {
+            fontRenderer.drawStringWithShadow(cache.strings[i], realX + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
+        }
+
+        if (cache.itemStack != null) {
+            GL11.glPushMatrix();
+            RenderHelper.enableStandardItemLighting();
+            RenderSystem.color(1.0f, 1.0f, 1.0f, 1.0f);
+            RenderSystem.disableLighting();
+            RenderSystem.enableDepthTest();
+
+            renderItem.drawItemIntoGui(
+                    fontRenderer,
+                    Minecraft.getInstance().renderEngine,
+                    cache.itemStack, cache.itemStack.getIconIndex(),
+                    realX + 5, realY + 5
+            );
+
+            RenderSystem.disableDepthTest();
+            RenderSystem.enableLighting();
+            RenderHelper.disableStandardItemLighting();
+            GL11.glPopMatrix();
+        }
     }
 
     private boolean shouldMoveUp() {

@@ -130,7 +130,6 @@ public class GuiConfigHome extends GuiScreen {
         }
     }
 
-    @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     @Override
     public void drawScreen(float mouseX, float mouseY, float deltaTicks) {
         this.drawDefaultBackground();

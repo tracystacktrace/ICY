@@ -3,6 +3,10 @@ package net.tracystacktrace.icy.client;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.block.Blocks;
 import net.minecraft.common.block.children.BlockCarvedPumpkin;
+import net.minecraft.common.entity.Entity;
+import net.minecraft.common.entity.EntityLiving;
+import net.minecraft.common.entity.monsters.*;
+import net.minecraft.common.entity.other.EntityHangingPainting;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.tracystacktrace.hellogui.Translation;
@@ -221,5 +225,28 @@ public final class ICYResolver {
             return new ItemStack(Items.SCARIBOU_SKULL);
 
         return new ItemStack(block, 1, meta);
+    }
+
+    public static ItemStack getEntitySkullPossible(Entity entity) {
+        if (entity instanceof EntityHangingPainting) return new ItemStack(Items.PAINTING);
+        if (entity instanceof EntityNetherZombie) return new ItemStack(Items.NETHER_ZOMBIE_SKULL);
+        if (entity instanceof EntityZombie) return new ItemStack(Items.ZOMBIE_SKULL);
+        if (entity instanceof EntityWitherSkeleton) return new ItemStack(Items.WITHER_SKELETON_SKULL);
+        if (entity instanceof EntitySkeleton) return new ItemStack(Items.SKELETON_SKULL);
+        if (entity instanceof EntityCreeper) return new ItemStack(Items.CREEPER_SKULL);
+        if (entity instanceof EntitySpider) return new ItemStack(Items.SPIDER_SKULL);
+        if (entity instanceof EntityDemon) return new ItemStack(Items.DEMON_SKULL);
+        if (entity instanceof EntityZombiePigmen) return new ItemStack(Items.ZOMBIE_PIGMEN_SKULL);
+        if (entity instanceof EntityBlaze) return new ItemStack(Items.BLAZE_SKULL);
+        if (entity instanceof EntityScaribou) return new ItemStack(Items.SCARIBOU_SKULL);
+
+        if (entity instanceof EntityLiving living) {
+            final ItemStack lol = living.getSpawnEgg();
+            if (lol != null) {
+                return lol.copy();
+            }
+        }
+
+        return null;
     }
 }

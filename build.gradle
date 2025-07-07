@@ -4,14 +4,14 @@ buildscript {
         maven { url 'https://cdn.fox2code.com/maven' }
     }
     dependencies {
-        classpath('com.fox2code.FoxLoader:dev:2.0-alpha22')
+        classpath('com.fox2code.FoxLoader:dev:2.0-alpha32')
     }
 }
 
 apply plugin: 'foxloader.dev'
 
 group = 'net.tracystacktrace'
-version = '1.0.3'
+version = '1.0.4'
 
 configurations {
     implAndInclude

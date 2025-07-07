@@ -24,7 +24,7 @@ public class GuiSelectLocation extends GuiScreen {
         if (guiButton.enabled) {
             ICYInit.CONFIG.location = (byte) guiButton.id;
             ICYInit.forceSaveConfig();
-            ICYInit.RENDERER.getCache().buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
+            ICYInit.RENDERER.getCache().buildBlockCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
         }
     }
 
@@ -53,7 +53,7 @@ public class GuiSelectLocation extends GuiScreen {
     public void drawScreen(float mouseX, float mouseY, float deltaTicks) {
         this.drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, deltaTicks);
-        ICYInit.RENDERER.getCache().buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
+        ICYInit.RENDERER.getCache().buildBlockCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
         ICYInit.RENDERER.renderItemPlaque(fontRenderer);
     }
 }

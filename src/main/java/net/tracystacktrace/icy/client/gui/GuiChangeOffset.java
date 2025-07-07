@@ -61,7 +61,7 @@ public class GuiChangeOffset extends GuiMultipleSliders {
         this.privateTempCache[1] = ICYInit.CONFIG.offset_y;
         ICYInit.CONFIG.offset_x = (short) this.value[0];
         ICYInit.CONFIG.offset_y = (short) this.value[1];
-        ICYInit.RENDERER.getCache().buildCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
+        ICYInit.RENDERER.getCache().buildBlockCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
         ICYInit.RENDERER.renderItemPlaque(fontRenderer);
         ICYInit.CONFIG.offset_x = this.privateTempCache[0];
         ICYInit.CONFIG.offset_y = this.privateTempCache[1];
