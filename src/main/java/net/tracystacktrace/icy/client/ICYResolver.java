@@ -98,7 +98,7 @@ public final class ICYResolver {
         return "\u00A79\u00A7o" + stack.getItem().getRegisteringMod().getModName();
     }
 
-    public static ItemStack getDisplayItemStack(@NotNull Block block, int meta) {
+    public static @NotNull ItemStack getDisplayItemStack(@NotNull Block block, int meta) {
         final int id = block.blockID;
 
         if (id == Blocks.SIGN_POST.blockID || id == Blocks.WALL_SIGN.blockID) return new ItemStack(Items.SIGN);
@@ -218,7 +218,7 @@ public final class ICYResolver {
         return new ItemStack(block, 1, meta);
     }
 
-    public static ItemStack getEntitySkullPossible(Entity entity) {
+    public static @Nullable ItemStack getEntitySkullPossible(@Nullable Entity entity) {
         if (entity instanceof EntityHangingPainting) return new ItemStack(Items.PAINTING);
         if (entity instanceof EntityNetherZombie) return new ItemStack(Items.NETHER_ZOMBIE_SKULL);
         if (entity instanceof EntityZombie) return new ItemStack(Items.ZOMBIE_SKULL);
@@ -241,7 +241,7 @@ public final class ICYResolver {
         return null;
     }
 
-    public static String resolveEntityPrefix(Entity entity) {
+    public static @NotNull String resolveEntityPrefix(@Nullable Entity entity) {
         if (entity != null) {
             if (EntityWaterMob.class.isAssignableFrom(entity.getClass())) return "\u00A7b";
             if (EntityAnimal.class.isAssignableFrom(entity.getClass())) return "\u00A7a";

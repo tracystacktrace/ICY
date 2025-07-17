@@ -4,6 +4,7 @@ import com.fox2code.foxloader.client.gui.GuiConfigProviderConfigObject;
 import com.fox2code.foxloader.config.ConfigEntry;
 import net.minecraft.client.gui.GuiScreen;
 import net.tracystacktrace.icy.client.gui.GuiConfigHome;
+import org.jetbrains.annotations.Nullable;
 
 public class ICYConfig implements GuiConfigProviderConfigObject {
 
@@ -41,7 +42,7 @@ public class ICYConfig implements GuiConfigProviderConfigObject {
     public short offset_y = 5;
 
     @Override
-    public GuiScreen provideConfigScreen(GuiScreen parent) {
-        return new GuiConfigHome();
+    public GuiScreen provideConfigScreen(@Nullable GuiScreen parent) {
+        return new GuiConfigHome(parent);
     }
 }

@@ -7,12 +7,13 @@ import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.hellogui.func.FloatNormalization;
 import net.tracystacktrace.hellogui.menu.GuiMultipleSliders;
 import net.tracystacktrace.icy.ICYInit;
+import org.jetbrains.annotations.Nullable;
 
 public class GuiChangeOffset extends GuiMultipleSliders {
 
     protected final short[] privateTempCache = new short[2];
 
-    public GuiChangeOffset(GuiScreen parentScreen) {
+    public GuiChangeOffset(@Nullable GuiScreen parentScreen) {
         super(
                 parentScreen,
                 "icy.config.title.offset",

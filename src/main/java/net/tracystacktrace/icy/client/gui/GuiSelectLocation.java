@@ -7,6 +7,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.common.block.Blocks;
 import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.icy.ICYInit;
+import org.jetbrains.annotations.NotNull;
 
 public class GuiSelectLocation extends GuiScreen {
 
@@ -20,9 +21,9 @@ public class GuiSelectLocation extends GuiScreen {
     }
 
     @Override
-    protected void actionPerformed(GuiButton guiButton) {
-        if (guiButton.enabled) {
-            ICYInit.CONFIG.location = (byte) guiButton.id;
+    protected void actionPerformed(@NotNull GuiButton button) {
+        if (button.enabled) {
+            ICYInit.CONFIG.location = (byte) button.id;
             ICYInit.forceSaveConfig();
             ICYInit.RENDERER.getCache().buildBlockCache(Minecraft.getInstance().fontRenderer, Blocks.GRASS, 0, 0, 0, 0);
         }

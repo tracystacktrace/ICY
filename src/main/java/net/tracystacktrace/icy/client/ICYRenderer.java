@@ -12,6 +12,7 @@ import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.physics.MovingObjectPosition;
 import net.tracystacktrace.icy.ICYInit;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 public class ICYRenderer extends Gui {
@@ -24,7 +25,7 @@ public class ICYRenderer extends Gui {
         return this.cache;
     }
 
-    public void renderICY(FontRenderer fontRenderer) {
+    public void renderICY(@NotNull FontRenderer fontRenderer) {
         final MovingObjectPosition omo = Minecraft.getInstance().objectMouseOver;
         if (omo == null) {
             if (cache.typeShowing != TinyCache.SHOWING_NONE) {
@@ -84,7 +85,7 @@ public class ICYRenderer extends Gui {
         }
     }
 
-    public void renderItemPlaque(FontRenderer fontRenderer) {
+    public void renderItemPlaque(@NotNull FontRenderer fontRenderer) {
         final int realX = cache.getX();
         final int realY = cache.getY() + (this.shouldMoveUp() ? -25 : 0);
 
@@ -150,7 +151,7 @@ public class ICYRenderer extends Gui {
         GL11.glPopMatrix();
     }
 
-    public void renderEntityPlaque(FontRenderer fontRenderer) {
+    public void renderEntityPlaque(@NotNull FontRenderer fontRenderer) {
         final int realX = cache.getX();
         final int realY = cache.getY() + (this.shouldMoveUp() ? -25 : 0);
 

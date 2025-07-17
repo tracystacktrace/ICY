@@ -16,7 +16,7 @@ public class HoneycombResolver implements IResolver {
 
     @Override
     public String @Nullable [] bake(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
-        if(meta == 2 || meta == 3) {
+        if (meta == 2 || meta == 3) {
             return new String[]{
                     Translation.quickTranslate(meta == 2 ? "icy.hint.honeycomb.filled" : "icy.hint.honeycomb.empty")
             };

@@ -6,10 +6,16 @@ import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.hellogui.element.ButtonToggle;
 import net.tracystacktrace.hellogui.menu.GuiChangeARGB;
 import net.tracystacktrace.icy.ICYInit;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class GuiConfigHome extends GuiScreen {
 
     private final String title = Translation.quickTranslate("icy.config.title");
+
+    public GuiConfigHome(@Nullable GuiScreen parentScreen) {
+        this.parentScreen = parentScreen;
+    }
 
     @Override
     public void initGui() {
@@ -39,27 +45,27 @@ public class GuiConfigHome extends GuiScreen {
     }
 
     @Override
-    protected void actionPerformed(GuiButton guiButton) {
-        if (guiButton.enabled) {
-            switch (guiButton.id) {
+    protected void actionPerformed(@NotNull GuiButton button) {
+        if (button.enabled) {
+            switch (button.id) {
                 //toggle icy
                 case 0: {
-                    ((ButtonToggle) guiButton).toggleValue();
-                    ICYInit.CONFIG.enable = ((ButtonToggle) guiButton).getValue();
+                    ((ButtonToggle) button).toggleValue();
+                    ICYInit.CONFIG.enable = ((ButtonToggle) button).getValue();
                     ICYInit.forceSaveConfig();
                     return;
                 }
                 //toggle harvestability
                 case 1: {
-                    ((ButtonToggle) guiButton).toggleValue();
-                    ICYInit.CONFIG.showBlockHarvestability = ((ButtonToggle) guiButton).getValue();
+                    ((ButtonToggle) button).toggleValue();
+                    ICYInit.CONFIG.showBlockHarvestability = ((ButtonToggle) button).getValue();
                     ICYInit.forceSaveConfig();
                     return;
                 }
                 //toggle color
                 case 2: {
-                    ((ButtonToggle) guiButton).toggleValue();
-                    ICYInit.CONFIG.gradientColor = ((ButtonToggle) guiButton).getValue();
+                    ((ButtonToggle) button).toggleValue();
+                    ICYInit.CONFIG.gradientColor = ((ButtonToggle) button).getValue();
                     this.updateColorState();
                     ICYInit.forceSaveConfig();
                     return;
@@ -121,8 +127,8 @@ public class GuiConfigHome extends GuiScreen {
 
                 //id/meta
                 case 8: {
-                    ((ButtonToggle) guiButton).toggleValue();
-                    ICYInit.CONFIG.showIDandMetadata = ((ButtonToggle) guiButton).getValue();
+                    ((ButtonToggle) button).toggleValue();
+                    ICYInit.CONFIG.showIDandMetadata = ((ButtonToggle) button).getValue();
                     ICYInit.forceSaveConfig();
                     return;
                 }
