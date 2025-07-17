@@ -162,8 +162,10 @@ public class ICYRenderer extends Gui {
                 ICYInit.CONFIG.gradientColor ? ICYInit.CONFIG.endPlaqueGradient : ICYInit.CONFIG.staticPlaqueColor
         );
 
+        final int textOffsetX = realX + (cache.displayItemStack != null ? 28 : 3);
+
         for (int i = 0; i < cache.displayStrings.length; i++) {
-            fontRenderer.drawStringWithShadow(cache.displayStrings[i], realX + 28, realY + 4 + 12 * i, 0xFFFFFFFF);
+            fontRenderer.drawStringWithShadow(cache.displayStrings[i], textOffsetX, realY + 4 + 12 * i, 0xFFFFFFFF);
         }
 
         if (cache.displayItemStack != null) {
