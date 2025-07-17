@@ -53,20 +53,10 @@ public final class ICYResolver {
     ) {
         final List<String> collector = new ArrayList<>(3);
 
-        //add name
-        final String raw_name = stack.getItemName() + ".name";
-        String cooked_name = Translation.quickTranslate(raw_name);
-
-        //reference to displaying name
-        if (raw_name.equals(cooked_name)) {
-            cooked_name = getDisplayItemStack(block, meta).getDisplayName();
-        }
-
-        //put id and meta
-        if (ICYInit.CONFIG.showIDandMetadata) {
-            cooked_name += String.format(" (%d:%d)", stack.getItemID(), meta);
-        }
-
+        //fetch name
+        final String cooked_name = ICYInit.CONFIG.showIDandMetadata ?
+                String.format("%s (%d:%d)", stack.getDisplayName(), stack.getItemID(), meta) :
+                stack.getDisplayName();
         collector.add(cooked_name);
 
         //add custom lines/info
@@ -115,7 +105,7 @@ public final class ICYResolver {
         return "\u00A79\u00A7o" + stack.getItem().getRegisteringMod().getModName();
     }
 
-    public static ItemStack getDisplayItemStack(Block block, int meta) {
+    public static ItemStack getDisplayItemStack(@NotNull Block block, int meta) {
         final int id = block.blockID;
 
         if (id == Blocks.SIGN_POST.blockID || id == Blocks.WALL_SIGN.blockID) return new ItemStack(Items.SIGN);
