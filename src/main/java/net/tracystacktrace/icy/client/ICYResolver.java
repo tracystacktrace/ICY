@@ -17,12 +17,8 @@ import net.tracystacktrace.icy.resolver.IResolver;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-@SuppressWarnings({"ManualArrayToCollectionCopy", "UseBulkOperation"})
 public final class ICYResolver {
 
     private static final Set<IResolver> passiveResolvers = new HashSet<>();
@@ -59,15 +55,14 @@ public final class ICYResolver {
                 stack.getDisplayName();
         collector.add(cooked_name);
 
-        //add custom lines/info
+        //add custom lines/info when it's actually in-game
+        //otherwise ignore in config gui
         if (ICYInit.isScreenEmpty()) {
             for (IResolver resolver : passiveResolvers) {
                 if (resolver.passes(stack, block, meta, x, y, z)) {
                     final String[] passResult = resolver.bake(stack, block, meta, x, y, z);
                     if (passResult != null) {
-                        for (String d : passResult) {
-                            collector.add(d);
-                        }
+                        Collections.addAll(collector, passResult);
                     }
                 }
             }
@@ -88,11 +83,9 @@ public final class ICYResolver {
 
         for (IResolver resolver : activeResolvers) {
             if (resolver.passes(itemStack, block, meta, x, y, z)) {
-                String[] passResult = resolver.bake(itemStack, block, meta, x, y, z);
+                final String[] passResult = resolver.bake(itemStack, block, meta, x, y, z);
                 if (passResult != null) {
-                    for (String d : passResult) {
-                        collector.add(d);
-                    }
+                    Collections.addAll(collector, passResult);
                 }
             }
         }
