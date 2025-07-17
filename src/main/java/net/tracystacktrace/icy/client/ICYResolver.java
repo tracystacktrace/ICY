@@ -50,10 +50,10 @@ public final class ICYResolver {
         final List<String> collector = new ArrayList<>(3);
 
         //fetch name
-        final String cooked_name = ICYInit.CONFIG.showIDandMetadata ?
+        collector.add(ICYInit.CONFIG.showIDandMetadata ?
                 String.format("%s (%d:%d)", stack.getDisplayName(), stack.getItemID(), meta) :
-                stack.getDisplayName();
-        collector.add(cooked_name);
+                stack.getDisplayName()
+        );
 
         //add custom lines/info when it's actually in-game
         //otherwise ignore in config gui

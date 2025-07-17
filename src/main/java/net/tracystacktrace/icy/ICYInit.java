@@ -67,12 +67,6 @@ public class ICYInit extends Mod {
     }
 
     @ApiStatus.Internal
-    public static boolean isSingleplayer() {
-        return Minecraft.getInstance().theWorld != null &&
-                !Minecraft.getInstance().theWorld.isRemote;
-    }
-
-    @ApiStatus.Internal
     public static boolean isScreenEmpty() {
         return Minecraft.getInstance().currentScreen == null;
     }
