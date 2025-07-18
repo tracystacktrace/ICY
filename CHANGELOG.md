@@ -1,4 +1,10 @@
 
+## [1.0.5] - TBA
+
+- Small micro optimizations of general render and fetch code.
+- When a mob's display ItemStack is empty, the plaque will not render this space.
+- Additional null checks against crashing when getting data from TileEntity.
+
 ## [1.0.4] - 2025-07-08
 
 - Updated toolchain to FoxLoader `2.0-alpha32` (2.9_03)
