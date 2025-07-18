@@ -14,15 +14,11 @@ public class PotionEjector {
     record EffectCompact(int id, int ticks, int level) {
         public String format() {
             final int totalSeconds = ticks / 20;
-
-            String effect_name = Translation.quickTranslate("effect." + Effects.EFFECTS_LIST[id].effectName + ".name");
-            if (this.level != 0) {
-                effect_name += " " + this.level;
-            }
+            final String name = Translation.quickTranslate("effect." + Effects.EFFECTS_LIST[id].effectName + ".name");
 
             return String.format(
                     Translation.quickTranslate("icy.cauldron.1.effect"),
-                    effect_name,
+                    this.level != 0 ? String.format("%s %d", name, this.level) : name,
                     String.format("%02d:%02d", totalSeconds / 60, totalSeconds % 60)
             );
         }

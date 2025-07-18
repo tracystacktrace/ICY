@@ -6,6 +6,7 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.entity.Entity;
 import net.minecraft.common.item.ItemStack;
+import net.tracystacktrace.hellogui.GameFeatures;
 import net.tracystacktrace.icy.ICYInit;
 import org.jetbrains.annotations.NotNull;
 
@@ -67,7 +68,7 @@ public class TinyCache {
         this.displayItemStack = ICYResolver.getDisplayItemStack(block, meta);
         this.displayStrings = ICYResolver.bakeLines(this.displayItemStack, block, meta, x, y, z);
         this.largestDisplayString = ICYInit.getLargestString(fontRenderer, this.displayStrings);
-        this.harvestable = (!ICYInit.isScreenEmpty()) || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
+        this.harvestable = (!GameFeatures.isScreenEmpty()) || Minecraft.getInstance().thePlayer.canHarvestBlock(block);
 
         this.x = this.getRealX();
         this.y = this.getRealY();

@@ -11,6 +11,7 @@ import net.minecraft.common.entity.monsters.*;
 import net.minecraft.common.entity.other.EntityHangingPainting;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
+import net.tracystacktrace.hellogui.GameFeatures;
 import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.icy.ICYInit;
 import net.tracystacktrace.icy.resolver.IResolver;
@@ -57,7 +58,7 @@ public final class ICYResolver {
 
         //add custom lines/info when it's actually in-game
         //otherwise ignore in config gui
-        if (ICYInit.isScreenEmpty()) {
+        if (GameFeatures.isScreenEmpty()) {
             for (IResolver resolver : passiveResolvers) {
                 if (resolver.passes(stack, block, meta, x, y, z)) {
                     final String[] passResult = resolver.bake(stack, block, meta, x, y, z);

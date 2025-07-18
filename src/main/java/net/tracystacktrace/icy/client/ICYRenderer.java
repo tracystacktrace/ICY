@@ -11,6 +11,7 @@ import net.minecraft.common.entity.Entity;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.util.physics.MovingObjectPosition;
+import net.tracystacktrace.hellogui.GameFeatures;
 import net.tracystacktrace.icy.ICYInit;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
@@ -191,7 +192,7 @@ public class ICYRenderer extends Gui {
     }
 
     private boolean shouldMoveUp() {
-        return ICYInit.isScreenEmpty() &&
+        return GameFeatures.isScreenEmpty() &&
                 cache.renderLocation == 4 &&
                 Minecraft.getInstance().thePlayer.getHeldItem() != null &&
                 Minecraft.getInstance().hotbarTickCounter != 0;
