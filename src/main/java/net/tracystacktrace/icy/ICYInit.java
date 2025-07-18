@@ -18,7 +18,6 @@ import org.jetbrains.annotations.ApiStatus;
 import org.lwjgl.input.Keyboard;
 
 public class ICYInit extends Mod {
-
     public static final ICYRenderer RENDERER = new ICYRenderer();
     public static final ICYConfig CONFIG = new ICYConfig();
     private static ModContainer INTERNAL_CONTAINER;

@@ -21,7 +21,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.*;
 
 public final class ICYResolver {
-
     private static final Set<IResolver> passiveResolvers = new HashSet<>();
     private static final Set<IResolver> activeResolvers = new HashSet<>();
 
@@ -43,7 +42,7 @@ public final class ICYResolver {
         activeResolvers.add(resolver);
     }
 
-    public static String @NotNull [] bakeLines(
+    public static @NotNull String @NotNull [] bakeLines(
             @NotNull ItemStack stack,
             @NotNull Block block,
             int meta, int x, int y, int z
@@ -75,7 +74,7 @@ public final class ICYResolver {
         return collector.toArray(new String[0]);
     }
 
-    public static String @Nullable [] bakeActiveLines(
+    public static @NotNull String @Nullable [] bakeActiveLines(
             @NotNull ItemStack itemStack,
             @NotNull Block block,
             int meta, int x, int y, int z

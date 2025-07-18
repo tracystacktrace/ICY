@@ -17,12 +17,11 @@ import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 public class ICYRenderer extends Gui {
-
     protected final RenderItem renderItem = new RenderItem();
     protected final ItemStack harvestIconItem = new ItemStack(Items.IRON_PICKAXE);
     protected final TinyCache cache = new TinyCache();
 
-    public TinyCache getCache() {
+    public @NotNull TinyCache getCache() {
         return this.cache;
     }
 

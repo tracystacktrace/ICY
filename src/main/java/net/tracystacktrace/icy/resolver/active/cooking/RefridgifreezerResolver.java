@@ -22,6 +22,10 @@ public class RefridgifreezerResolver implements IResolver {
     public String @Nullable [] bake(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
         final TileEntityRefridgifreezer freezer = WorldHelper.getTileEntity(x, y, z);
 
+        if (freezer == null) {
+            return null;
+        }
+
         final String[] collector = new String[4];
         byte cindex = 0;
 

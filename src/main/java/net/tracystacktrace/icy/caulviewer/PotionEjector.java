@@ -5,12 +5,13 @@ import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
 import net.minecraft.common.item.children.ItemPotion;
 import net.tracystacktrace.hellogui.Translation;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PotionEjector {
+public final class PotionEjector {
     record EffectCompact(int id, int ticks, int level) {
         public String format() {
             final int totalSeconds = ticks / 20;
@@ -24,7 +25,7 @@ public class PotionEjector {
         }
     }
 
-    public static String[] getPotionEffects(ItemStack potionStack) {
+    public static @NotNull String @NotNull [] getPotionEffects(@NotNull ItemStack potionStack) {
         final List<EffectCompact> effects = new ArrayList<>();
         final ItemPotion potionItem = (ItemPotion) Items.POTION;
 
@@ -41,13 +42,13 @@ public class PotionEjector {
                 .toArray(String[]::new);
     }
 
-    private static void handleCursedPotion(ItemStack potionStack, List<EffectCompact> effects) {
+    private static void handleCursedPotion(@NotNull ItemStack potionStack, @NotNull List<@NotNull EffectCompact> effects) {
         if (potionStack.getItemID() == Items.CURSED_POTION.itemID) {
             effects.add(new EffectCompact(Effects.CURSE.effectID, 600, 0));
         }
     }
 
-    private static void handleRegularPotions(ItemPotion potionItem, int potionState, boolean isEnhanced, List<EffectCompact> effects) {
+    private static void handleRegularPotions(@NotNull ItemPotion potionItem, int potionState, boolean isEnhanced, @NotNull List<@NotNull EffectCompact> effects) {
         final int primaryEffect = potionItem.getPrimaryEffectFromDamage(potionState);
         final int secondaryEffect = potionItem.getSecondaryEffectFromDamage(potionState);
 
@@ -58,7 +59,7 @@ public class PotionEjector {
         }
     }
 
-    private static void handleNormalEffects(int primaryEffect, int secondaryEffect, boolean isEnhanced, List<EffectCompact> effects) {
+    private static void handleNormalEffects(int primaryEffect, int secondaryEffect, boolean isEnhanced, @NotNull List<@NotNull EffectCompact> effects) {
         if (primaryEffect != secondaryEffect) {
             effects.add(new EffectCompact(secondaryEffect, isEnhanced ? 4800 : 1200, 0));
             effects.add(new EffectCompact(primaryEffect, 1200, 0));
@@ -67,7 +68,7 @@ public class PotionEjector {
         }
     }
 
-    private static void handleSpecialEffects(int primaryEffect, List<EffectCompact> effects) {
+    private static void handleSpecialEffects(int primaryEffect, @NotNull List<@NotNull EffectCompact> effects) {
         final int amplifier = (primaryEffect == 10) ? 11 : 127;
         effects.add(new EffectCompact(primaryEffect, 9600, amplifier));
     }

@@ -7,7 +7,6 @@ import net.tracystacktrace.icy.client.gui.GuiConfigHome;
 import org.jetbrains.annotations.Nullable;
 
 public class ICYConfig implements GuiConfigProviderConfigObject {
-
     @ConfigEntry
     public boolean enable = true;
 

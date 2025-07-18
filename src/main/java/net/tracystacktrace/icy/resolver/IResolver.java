@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
  * @since 1.0.2
  */
 public interface IResolver {
-
     /**
      * Checks whenever the input block can be processed by this resolver.
      * <br>
@@ -54,5 +53,4 @@ public interface IResolver {
             @NotNull final Block block,
             int meta, int x, int y, int z
     );
-
 }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class InventoryScanner {
-
     public static @Nullable String collectItemStack(
             @NotNull IInventory inventory,
             char prefix, int start, int end

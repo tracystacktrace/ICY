@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public final class WorldHelper {
-
     public static @Nullable Block getBlock(@NotNull MovingObjectPosition omo) {
         final World world = Minecraft.getInstance().theWorld;
         final int id = world.getBlockId(omo.blockX, omo.blockY, omo.blockZ);
@@ -29,5 +28,4 @@ public final class WorldHelper {
     public static <T extends TileEntity> @Nullable T getTileEntity(int x, int y, int z) {
         return (T) Minecraft.getInstance().theWorld.getBlockTileEntity(x, y, z);
     }
-
 }

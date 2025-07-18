@@ -22,6 +22,10 @@ public class ForgeResolver implements IResolver {
     public String @Nullable [] bake(@NotNull ItemStack displayStack, @NotNull Block block, int meta, int x, int y, int z) {
         final TileEntityBlastFurnace forge = WorldHelper.getTileEntity(x, y, z);
 
+        if (forge == null) {
+            return null;
+        }
+
         final String[] collector = new String[4];
         byte cindex = 0;
 

@@ -10,7 +10,6 @@ import net.tracystacktrace.icy.ICYInit;
 import org.jetbrains.annotations.Nullable;
 
 public class GuiChangeOffset extends GuiMultipleSliders {
-
     protected final short[] privateTempCache = new short[2];
 
     public GuiChangeOffset(@Nullable GuiScreen parentScreen) {

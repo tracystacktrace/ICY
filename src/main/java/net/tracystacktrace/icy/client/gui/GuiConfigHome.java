@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class GuiConfigHome extends GuiScreen {
-
     private final String title = Translation.quickTranslate("icy.config.title");
 
     public GuiConfigHome(@Nullable GuiScreen parentScreen) {

@@ -8,10 +8,10 @@ import net.minecraft.common.block.Blocks;
 import net.tracystacktrace.hellogui.Translation;
 import net.tracystacktrace.icy.ICYInit;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class GuiSelectLocation extends GuiScreen {
-
-    public GuiSelectLocation(GuiScreen parentScreen) {
+    public GuiSelectLocation(@Nullable GuiScreen parentScreen) {
         this.parentScreen = parentScreen;
     }
 
@@ -31,7 +31,6 @@ public class GuiSelectLocation extends GuiScreen {
 
     @Override
     public void initGui() {
-
         final int s_width = this.width / 3;
         final int s_height = this.height / 2;
 
