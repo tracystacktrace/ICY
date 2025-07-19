@@ -4,7 +4,7 @@
 
 <div align="center">
 
-[![Running on - FoxLoader](https://img.shields.io/badge/Running_on-FoxLoader-orange)](https://github.com/Fox2Code/FoxLoader) [![GitHub Release](https://img.shields.io/github/release/tracystacktrace/ICY?include_prereleases=&sort=semver&color=142B36)](https://github.com/tracystacktrace/ICY/releases/) [![License](https://img.shields.io/badge/License-Apache--2.0_license-blue)](#license)
+[![Available on - Modrinth](https://img.shields.io/badge/Available_on-Modrinth-4bab62?logo=modrinth&logoColor=white)](https://modrinth.com/mod/icy-rind) [![Running on - FoxLoader](https://img.shields.io/badge/Running_on-FoxLoader-orange)](https://github.com/Fox2Code/FoxLoader) [![GitHub Release](https://img.shields.io/github/release/tracystacktrace/ICY?include_prereleases=&sort=semver&color=142B36)](https://github.com/tracystacktrace/ICY/releases/) [![License](https://img.shields.io/badge/License-Apache--2.0_license-blue)](#license)
 
 [![Mod Thread - ReIndev Discord](https://img.shields.io/badge/Mod_Thread-ReIndev_Discord-5A66F1?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/channels/870388843076005950/1383151049027620946)
 </div>
