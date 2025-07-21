@@ -1,5 +1,5 @@
 
-## [1.0.5] - TBA
+## [1.0.5] - 2025-07-21
 
 - Small micro optimizations of general render and fetch code.
 - When a mob's display ItemStack is empty, the plaque will not render this space.
