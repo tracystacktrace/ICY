@@ -1,5 +1,14 @@
 
+## [1.0.6] - TBA
+
+[View changes between 1.0.5 with 1.0.6](https://github.com/tracystacktrace/ICY/compare/1.0.5...1.0.6)
+
+- Fixed gunpowder fuse block information output.
+- Added item frames description (shows a display name of hanged item).
+
 ## [1.0.5] - 2025-07-21
+
+[View changes between 1.0.4 with 1.0.5](https://github.com/tracystacktrace/ICY/compare/1.0.4...1.0.5)
 
 - Small micro optimizations of general render and fetch code.
 - When a mob's display ItemStack is empty, the plaque will not render this space.
@@ -7,12 +16,17 @@
 
 ## [1.0.4] - 2025-07-08
 
+[View changes between 1.0.3 with 1.0.4](https://github.com/tracystacktrace/ICY/compare/1.0.3...1.0.4)
+
 - Updated toolchain to FoxLoader `2.0-alpha32` (2.9_03)
 - Instead of dirty mixing, using `GuiConfigProviderConfigObject` for config menu handler
 - Fixed nether portal name in tooltip
 - Added basic entity tooltip that can show: name, nature, source and entity id (if id/meta enabled in configs)
 
 ## [1.0.3] - 2025-06-27
+
+[View changes between 1.0.2 with 1.0.3](https://github.com/tracystacktrace/ICY/compare/1.0.2...1.0.3)
+
 - Fixed a bug tooltip location when focused on blocks with active stats present
 - Fixed original pumpking carving description name
 - Fixed wall hanged skulls names in tooltip
@@ -22,6 +36,9 @@
 - Added honeycomb block passive info
 
 ## [1.0.2] - 2025-06-22
+
+[View changes between 1.0.1 with 1.0.2](https://github.com/tracystacktrace/ICY/compare/1.0.1...1.0.2)
+
 Briefcase update! Updated some branding elements, including big logo!
 
 **Internal changes:**
@@ -49,7 +66,10 @@ Briefcase update! Updated some branding elements, including big logo!
   - Incinerator
 For some blocks, you need to press **SHIFT** to see additional description!
 
-## [1.0.1] - 2025-06-13
+## [1.0.1] - 2025-06-
+
+[View changes between 1.0 with 1.0.1](https://github.com/tracystacktrace/ICY/compare/1.0...1.0.1)
+
 - Small bugfix: includes all item blocks that weren't added in version 1.0 
 
 ## [1.0] - 2025-06-13

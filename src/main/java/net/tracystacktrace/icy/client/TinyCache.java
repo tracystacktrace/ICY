@@ -5,6 +5,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.common.block.Block;
 import net.minecraft.common.entity.Entity;
+import net.minecraft.common.entity.other.EntityHangingItemFrame;
 import net.minecraft.common.item.ItemStack;
 import net.tracystacktrace.hellogui.GameFeatures;
 import net.tracystacktrace.icy.ICYInit;
@@ -86,7 +87,13 @@ public class TinyCache {
             firstLine += " \u00A7r(" + entity.entityId + ")";
         }
         this.displayItemStack = ICYResolver.getEntitySkullPossible(entity);
-        this.displayStrings = new String[]{firstLine, "\u00A79\u00A7oReIndev"};
+
+        if ((entity instanceof EntityHangingItemFrame frame) && frame.getDisplayedItem() != null) {
+            this.displayStrings = new String[]{firstLine, frame.getDisplayedItem().getDisplayName(), "\u00A79\u00A7oReIndev"};
+        } else {
+            this.displayStrings = new String[]{firstLine, "\u00A79\u00A7oReIndev"};
+        }
+
         this.largestDisplayString = ICYInit.getLargestString(fontRenderer, this.displayStrings);
 
         this.x = this.getRealX();

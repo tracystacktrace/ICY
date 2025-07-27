@@ -8,6 +8,7 @@ import net.minecraft.common.entity.EntityLiving;
 import net.minecraft.common.entity.EntityWaterMob;
 import net.minecraft.common.entity.animals.EntityAnimal;
 import net.minecraft.common.entity.monsters.*;
+import net.minecraft.common.entity.other.EntityHangingItemFrame;
 import net.minecraft.common.entity.other.EntityHangingPainting;
 import net.minecraft.common.item.ItemStack;
 import net.minecraft.common.item.Items;
@@ -107,6 +108,7 @@ public final class ICYResolver {
         if (id == Blocks.STICKY_TORCH.blockID) return new ItemStack(Items.STICKY_TORCH);
         if (id == Blocks.PISTON_EXTENSION.blockID && (meta > 7)) return new ItemStack(Blocks.PISTON_STICKY_BASE);
         if (id == Blocks.PISTON_EXTENSION.blockID) return new ItemStack(Blocks.PISTON_BASE);
+        if (id == Blocks.GUNPOWDER_FUSE.blockID) return new ItemStack(Items.GUNPOWDER);
 
         if (id == Blocks.PRICKLY_PEAR.blockID) return new ItemStack(Items.PRICKLY_PEAR);
         if (id == Blocks.LILYPAD.blockID) return new ItemStack(Items.LILYPAD);
@@ -219,6 +221,7 @@ public final class ICYResolver {
     }
 
     public static @Nullable ItemStack getEntitySkullPossible(@Nullable Entity entity) {
+        if (entity instanceof EntityHangingItemFrame) return new ItemStack(Items.ITEM_FRAME);
         if (entity instanceof EntityHangingPainting) return new ItemStack(Items.PAINTING);
         if (entity instanceof EntityNetherZombie) return new ItemStack(Items.NETHER_ZOMBIE_SKULL);
         if (entity instanceof EntityZombie) return new ItemStack(Items.ZOMBIE_SKULL);
@@ -246,7 +249,7 @@ public final class ICYResolver {
             if (EntityWaterMob.class.isAssignableFrom(entity.getClass())) return "\u00A7b";
             if (EntityAnimal.class.isAssignableFrom(entity.getClass())) return "\u00A7a";
             if (EntityMonster.class.isAssignableFrom(entity.getClass())) return "\u00A7c";
-            if (entity instanceof EntityHangingPainting) return "\u00A7e";
+            if (entity instanceof EntityHangingPainting || entity instanceof EntityHangingItemFrame) return "\u00A7e";
         }
         return "\u00A7d";
     }
