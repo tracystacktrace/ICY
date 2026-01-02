@@ -188,11 +188,25 @@ public final class ICYResolver {
         if (id == Blocks.DIMENSIONAL_CHEST.blockID) meta = 0;
         if (id == Blocks.DUNGEON_CHEST_ACTIVE.blockID) meta = 0;
         if (id == Blocks.DUNGEON_CHEST_INACTIVE.blockID) meta = 0;
-        if (id == Blocks.ARTIFICIAL_HIVE.blockID) meta = 0;
         if (id == Blocks.TOMBSTONE.blockID) meta = 0;
         if (id == Blocks.CUCURBOO_TOMBSTONE.blockID) meta = 0;
-        if (id == Blocks.BASALT.blockID) meta = 0;
+        if (id == Blocks.ARTIFICIAL_HIVE.blockID) meta = 0;
         if (id == Blocks.HONEYCOMB_BLOCK.blockID && meta != 0) meta = 1;
+        if (id == Blocks.BASALT.blockID) meta = 0;
+
+        // "Natural" Pillars
+        if (id == Blocks.HAY_BALE.blockID) meta = 0;
+        if (id == Blocks.BUNDLE_OF_MINT.blockID) meta = 0;
+        if (id == Blocks.STEM_MUSHROOM.blockID) meta = 0;
+        if (id == Blocks.SUGAR_CANE_BLOCK.blockID) meta = 0;
+        if (id == Blocks.CORN_COB_BLOCK.blockID) meta = 0;
+        if (id == Blocks.DEAD_CACTUS.blockID) meta = 0;
+        if (id == Blocks.BONE_BLOCK.blockID) meta = 0;
+        if (id == Blocks.SPINAL_COLUMN.blockID) meta = 0;
+        if (id == Blocks.TOOTH_BLOCK.blockID) meta = 0;
+        if (id == Blocks.YELLOW_CANDY_CANE_BLOCK.blockID) meta = 0;
+        if (id == Blocks.GREEN_CANDY_CANE_BLOCK.blockID) meta = 0;
+        if (id == Blocks.RED_CANDY_CANE_BLOCK.blockID) meta = 0;
 
         // Pillars
         if (id == Blocks.STONE_PILLAR.blockID) meta = 0;
@@ -266,6 +280,12 @@ public final class ICYResolver {
         if (id == Blocks.PORTAL.blockID) {
             final ItemStack stack = new ItemStack(Blocks.PORTAL);
             stack.setItemName(Translation.quickTranslate("tile.nether_portal.name"));
+            return stack;
+        }
+
+        if (id == Blocks.COMBUSTOR_ACTIVE.blockID) {
+            final ItemStack stack = new ItemStack(Blocks.COMBUSTOR_ACTIVE);
+            stack.setItemName(Translation.quickTranslate("tile.combustion_block.name"));
             return stack;
         }
 
