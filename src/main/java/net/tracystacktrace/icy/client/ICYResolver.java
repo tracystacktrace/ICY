@@ -162,6 +162,15 @@ public final class ICYResolver {
 
         if (Blocks.BLOCKS_LIST[id] instanceof BlockCarvedPumpkin) meta = 0;
 
+        if (id == Blocks.OAK_LOG.blockID) meta = 3;
+        if (id == Blocks.FIR_LOG.blockID) meta = 3;
+        if (id == Blocks.CHERRY_LOG.blockID) meta = 3;
+        if (id == Blocks.SPRUCE_LOG.blockID) meta = 3;
+        if (id == Blocks.CRIMSON_LOG.blockID) meta = 3;
+        if (id == Blocks.AZURE_LOG.blockID) meta = 3;
+        if (id == Blocks.EBONY_LOG.blockID) meta = 3;
+        if (id == Blocks.THISTLEWOOD_LOG.blockID) meta = 3;
+
         if (id == Blocks.FURNACE_IDLE.blockID) meta = 0;
         if (id == Blocks.FURNACE_ACTIVE.blockID) meta = 0;
         if (id == Blocks.REFRIDGIFREEZER_IDLE.blockID) meta = 0;
