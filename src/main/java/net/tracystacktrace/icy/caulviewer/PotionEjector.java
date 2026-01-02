@@ -13,7 +13,7 @@ import java.util.Optional;
 
 public final class PotionEjector {
     record EffectCompact(int id, int ticks, int level) {
-        public String format() {
+        public @NotNull String format() {
             final int totalSeconds = ticks / 20;
             final String name = Translation.quickTranslate("effect." + Effects.EFFECTS_LIST[id].effectName + ".name");
 
