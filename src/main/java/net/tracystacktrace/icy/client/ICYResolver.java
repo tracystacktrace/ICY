@@ -124,10 +124,11 @@ public final class ICYResolver {
         if (id == Blocks.PUMPKIN_STEM.blockID) return new ItemStack(Items.PUMPKIN_SEEDS);
         if (id == Blocks.WATERMELON_STEM.blockID) return new ItemStack(Items.WATERMELON_SEEDS);
 
+        // Food Blocks
         if (id == Blocks.CAKE.blockID) return new ItemStack(Items.CAKE);
         if (id == Blocks.BLUEBERRY_PIE.blockID) return new ItemStack(Items.BLUEBERRY_PIE);
 
-
+        // Doors
         if (id == Blocks.OAK_DOOR.blockID) return new ItemStack(Items.OAK_DOOR);
         if (id == Blocks.FIR_DOOR.blockID) return new ItemStack(Items.FIR_DOOR);
         if (id == Blocks.CHERRY_DOOR.blockID) return new ItemStack(Items.CHERRY_DOOR);
@@ -138,6 +139,7 @@ public final class ICYResolver {
         if (id == Blocks.THISTLEWOOD_DOOR.blockID) return new ItemStack(Items.THISTLEWOOD_DOOR);
         if (id == Blocks.IRON_DOOR.blockID) return new ItemStack(Items.IRON_DOOR);
 
+        // Chairs
         if (id == Blocks.OAK_CHAIR.blockID) return new ItemStack(Items.OAK_CHAIR);
         if (id == Blocks.FIR_CHAIR.blockID) return new ItemStack(Items.FIR_CHAIR);
         if (id == Blocks.CHERRY_CHAIR.blockID) return new ItemStack(Items.CHERRY_CHAIR);
@@ -149,6 +151,7 @@ public final class ICYResolver {
         if (id == Blocks.STONE_CHAIR.blockID) return new ItemStack(Items.STONE_CHAIR);
         if (id == Blocks.GLASS_CHAIR.blockID) return new ItemStack(Items.GLASS_CHAIR);
 
+        // Tables
         if (id == Blocks.OAK_TABLE.blockID) return new ItemStack(Items.OAK_TABLE);
         if (id == Blocks.FIR_TABLE.blockID) return new ItemStack(Items.FIR_TABLE);
         if (id == Blocks.CHERRY_TABLE.blockID) return new ItemStack(Items.CHERRY_TABLE);
@@ -160,8 +163,7 @@ public final class ICYResolver {
         if (id == Blocks.STONE_TABLE.blockID) return new ItemStack(Items.STONE_TABLE);
         if (id == Blocks.GLASS_TABLE.blockID) return new ItemStack(Items.GLASS_TABLE);
 
-        if (Blocks.BLOCKS_LIST[id] instanceof BlockCarvedPumpkin) meta = 0;
-
+        // Logs
         if (id == Blocks.OAK_LOG.blockID) meta = 3;
         if (id == Blocks.FIR_LOG.blockID) meta = 3;
         if (id == Blocks.CHERRY_LOG.blockID) meta = 3;
@@ -171,6 +173,7 @@ public final class ICYResolver {
         if (id == Blocks.EBONY_LOG.blockID) meta = 3;
         if (id == Blocks.THISTLEWOOD_LOG.blockID) meta = 3;
 
+        // Machines
         if (id == Blocks.FURNACE_IDLE.blockID) meta = 0;
         if (id == Blocks.FURNACE_ACTIVE.blockID) meta = 0;
         if (id == Blocks.REFRIDGIFREEZER_IDLE.blockID) meta = 0;
@@ -179,6 +182,8 @@ public final class ICYResolver {
         if (id == Blocks.FORGE_ACTIVE.blockID) meta = 0;
         if (id == Blocks.INCINERATOR.blockID) meta = 0;
 
+        // Misc. Blocks
+        if (Blocks.BLOCKS_LIST[id] instanceof BlockCarvedPumpkin) meta = 0;
         if (id == Blocks.DRAWER.blockID) meta = 0;
         if (id == Blocks.DIMENSIONAL_CHEST.blockID) meta = 0;
         if (id == Blocks.DUNGEON_CHEST_ACTIVE.blockID) meta = 0;
@@ -187,9 +192,46 @@ public final class ICYResolver {
         if (id == Blocks.TOMBSTONE.blockID) meta = 0;
         if (id == Blocks.CUCURBOO_TOMBSTONE.blockID) meta = 0;
         if (id == Blocks.BASALT.blockID) meta = 0;
-
         if (id == Blocks.HONEYCOMB_BLOCK.blockID && meta != 0) meta = 1;
 
+        // Pillars
+        if (id == Blocks.STONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.BASALT.blockID && (meta == 1 || meta == 5 || meta == 9)) meta = 1;
+        if (id == Blocks.BRIMSTONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.LIMESTONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.CLOUDSTONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SANDSTONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SOUL_SANDSTONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.MINERAL_SANDSTONE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.CINDERBRICK_PILLAR.blockID) meta = 0;
+        if (id == Blocks.TERRACOTTA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.ICE_BRICK_PILLAR.blockID) meta = 0;
+        if (id == Blocks.ICE_BRICK_PILLAR.blockID) meta = 0;
+        if (id == Blocks.HONEY_BRICK_PILLAR.blockID) meta = 0;
+        if (id == Blocks.COQUINA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.ACIDSHELL_PILLAR.blockID) meta = 0;
+        if (id == Blocks.NETHER_BRICK_PILLAR.blockID) meta = 0;
+        if (id == Blocks.RIDROCK_PILLAR.blockID) meta = 0;
+        if (id == Blocks.OPAL_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SLAG_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SCORCHING_SLAG_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SLATE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SCORIA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.GRANITE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.MAGMA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.KOTTAMAGMA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.SULPHUROUS_MAGMA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.BLOOD_MAGMA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.CHROMAGMA_PILLAR.blockID) meta = 0;
+        if (id == Blocks.QUARTZ_PILLAR.blockID) meta = 0;
+        if (id == Blocks.CITRINE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.MYTHRIL_PILLAR.blockID) meta = 0;
+        if (id == Blocks.JET_PILLAR.blockID) meta = 0;
+        if (id == Blocks.FLESH_PILLAR.blockID) meta = 0;
+        if (id == Blocks.AUGMENTITE_PILLAR.blockID) meta = 0;
+        if (id == Blocks.CORUNDUM_PILLAR.blockID) meta = 0;
+
+        // Plushies
         if (id == Blocks.FOX_PLUSHIE.blockID) return new ItemStack(Items.FOX_PLUSHIE);
         if (id == Blocks.SNOW_FOX_PLUSHIE.blockID) return new ItemStack(Items.SNOW_FOX_PLUSHIE);
         if (id == Blocks.RED_WYVERN_PLUSHIE.blockID) return new ItemStack(Items.RED_WYVERN_PLUSHIE);
@@ -199,6 +241,7 @@ public final class ICYResolver {
         if (id == Blocks.DEMON_PLUSHIE.blockID) return new ItemStack(Items.DEMON_PLUSHIE);
         if (id == Blocks.SHARK_PLUSHIE.blockID) return new ItemStack(Items.SHARK_PLUSHIE);
 
+        // Skulls
         if (id == Blocks.ZOMBIE_SKULL.blockID || id == Blocks.ZOMBIE_SKULL_WALL_VARIANT.blockID)
             return new ItemStack(Items.ZOMBIE_SKULL);
         if (id == Blocks.SKELETON_SKULL.blockID || id == Blocks.SKELETON_SKULL_WALL_VARIANT.blockID)
