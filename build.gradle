@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'foxloader.dev'
 
 group = 'net.tracystacktrace'
-version = '1.0.5'
+version = '1.0.6'
 
 configurations {
     implAndInclude
@@ -55,7 +55,7 @@ foxloader {
     modVersion = project.version
     modAuthors = "tracystacktrace"
     modMain = "net.tracystacktrace.icy.ICYInit"
-    modWebsite = "https://github.com/tracystacktrace/ICY"
+    modWebsite = "https://modrinth.com/mod/icy-rind"
     modDesc("\u00A73Provides useful in-game tooltip about aimed blocks")
     modDesc()
     modDesc("\u00A76The mod behavior can be tweaked within the \"\u00A7aConfigure\u00A76\" menu!")
