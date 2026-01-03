@@ -201,6 +201,7 @@ public final class ICYResolver {
         if (id == Blocks.SUGAR_CANE_BLOCK.blockID) meta = 0;
         if (id == Blocks.CORN_COB_BLOCK.blockID) meta = 0;
         if (id == Blocks.DEAD_CACTUS.blockID) meta = 0;
+        if (id == Blocks.STRIPPED_CACTUS.blockID) meta = 0;
         if (id == Blocks.BONE_BLOCK.blockID) meta = 0;
         if (id == Blocks.SPINAL_COLUMN.blockID) meta = 0;
         if (id == Blocks.TOOTH_BLOCK.blockID) meta = 0;

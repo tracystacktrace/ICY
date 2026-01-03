@@ -1,11 +1,11 @@
 
-## [1.0.6] - TBA
+## [1.0.6] - 2026-01-02
 
 [View changes between 1.0.5 with 1.0.6](https://github.com/tracystacktrace/ICY/compare/1.0.5...1.0.6)
 
-- Fixed gunpowder fuse block information output
 - Added item frames description (shows a display name of hanged item)
 - Correct icons for pillars, logs and other "pillar" like blocks in tooltip
+- Fixed gunpowder fuse block information output
 - Fixed a combustion block's name being empty
 
 ## [1.0.5] - 2025-07-21

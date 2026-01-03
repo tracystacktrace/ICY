@@ -86,6 +86,7 @@ tile.flowing_sanguis.name=Sanguis
 tile.nether_portal.name=Nether Portal
 
 carving.carved=Original
+carving.default=Original
 
 # HelloGUI library lang values (temporary solution)
 
