@@ -1,4 +1,6 @@
 
+# (new updates are in codeberg.org repository!!!)
+
 ## [1.0.6] - 2026-01-02
 
 [View changes between 1.0.5 with 1.0.6](https://github.com/tracystacktrace/ICY/compare/1.0.5...1.0.6)
